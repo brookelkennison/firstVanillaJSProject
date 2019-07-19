@@ -1,0 +1,19 @@
+body {
+    background-image: linear-gradient(to bottom, rgb(255, 180, 227), rgb(165, 78, 199));
+    background-repeat: no-repeat;
+    height: 1200px;
+    width: 100%;
+}
+
+.answers {
+    display: flex;
+    flex-direction: column;
+}
+
+.answers > button {
+    height: 50px;
+    width: 250px;
+    margin: 10px;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
