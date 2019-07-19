@@ -2,56 +2,43 @@
 
 
 $(() => { // start of onload
-    const buttonsArray = ['#button1', '#button2', '#button3', '#button4'];
-    $('#romance').on('click', (event) => {
-        theNoteBook();
-    });
-
-    // making a button array so that when the buttons are generated the answers can be randomly assigned to a class (button i). Then we can access a random class by doing Math.floor(Math.random * buttonsArray.length)
-
-
-
-
+    const buttonsArray = [];
+    const $makeButtons = () => {
+        for (let i = 1; i <= 4; i++) {
+            const $newButton = ($('<button>').addClass('button').attr('id', ('button' + i)));
+            $('.answers').append($newButton);
+            buttonsArray.push('button' + i);
+        }
+        buttonsArray[0] = "#button1";
+        buttonsArray[1] = "#button2";
+        buttonsArray[2] = "#button3";
+        buttonsArray[3] = "#button4";
+    };
     const theNoteBook = () => {
         $.ajax({
             url: 'http://www.omdbapi.com/?t=the+notebook&apikey=361efa89',
         }).then (
             (data) => {
-                // console.log(data);
-                //call function() to generate a random question
                 $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
             });
-                const $value = Math.floor(Math.random() * 3);
-                console.log($value);
-                $('#question').text(notebookQuestions[$value].question);
-                const $assignRandomButton = (Math.floor(Math.random() * 4));
-                $('#button' + ($assignRandomButton + 1)).text((notebookQuestions[$value].correctAnswer));
 
-                buttonsArray.splice($assignRandomButton, 1);
-                //make a function to assign the rest
-                console.log(buttonsArray);
-                console.log(buttonsArray[0]);
-                for (let num = 1; num < 4; num++) {
-                    $( "'" +buttonsArray[num]+ "'").text('hi');
-                    $('#button1').text('hi');
+        const value = Math.floor(Math.random() * 3);
+        $('#question').text(notebookQuestions[value].question);
+        $makeButtons();
+        const correctAnswerValue = Math.floor(Math.random() * 4);
+        console.log(correctAnswerValue);
+        console.log(buttonsArray[correctAnswerValue]);
+        const string = buttonsArray[correctAnswerValue];
+        console.log(string);
+        $(string).text(notebookQuestions[value].correctAnswer);
+        buttonsArray.splice(correctAnswerValue, 1);
+        console.log(buttonsArray);
+        for (let num = 0; num <= 2; num++) {
+            $(buttonsArray[0]).text((notebookQuestions[value].wrongAnswers[num]));
+            buttonsArray.splice(0, 1);
 
-}
-                // const assignRandom = () => {
-                    // for (let num = 0; num <= 2; num++) {
-                    //     $( "'" +buttonsArray[num]+ "'").text('hi');
-                        // buttonsArray.splice(0, 1);
-
-
-                // }
-                //
-
-
-                 //when a button is assigned text it takes the class out of the buttonsArray
-
-            };
-
-
-
+        }
+    };
 
 const notebookQuestions = [
     {question:
@@ -61,18 +48,21 @@ const notebookQuestions = [
     },
     {question:  "A year after Allie went away, where did Noah and Fin move to?",
     correctAnswer: "Atlanta, Georgia",
-    wrongAnswers: ["Seaway", "Seaside", "Sealane"]
+    wrongAnswers: ["Charlotte, South Carolina", "Batton Rouge, Louisiana", "Memphis, Tennessee"]
     },
     {question: "How long did Noah send Allie letters?",
-    correctAnswer: "one year",
-    wrongAnswers: ["Seaway", "Seaside", "Sealane"]
+    correctAnswer: "One year",
+    wrongAnswers: ["Three years", "Two years", "6 months"]
     }
 ];
 
 const $romanceMovies = () => {
     return [theNoteBook()
 ];
-
-
 };
+
+$('#romance').on('click', (event) => {
+    theNoteBook();
+});
+
 }); //end of onload
