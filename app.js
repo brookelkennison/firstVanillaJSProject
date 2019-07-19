@@ -2,6 +2,14 @@
 
 
 $(() => { // start of onload
+    const $reset = () => {
+        $('.Q').hide();
+        $('#question').hide();
+        $('.answers').hide();
+        $('#movietitle').hide();
+        $('#img').hide();
+    };
+
     const buttonsArray = [];
     const $makeButtons = () => {
         for (let i = 1; i <= 4; i++) {
@@ -37,8 +45,17 @@ $(() => { // start of onload
         for (let num = 0; num <= 2; num++) {
             $(buttonsArray[0]).text((notebookQuestions[value].wrongAnswers[num]));
             buttonsArray.splice(0, 1);
-
         }
+        $('.button').on('click', (event) => {
+            if (event.target.innerHTML == notebookQuestions[value].correctAnswer) {
+                $(string).css('background-color', '#17e800');
+                // $reset();
+            }
+            else { $(event.target).css('background-color', '#f22c00');
+        }
+        });
+
+
     };
 
 const notebookQuestions = [
@@ -62,9 +79,11 @@ const $romanceMovies = () => {
 ];
 };
 
+
+
 $('#romance').on('click', (event) => {
     theNoteBook();
-    reset();
+    console.log(event.target.innerHTML);
 });
 
 $('#action').on('click', (event) => {
