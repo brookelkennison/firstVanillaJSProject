@@ -20,8 +20,9 @@ $(() => { // start of onload
         }).then (
             (data) => {
                 $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
+                $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
             });
-
+        $('.Q').text('Question');
         const value = Math.floor(Math.random() * 3);
         $('#question').text(notebookQuestions[value].question);
         $makeButtons();
@@ -63,6 +64,12 @@ const $romanceMovies = () => {
 
 $('#romance').on('click', (event) => {
     theNoteBook();
+    reset();
 });
+
+$('#action').on('click', (event) => {
+    alert('hi');
+});
+
 
 }); //end of onload

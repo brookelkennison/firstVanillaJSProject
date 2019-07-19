@@ -12,17 +12,26 @@
     <body>
         <div class="pickCategory">
             <h1>PICK A CATEGORY</h1>
-            <button type="button" name="button" id="romance" class="button">ROMANCE</button>
-            <button type="button" name="button">ACTION</button>
-            <button type="button" name="button">COMEDY</button>
-            <button type="button" name="button">FAMILY</button>
+            <div class="categoryButtons">
+                <button type="button" name="button" id="romance" class="catbutton">ROMANCE</button>
+                <button type="button" name="button" id="action" class="catbutton">ACTION</button>
+                <button type="button" name="button" id="comedy" class="catbutton">COMEDY</button>
+                <button type="button" name="button" id="family" class="catbutton">FAMILY</button>
+            </div>
         </div>
         <div class="game">
-            <h2>Question</h2>
-            <h3 id="movietitle"></h3>
-            <h4 id="question"></h4>
-            <div class="answers">
-                
+            <!-- LEFT SIDE -->
+            <div id="left-container">
+                <h3 id="movietitle"></h3>
+                <div id="img"></div>
+            </div>
+            <!-- RIGHT SIDE -->
+            <div id="right-container">
+                <h2 class = Q></h2>
+                <h4 id="question"></h4>
+                <div class="answers">
+                    <!-- buttons go here -->
+                </div>
             </div>
         </div>
         <script src="app.js" charset="utf-8"></script>
