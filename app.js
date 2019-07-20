@@ -47,10 +47,10 @@ $(() => { // start of onload
         $('.button').on('click', (event) => {
             if (event.target.innerHTML == notebookQuestions[value].correctAnswer) {
                 $(string).css('background-color', '#17e800');
+                notebookQuestions.splice(value, 1);
                 setTimeout($reset, 500);
                 setTimeout(romanceMovies, 500);
-                notebookQuestions.splice(value, 1);
-            }
+                }
             else {
                 $(event.target).css('background-color', '#f22c00');
                 $(string).css('background-color', '#17e800');
@@ -61,7 +61,7 @@ $(() => { // start of onload
         });
     };
 
-    const notebookQuestions = [
+    var notebookQuestions = [
     {question:
         "What is the name of the town Allie and Noah meet in and later go back to at the end of the movie?",
     correctAnswer: "Seabrook",
@@ -100,9 +100,9 @@ $(() => { // start of onload
     $('.button').on('click', (event) => {
         if (event.target.innerHTML == aboutTimeQuestions[value].correctAnswer) {
             $(string).css('background-color', '#17e800');
-            setTimeout($reset, 500);
-            setTimeout(romanceMovies, 500);
             aboutTimeQuestions.splice(value, 1);
+                setTimeout($reset, 500);
+                setTimeout(romanceMovies, 500);
         }
         else {
             $(event.target).css('background-color', '#f22c00');
@@ -114,7 +114,7 @@ $(() => { // start of onload
     });
 };
 
-    const aboutTimeQuestions = [
+    var aboutTimeQuestions = [
     {question:
         "Who plays the main character, Mary?",
     correctAnswer: "Rachel McAdams",
@@ -147,15 +147,15 @@ $(() => { // start of onload
         $(string).text(justGoWithItQuestions[value].correctAnswer);
         buttonsArray.splice(correctAnswerValue, 1);
         for (let num = 0; num <= 2; num++) {
-            $(buttonsArray[0]).text((justGoWithItQuestions[value].wrongAnswers[num]));
+            $(buttonsArray[0]).text(justGoWithItQuestions[value].wrongAnswers[num]);
             buttonsArray.splice(0, 1);
         }
         $('.button').on('click', (event) => {
             if (event.target.innerHTML == justGoWithItQuestions[value].correctAnswer) {
                 $(string).css('background-color', '#17e800');
-                setTimeout($reset, 500);
-                setTimeout(romanceMovies, 500);
                 justGoWithItQuestions.splice(value, 1);
+                    setTimeout($reset, 500);
+                    setTimeout(romanceMovies, 500);
             }
             else {
                 $(event.target).css('background-color', '#f22c00');
@@ -167,7 +167,7 @@ $(() => { // start of onload
         });
     };
 
-    const justGoWithItQuestions = [
+    var justGoWithItQuestions = [
 {question:
     "What’s wrong with the first woman at the clinic?",
 correctAnswer: "She had bad plastic surgery and one of her eyebrows was way too high",
@@ -206,9 +206,9 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
     $('.button').on('click', (event) => {
         if (event.target.innerHTML == lalaLandQuestions[value].correctAnswer) {
             $(string).css('background-color', '#17e800');
+            lalaLandQuestions.splice(value, 1);
             setTimeout($reset, 500);
             setTimeout(romanceMovies, 500);
-            lalaLandQuestions.splice(value, 1);
         }
         else {
             $(event.target).css('background-color', '#f22c00');
@@ -216,11 +216,11 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
             setTimeout($reset, 500);
             setTimeout(romanceMovies, 500);
             lalaLandQuestions.splice(value, 1);
-    }
+        }
     });
     };
 
-    const lalaLandQuestions = [
+    var lalaLandQuestions = [
     {question:
         "What made Sebastian miss Emma Stone’s character’s play?",
     correctAnswer: "He was having a photoshoot",
@@ -259,9 +259,9 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
     $('.button').on('click', (event) => {
         if (event.target.innerHTML == noStringAttachedQuestions[value].correctAnswer) {
             $(string).css('background-color', '#17e800');
+            noStringAttachedQuestions.splice(value, 1);
             setTimeout($reset, 500);
             setTimeout(romanceMovies, 500);
-            noStringAttachedQuestions.splice(value, 1);
         }
         else {
             $(event.target).css('background-color', '#f22c00');
@@ -273,7 +273,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         });
     };
 
-    const noStringAttachedQuestions = [
+    var noStringAttachedQuestions = [
     {question:
         "The film starts out with Emma and Adam meeting 15 years earlier. Where do they meet?",
     correctAnswer: "At summer camp",
@@ -312,9 +312,9 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
     $('.button').on('click', (event) => {
         if (event.target.innerHTML == loveActuallyQuestions[value].correctAnswer) {
             $(string).css('background-color', '#17e800');
+            loveActuallyQuestions.splice(value, 1);
             setTimeout($reset, 500);
             setTimeout(romanceMovies, 500);
-            loveActuallyQuestions.splice(value, 1);
         }
         else {
             $(event.target).css('background-color', '#f22c00');
@@ -326,7 +326,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         });
     };
 
-    const loveActuallyQuestions = [
+    var loveActuallyQuestions = [
     {question:
         "The film “Love Actually” opens with a voice over from which character?",
     correctAnswer: "David",
@@ -365,9 +365,9 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
     $('.button').on('click', (event) => {
         if (event.target.innerHTML == aStarIsBornQuestions[value].correctAnswer) {
             $(string).css('background-color', '#17e800');
+            aStarIsBornQuestions.splice(value, 1);
             setTimeout($reset, 500);
             setTimeout(romanceMovies, 500);
-            aStarIsBornQuestions.splice(value, 1);
         }
         else {
             $(event.target).css('background-color', '#f22c00');
@@ -379,7 +379,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         });
     };
 
-    const aStarIsBornQuestions = [
+    var aStarIsBornQuestions = [
     {question:
         "How many “A Star Is Born” movies have there been?",
     correctAnswer: "Four",
@@ -418,9 +418,9 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
     $('.button').on('click', (event) => {
         if (event.target.innerHTML == theSpectacularNowQuestions[value].correctAnswer) {
             $(string).css('background-color', '#17e800');
+            theSpectacularNowQuestions.splice(value, 1);
             setTimeout($reset, 500);
             setTimeout(romanceMovies, 500);
-            theSpectacularNowQuestions.splice(value, 1);
         }
         else {
             $(event.target).css('background-color', '#f22c00');
@@ -432,7 +432,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         });
     };
 
-    const theSpectacularNowQuestions = [
+    var theSpectacularNowQuestions = [
     {question:
         "At the beginning of the movie, who is Sutter Keely writing a letter to??",
     correctAnswer: "A dean of admissions",
@@ -448,20 +448,58 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
     }
     ];
 
+    var movies = [
+    theNoteBook,
+    aboutTime,
+    justGoWithIt,
+    lalaLand,
+    noStringAttached,
+    loveActually,
+    aStarIsBorn,
+    theSpectacularNow];
+
+
     const romanceMovies = () => {
-        var movies = [
-        theNoteBook,
-        aboutTime,
-        justGoWithIt,
-        lalaLand,
-        noStringAttached,
-        loveActually,
-        aStarIsBorn,
-        theSpectacularNow];
-        {
-        return movies[Math.floor(Math.random() * 8)]();
+        console.log(movies);
+        for (let i = 0; i < movies.length; i++) {
+            if ((notebookQuestions.length <= 0) && (notebookQuestions != 'yes')) {
+                movies.splice(movies.indexOf(theNoteBook), 1);
+                notebookQuestions = 'yes';
+            } else if ((aboutTimeQuestions.length <= 0) && (aboutTimeQuestions != 'yes')) {
+                movies.splice(movies.indexOf(aboutTime), 1);
+                aboutTimeQuestions = 'yes';
+            } else if ((justGoWithItQuestions.length <= 0) && (justGoWithItQuestions != 'yes')) {
+                movies.splice(movies.indexOf(justGoWithIt), 1);
+                justGoWithItQuestions = 'yes';
+            } else if ((lalaLandQuestions.length <= 0) && (lalaLandQuestions != 'yes')) {
+                movies.splice(movies.indexOf(lalaLand), 1);
+                lalaLandQuestions = 'yes';
+            } else if ((noStringAttachedQuestions.length <= 0) && (noStringAttachedQuestions != 'yes')) {
+                movies.splice(movies.indexOf(noStringAttached), 1);
+                noStringAttachedQuestions = 'yes';
+            } else if ((loveActuallyQuestions.length <= 0) && (loveActuallyQuestions != 'yes')) {
+                movies.splice(movies.indexOf(loveActually), 1);
+                loveActuallyQuestions = 'yes';
+            } else if ((aStarIsBornQuestions.length <= 0) && (aStarIsBornQuestions != 'yes')) {
+                movies.splice(movies.indexOf(aStarIsBorn), 1);
+                aStarIsBornQuestions = 'yes';
+            } else if ((theSpectacularNowQuestions.length <= 0) && (theSpectacularNowQuestions != 'yes')) {
+                movies.splice(movies.indexOf(theSpectacularNow), 1);
+                theSpectacularNowQuestions = 'yes';
+            }
         }
-    };
+        console.log('hi');
+        return movies[Math.floor(Math.random() * movies.length)]();
+        //     if (movies[i] != 0) {
+        //         console.log('random');
+        //         return movies[Math.floor(Math.random() * movies.length)]();
+        //     } else if (movies[i] == 0) {
+        //         console.log('loop');
+        //         return romanceMovies();
+        //     }
+        // }
+};
+
 
 
 
