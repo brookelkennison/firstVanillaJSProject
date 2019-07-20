@@ -3,11 +3,11 @@
 
 $(() => { // start of onload
     const $reset = () => {
-        $('.Q').hide();
-        $('#question').hide();
-        $('.answers').hide();
-        $('#movietitle').hide();
-        $('#img').hide();
+        $('.Q').empty('Question');
+        $('#movietitle').empty();
+        $('#img').empty();
+        $('#question').empty();
+        $('.answers').empty();
     };
 
     const buttonsArray = [];
@@ -33,17 +33,13 @@ $(() => { // start of onload
                 $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
             });
         $('.Q').text('Question');
-        const value = Math.floor(Math.random() * 3);
+        const value = Math.floor(Math.random() * notebookQuestions.length);
         $('#question').text(notebookQuestions[value].question);
         $makeButtons();
         const correctAnswerValue = Math.floor(Math.random() * 4);
-        console.log(correctAnswerValue);
-        console.log(buttonsArray[correctAnswerValue]);
         const string = buttonsArray[correctAnswerValue];
-        console.log(string);
         $(string).text(notebookQuestions[value].correctAnswer);
         buttonsArray.splice(correctAnswerValue, 1);
-        console.log(buttonsArray);
         for (let num = 0; num <= 2; num++) {
             $(buttonsArray[0]).text((notebookQuestions[value].wrongAnswers[num]));
             buttonsArray.splice(0, 1);
@@ -51,9 +47,16 @@ $(() => { // start of onload
         $('.button').on('click', (event) => {
             if (event.target.innerHTML == notebookQuestions[value].correctAnswer) {
                 $(string).css('background-color', '#17e800');
-                // $reset();
+                setTimeout($reset, 500);
+                setTimeout(romanceMovies, 500);
+                notebookQuestions.splice(value, 1);
             }
-            else { $(event.target).css('background-color', '#f22c00');
+            else {
+                $(event.target).css('background-color', '#f22c00');
+                $(string).css('background-color', '#17e800');
+                setTimeout($reset, 500);
+                setTimeout(romanceMovies, 500);
+                notebookQuestions.splice(value, 1);
         }
         });
     };
@@ -83,17 +86,13 @@ $(() => { // start of onload
             $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
         });
     $('.Q').text('Question');
-    const value = Math.floor(Math.random() * 3);
+    const value = Math.floor(Math.random() * aboutTimeQuestions.length);
     $('#question').text(aboutTimeQuestions[value].question);
     $makeButtons();
     const correctAnswerValue = Math.floor(Math.random() * 4);
-    console.log(correctAnswerValue);
-    console.log(buttonsArray[correctAnswerValue]);
     const string = buttonsArray[correctAnswerValue];
-    console.log(string);
     $(string).text(aboutTimeQuestions[value].correctAnswer);
     buttonsArray.splice(correctAnswerValue, 1);
-    console.log(buttonsArray);
     for (let num = 0; num <= 2; num++) {
         $(buttonsArray[0]).text((aboutTimeQuestions[value].wrongAnswers[num]));
         buttonsArray.splice(0, 1);
@@ -101,9 +100,16 @@ $(() => { // start of onload
     $('.button').on('click', (event) => {
         if (event.target.innerHTML == aboutTimeQuestions[value].correctAnswer) {
             $(string).css('background-color', '#17e800');
-            // $reset();
+            setTimeout($reset, 500);
+            setTimeout(romanceMovies, 500);
+            aboutTimeQuestions.splice(value, 1);
         }
-        else { $(event.target).css('background-color', '#f22c00');
+        else {
+            $(event.target).css('background-color', '#f22c00');
+            $(string).css('background-color', '#17e800');
+            setTimeout($reset, 500);
+            setTimeout(romanceMovies, 500);
+            aboutTimeQuestions.splice(value, 1);
     }
     });
 };
@@ -125,38 +131,41 @@ $(() => { // start of onload
 ];
 
     const justGoWithIt = () => {
-    $.ajax({
-        url: 'http://www.omdbapi.com/?t=just+go+with+it&apikey=361efa89',
-    }).then (
-        (data) => {
-            $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
-            $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
-        });
-    $('.Q').text('Question');
-    const value = Math.floor(Math.random() * 3);
-    $('#question').text(justGoWithItQuestions[value].question);
-    $makeButtons();
-    const correctAnswerValue = Math.floor(Math.random() * 4);
-    console.log(correctAnswerValue);
-    console.log(buttonsArray[correctAnswerValue]);
-    const string = buttonsArray[correctAnswerValue];
-    console.log(string);
-    $(string).text(justGoWithItQuestions[value].correctAnswer);
-    buttonsArray.splice(correctAnswerValue, 1);
-    console.log(buttonsArray);
-    for (let num = 0; num <= 2; num++) {
-        $(buttonsArray[0]).text((justGoWithItQuestions[value].wrongAnswers[num]));
-        buttonsArray.splice(0, 1);
-    }
-    $('.button').on('click', (event) => {
-        if (event.target.innerHTML == justGoWithItQuestions[value].correctAnswer) {
-            $(string).css('background-color', '#17e800');
-            // $reset();
+        $.ajax({
+            url: 'http://www.omdbapi.com/?t=just+go+with+it&apikey=361efa89',
+        }).then (
+            (data) => {
+                $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
+                $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
+            });
+        $('.Q').text('Question');
+        const value = Math.floor(Math.random() * justGoWithItQuestions.length);
+        $('#question').text(justGoWithItQuestions[value].question);
+        $makeButtons();
+        const correctAnswerValue = Math.floor(Math.random() * 4);
+        const string = buttonsArray[correctAnswerValue];
+        $(string).text(justGoWithItQuestions[value].correctAnswer);
+        buttonsArray.splice(correctAnswerValue, 1);
+        for (let num = 0; num <= 2; num++) {
+            $(buttonsArray[0]).text((justGoWithItQuestions[value].wrongAnswers[num]));
+            buttonsArray.splice(0, 1);
         }
-        else { $(event.target).css('background-color', '#f22c00');
-    }
-    });
-};
+        $('.button').on('click', (event) => {
+            if (event.target.innerHTML == justGoWithItQuestions[value].correctAnswer) {
+                $(string).css('background-color', '#17e800');
+                setTimeout($reset, 500);
+                setTimeout(romanceMovies, 500);
+                justGoWithItQuestions.splice(value, 1);
+            }
+            else {
+                $(event.target).css('background-color', '#f22c00');
+                $(string).css('background-color', '#17e800');
+                setTimeout($reset, 500);
+                setTimeout(romanceMovies, 500);
+                justGoWithItQuestions.splice(value, 1);
+        }
+        });
+    };
 
     const justGoWithItQuestions = [
 {question:
@@ -183,17 +192,13 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
             $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
         });
     $('.Q').text('Question');
-    const value = Math.floor(Math.random() * 3);
+    const value = Math.floor(Math.random() * lalaLandQuestions.length);
     $('#question').text(lalaLandQuestions[value].question);
     $makeButtons();
     const correctAnswerValue = Math.floor(Math.random() * 4);
-    console.log(correctAnswerValue);
-    console.log(buttonsArray[correctAnswerValue]);
     const string = buttonsArray[correctAnswerValue];
-    console.log(string);
     $(string).text(lalaLandQuestions[value].correctAnswer);
     buttonsArray.splice(correctAnswerValue, 1);
-    console.log(buttonsArray);
     for (let num = 0; num <= 2; num++) {
         $(buttonsArray[0]).text((lalaLandQuestions[value].wrongAnswers[num]));
         buttonsArray.splice(0, 1);
@@ -201,9 +206,16 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
     $('.button').on('click', (event) => {
         if (event.target.innerHTML == lalaLandQuestions[value].correctAnswer) {
             $(string).css('background-color', '#17e800');
-            // $reset();
+            setTimeout($reset, 500);
+            setTimeout(romanceMovies, 500);
+            lalaLandQuestions.splice(value, 1);
         }
-        else { $(event.target).css('background-color', '#f22c00');
+        else {
+            $(event.target).css('background-color', '#f22c00');
+            $(string).css('background-color', '#17e800');
+            setTimeout($reset, 500);
+            setTimeout(romanceMovies, 500);
+            lalaLandQuestions.splice(value, 1);
     }
     });
     };
@@ -233,17 +245,13 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
             $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
         });
     $('.Q').text('Question');
-    const value = Math.floor(Math.random() * 3);
+    const value = Math.floor(Math.random() * noStringAttachedQuestions.length);
     $('#question').text(noStringAttachedQuestions[value].question);
     $makeButtons();
     const correctAnswerValue = Math.floor(Math.random() * 4);
-    console.log(correctAnswerValue);
-    console.log(buttonsArray[correctAnswerValue]);
     const string = buttonsArray[correctAnswerValue];
-    console.log(string);
     $(string).text(noStringAttachedQuestions[value].correctAnswer);
     buttonsArray.splice(correctAnswerValue, 1);
-    console.log(buttonsArray);
     for (let num = 0; num <= 2; num++) {
         $(buttonsArray[0]).text((noStringAttachedQuestions[value].wrongAnswers[num]));
         buttonsArray.splice(0, 1);
@@ -251,11 +259,18 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
     $('.button').on('click', (event) => {
         if (event.target.innerHTML == noStringAttachedQuestions[value].correctAnswer) {
             $(string).css('background-color', '#17e800');
-            // $reset();
+            setTimeout($reset, 500);
+            setTimeout(romanceMovies, 500);
+            noStringAttachedQuestions.splice(value, 1);
         }
-        else { $(event.target).css('background-color', '#f22c00');
-    }
-    });
+        else {
+            $(event.target).css('background-color', '#f22c00');
+            $(string).css('background-color', '#17e800');
+            setTimeout($reset, 500);
+            setTimeout(romanceMovies, 500);
+            noStringAttachedQuestions.splice(value, 1);
+        }
+        });
     };
 
     const noStringAttachedQuestions = [
@@ -283,17 +298,13 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
             $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
         });
     $('.Q').text('Question');
-    const value = Math.floor(Math.random() * 3);
+    const value = Math.floor(Math.random() * loveActuallyQuestions.length);
     $('#question').text(loveActuallyQuestions[value].question);
     $makeButtons();
     const correctAnswerValue = Math.floor(Math.random() * 4);
-    console.log(correctAnswerValue);
-    console.log(buttonsArray[correctAnswerValue]);
     const string = buttonsArray[correctAnswerValue];
-    console.log(string);
     $(string).text(loveActuallyQuestions[value].correctAnswer);
     buttonsArray.splice(correctAnswerValue, 1);
-    console.log(buttonsArray);
     for (let num = 0; num <= 2; num++) {
         $(buttonsArray[0]).text((loveActuallyQuestions[value].wrongAnswers[num]));
         buttonsArray.splice(0, 1);
@@ -301,11 +312,18 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
     $('.button').on('click', (event) => {
         if (event.target.innerHTML == loveActuallyQuestions[value].correctAnswer) {
             $(string).css('background-color', '#17e800');
-            // $reset();
+            setTimeout($reset, 500);
+            setTimeout(romanceMovies, 500);
+            loveActuallyQuestions.splice(value, 1);
         }
-        else { $(event.target).css('background-color', '#f22c00');
-    }
-    });
+        else {
+            $(event.target).css('background-color', '#f22c00');
+            $(string).css('background-color', '#17e800');
+            setTimeout($reset, 500);
+            setTimeout(romanceMovies, 500);
+            loveActuallyQuestions.splice(value, 1);
+        }
+        });
     };
 
     const loveActuallyQuestions = [
@@ -333,17 +351,13 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
             $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
         });
     $('.Q').text('Question');
-    const value = Math.floor(Math.random() * 3);
+    const value = Math.floor(Math.random() * aStarIsBornQuestions.length);
     $('#question').text(aStarIsBornQuestions[value].question);
     $makeButtons();
     const correctAnswerValue = Math.floor(Math.random() * 4);
-    console.log(correctAnswerValue);
-    console.log(buttonsArray[correctAnswerValue]);
     const string = buttonsArray[correctAnswerValue];
-    console.log(string);
     $(string).text(aStarIsBornQuestions[value].correctAnswer);
     buttonsArray.splice(correctAnswerValue, 1);
-    console.log(buttonsArray);
     for (let num = 0; num <= 2; num++) {
         $(buttonsArray[0]).text((aStarIsBornQuestions[value].wrongAnswers[num]));
         buttonsArray.splice(0, 1);
@@ -351,11 +365,18 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
     $('.button').on('click', (event) => {
         if (event.target.innerHTML == aStarIsBornQuestions[value].correctAnswer) {
             $(string).css('background-color', '#17e800');
-            // $reset();
+            setTimeout($reset, 500);
+            setTimeout(romanceMovies, 500);
+            aStarIsBornQuestions.splice(value, 1);
         }
-        else { $(event.target).css('background-color', '#f22c00');
-    }
-    });
+        else {
+            $(event.target).css('background-color', '#f22c00');
+            $(string).css('background-color', '#17e800');
+            setTimeout($reset, 500);
+            setTimeout(romanceMovies, 500);
+            aStarIsBornQuestions.splice(value, 1);
+        }
+        });
     };
 
     const aStarIsBornQuestions = [
@@ -383,17 +404,13 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
             $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
         });
     $('.Q').text('Question');
-    const value = Math.floor(Math.random() * 3);
+    const value = Math.floor(Math.random() * theSpectacularNowQuestions.length);
     $('#question').text(theSpectacularNowQuestions[value].question);
     $makeButtons();
     const correctAnswerValue = Math.floor(Math.random() * 4);
-    console.log(correctAnswerValue);
-    console.log(buttonsArray[correctAnswerValue]);
     const string = buttonsArray[correctAnswerValue];
-    console.log(string);
     $(string).text(theSpectacularNowQuestions[value].correctAnswer);
     buttonsArray.splice(correctAnswerValue, 1);
-    console.log(buttonsArray);
     for (let num = 0; num <= 2; num++) {
         $(buttonsArray[0]).text((theSpectacularNowQuestions[value].wrongAnswers[num]));
         buttonsArray.splice(0, 1);
@@ -401,11 +418,18 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
     $('.button').on('click', (event) => {
         if (event.target.innerHTML == theSpectacularNowQuestions[value].correctAnswer) {
             $(string).css('background-color', '#17e800');
-            // $reset();
+            setTimeout($reset, 500);
+            setTimeout(romanceMovies, 500);
+            theSpectacularNowQuestions.splice(value, 1);
         }
-        else { $(event.target).css('background-color', '#f22c00');
-    }
-    });
+        else {
+            $(event.target).css('background-color', '#f22c00');
+            $(string).css('background-color', '#17e800');
+            setTimeout($reset, 500);
+            setTimeout(romanceMovies, 500);
+            theSpectacularNowQuestions.splice(value, 1);
+        }
+        });
     };
 
     const theSpectacularNowQuestions = [
@@ -424,19 +448,27 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
     }
     ];
 
-
-
-    const $romanceMovies = () => {
-        //make an array of romance movies so that when the user clicks on the romance button it generates a random number for the array
-        return [theNoteBook()
-        ];
+    const romanceMovies = () => {
+        var movies = [
+        theNoteBook,
+        aboutTime,
+        justGoWithIt,
+        lalaLand,
+        noStringAttached,
+        loveActually,
+        aStarIsBorn,
+        theSpectacularNow];
+        {
+        return movies[Math.floor(Math.random() * 8)]();
+        }
     };
 
 
 
+
 $('#romance').on('click', (event) => {
-    theSpectacularNow();
-    console.log(event.target.innerHTML);
+    $reset();
+    romanceMovies();
 });
 
 $('#action').on('click', (event) => {
