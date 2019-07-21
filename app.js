@@ -1,13 +1,109 @@
 /*jshint esversion: 6 */
-
+window.scrollTo( 0, 0);
 
 $(() => { // start of onload
+
+
+
     const $reset = () => {
         $('.Q').empty('Question');
         $('#movietitle').empty();
         $('#img').empty();
         $('#question').empty();
         $('.answers').empty();
+    };
+
+    const $resetAll = () => {
+        $('.Q').empty('Question');
+        $('#movietitle').empty();
+        $('#img').empty();
+        $('#question').empty();
+        $('.answers').empty();
+        $('.categoryh1').show();
+        $('#action').show();
+        $('#comedy').show();
+        $('#family').show();
+        $('#romance').show();
+        $('.game').css('background', 'none');
+        window.scrollTo(0, 0);
+    };
+
+    var numQuestionsRight = 0;
+
+    const correctCount = () => {
+         $('.correctCount').text("QUESTIONS CORRECT: " + numQuestionsRight);
+    };
+
+    const $closeBtn = $('.close');
+
+    const closeModal = () => {
+        $('.modal').css('display', 'none');
+    };
+
+    $closeBtn.on('click', closeModal);
+
+    const modal10 = () => {
+        $('#tenthAchievement').css('display', 'block');
+    };
+
+    const modal9 = () => {
+        $('#ninthAchievement').css('display', 'block');
+    };
+
+    const modal8 = () => {
+        $('#eigthAchievement').css('display', 'block');
+    };
+
+    const modal7 = () => {
+        $('#seventhAchievement').css('display', 'block');
+    };
+
+    const modal6 = () => {
+        $('#sixthAchievement').css('display', 'block');
+    };
+
+    const modal5 = () => {
+        $('#fifthAchievement').css('display', 'block');
+    };
+
+    const modal4 = () => {
+        $('#fourthAchievement').css('display', 'block');
+    };
+
+    const modal3 = () => {
+        $('#thirdAchievement').css('display', 'block');
+    };
+
+    const modal2 = () => {
+        $('#secondAchievement').css('display', 'block');
+    };
+
+    const modal1 = () => {
+        $('#firstAchievement').css('display', 'block');
+    };
+
+    const checkCount = () => {
+        if (numQuestionsRight == 30) {
+            modal10();
+        } else if (numQuestionsRight == 27) {
+            modal9();
+        } else if (numQuestionsRight == 24) {
+            modal8();
+        } else if (numQuestionsRight == 21) {
+            modal7();
+        } else if (numQuestionsRight == 18) {
+            modal6();
+        } else if (numQuestionsRight == 15) {
+            modal5();
+        } else if (numQuestionsRight == 12) {
+            modal4();
+        } else if (numQuestionsRight == 9) {
+            modal3();
+        } else if (numQuestionsRight == 6) {
+            modal2();
+        } else if (numQuestionsRight == 3) {
+            modal1();
+        }
     };
 
     const buttonsArray = [];
@@ -48,14 +144,17 @@ $(() => { // start of onload
             if (event.target.innerHTML == notebookQuestions[value].correctAnswer) {
                 $(string).css('background-color', '#b1d94e');
                 notebookQuestions.splice(value, 1);
+                numQuestionsRight += 1;
+                correctCount();
+                checkCount();
                 setTimeout($reset, 500);
                 setTimeout(romanceMovies, 500);
+
                 }
             else {
                 $(event.target).css('background-color', '#e67410');
                 $(string).css('background-color', '#b1d94e');
-                setTimeout($reset, 500);
-                setTimeout(romanceMovies, 500);
+                setTimeout($resetAll, 500);
                 notebookQuestions.splice(value, 1);
         }
         });
@@ -101,14 +200,16 @@ $(() => { // start of onload
         if (event.target.innerHTML == aboutTimeQuestions[value].correctAnswer) {
             $(string).css('background-color', '#b1d94e');
             aboutTimeQuestions.splice(value, 1);
+            numQuestionsRight += 1;
+            correctCount();
+            checkCount();
                 setTimeout($reset, 500);
                 setTimeout(romanceMovies, 500);
         }
         else {
             $(event.target).css('background-color', '#e67410');
             $(string).css('background-color', '#b1d94e');
-            setTimeout($reset, 500);
-            setTimeout(romanceMovies, 500);
+            setTimeout($resetAll, 500);
             aboutTimeQuestions.splice(value, 1);
     }
     });
@@ -154,14 +255,16 @@ $(() => { // start of onload
             if (event.target.innerHTML == justGoWithItQuestions[value].correctAnswer) {
                 $(string).css('background-color', '#b1d94e');
                 justGoWithItQuestions.splice(value, 1);
+                numQuestionsRight += 1;
+                correctCount();
+                checkCount();
                     setTimeout($reset, 500);
                     setTimeout(romanceMovies, 500);
             }
             else {
                 $(event.target).css('background-color', '#e67410');
                 $(string).css('background-color', '#b1d94e');
-                setTimeout($reset, 500);
-                setTimeout(romanceMovies, 500);
+                setTimeout($resetAll, 500);
                 justGoWithItQuestions.splice(value, 1);
         }
         });
@@ -207,14 +310,16 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         if (event.target.innerHTML == lalaLandQuestions[value].correctAnswer) {
             $(string).css('background-color', '#b1d94e');
             lalaLandQuestions.splice(value, 1);
+            numQuestionsRight += 1;
+            correctCount();
+            checkCount();
             setTimeout($reset, 500);
             setTimeout(romanceMovies, 500);
         }
         else {
             $(event.target).css('background-color', '#e67410');
             $(string).css('background-color', '#b1d94e');
-            setTimeout($reset, 500);
-            setTimeout(romanceMovies, 500);
+            setTimeout($resetAll, 500);
             lalaLandQuestions.splice(value, 1);
         }
     });
@@ -260,14 +365,16 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         if (event.target.innerHTML == noStringAttachedQuestions[value].correctAnswer) {
             $(string).css('background-color', '#b1d94e');
             noStringAttachedQuestions.splice(value, 1);
+            numQuestionsRight += 1;
+            correctCount();
+            checkCount();
             setTimeout($reset, 500);
             setTimeout(romanceMovies, 500);
         }
         else {
             $(event.target).css('background-color', '#e67410');
             $(string).css('background-color', '#b1d94e');
-            setTimeout($reset, 500);
-            setTimeout(romanceMovies, 500);
+            setTimeout($resetAll, 500);
             noStringAttachedQuestions.splice(value, 1);
         }
         });
@@ -313,14 +420,16 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         if (event.target.innerHTML == loveActuallyQuestions[value].correctAnswer) {
             $(string).css('background-color', '#b1d94e');
             loveActuallyQuestions.splice(value, 1);
+            numQuestionsRight += 1;
+            correctCount();
+            checkCount();
             setTimeout($reset, 500);
             setTimeout(romanceMovies, 500);
         }
         else {
             $(event.target).css('background-color', '#e67410');
             $(string).css('background-color', '#b1d94e');
-            setTimeout($reset, 500);
-            setTimeout(romanceMovies, 500);
+            setTimeout($resetAll, 500);
             loveActuallyQuestions.splice(value, 1);
         }
         });
@@ -366,14 +475,16 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         if (event.target.innerHTML == aStarIsBornQuestions[value].correctAnswer) {
             $(string).css('background-color', '#b1d94e');
             aStarIsBornQuestions.splice(value, 1);
+            numQuestionsRight += 1;
+            correctCount();
+            checkCount();
             setTimeout($reset, 500);
             setTimeout(romanceMovies, 500);
         }
         else {
             $(event.target).css('background-color', '#e67410');
             $(string).css('background-color', '#b1d94e');
-            setTimeout($reset, 500);
-            setTimeout(romanceMovies, 500);
+            setTimeout($resetAll, 500);
             aStarIsBornQuestions.splice(value, 1);
         }
         });
@@ -419,14 +530,16 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         if (event.target.innerHTML == theSpectacularNowQuestions[value].correctAnswer) {
             $(string).css('background-color', '#b1d94e');
             theSpectacularNowQuestions.splice(value, 1);
+            numQuestionsRight += 1;
+            correctCount();
+            checkCount();
             setTimeout($reset, 500);
             setTimeout(romanceMovies, 500);
         }
         else {
             $(event.target).css('background-color', '#e67410');
             $(string).css('background-color', '#b1d94e');
-            setTimeout($reset, 500);
-            setTimeout(romanceMovies, 500);
+            setTimeout($resetAll, 500);
             theSpectacularNowQuestions.splice(value, 1);
         }
         });
@@ -434,7 +547,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
 
     var theSpectacularNowQuestions = [
     {question:
-        "At the beginning of the movie, who is Sutter Keely writing a letter to??",
+        "At the beginning of the movie, who is Sutter Keely writing a letter to?",
     correctAnswer: "A dean of admissions",
     wrongAnswers: ["His father", "A guidance counselor", "His future self"]
     },
@@ -499,6 +612,1148 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         // }
 };
 
+    const bourneUltimatum = () => {
+        $.ajax({
+            url: 'http://www.omdbapi.com/?t=bourne+ultimatum&apikey=361efa89',
+        }).then (
+            (data) => {
+                $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
+                $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
+            });
+        $('.Q').text('Question');
+        const value = Math.floor(Math.random() * bourneUltimatumQuestions.length);
+        $('#question').text(bourneUltimatumQuestions[value].question);
+        $makeButtons();
+        const correctAnswerValue = Math.floor(Math.random() * 4);
+        const string = buttonsArray[correctAnswerValue];
+        $(string).text(bourneUltimatumQuestions[value].correctAnswer);
+        buttonsArray.splice(correctAnswerValue, 1);
+        for (let num = 0; num <= 2; num++) {
+            $(buttonsArray[0]).text((bourneUltimatumQuestions[value].wrongAnswers[num]));
+            buttonsArray.splice(0, 1);
+        }
+        $('.button').on('click', (event) => {
+            if (event.target.innerHTML == bourneUltimatumQuestions[value].correctAnswer) {
+                $(string).css('background-color', '#b1d94e');
+                bourneUltimatumQuestions.splice(value, 1);
+                numQuestionsRight += 1;
+                correctCount();
+                checkCount();
+                setTimeout($reset, 500);
+                setTimeout(actionmovies, 500);
+
+                }
+            else {
+                $(event.target).css('background-color', '#e67410');
+                $(string).css('background-color', '#b1d94e');
+                setTimeout($resetAll, 500);
+                bourneUltimatumQuestions.splice(value, 1);
+        }
+        });
+    };
+
+    var bourneUltimatumQuestions = [
+    {question:
+        "Who is the lead actor?",
+    correctAnswer: "Matt Damon",
+    wrongAnswers: ["Edgar Ramierz", "Joan Allen", "Chris Cooper"]
+    },
+    {question:  "Which installment of the Bourne film series movies is Ultimatum?",
+    correctAnswer: "3rd Movie",
+    wrongAnswers: ["1st Movie", "4th Movie", "2nd Movie"]
+    },
+    {question: "In Bourne Ultimatum, which Operation is targeting Jason Bourne?",
+    correctAnswer: "Blackbriar",
+    wrongAnswers: ["Nighthawk", "Blackbear", "Blackhawk"]
+    }
+    ];
+
+    const johnWick = () => {
+    $.ajax({
+        url: 'http://www.omdbapi.com/?t=john+wick&apikey=361efa89',
+    }).then (
+        (data) => {
+            $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
+            $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
+        });
+    $('.Q').text('Question');
+    const value = Math.floor(Math.random() * johnWickQuestions.length);
+    $('#question').text(johnWickQuestions[value].question);
+    $makeButtons();
+    const correctAnswerValue = Math.floor(Math.random() * 4);
+    const string = buttonsArray[correctAnswerValue];
+    $(string).text(johnWickQuestions[value].correctAnswer);
+    buttonsArray.splice(correctAnswerValue, 1);
+    for (let num = 0; num <= 2; num++) {
+        $(buttonsArray[0]).text((johnWickQuestions[value].wrongAnswers[num]));
+        buttonsArray.splice(0, 1);
+    }
+    $('.button').on('click', (event) => {
+        if (event.target.innerHTML == aboutTimeQuestions[value].correctAnswer) {
+            $(string).css('background-color', '#b1d94e');
+            johnWickQuestions.splice(value, 1);
+            numQuestionsRight += 1;
+            correctCount();
+            checkCount();
+                setTimeout($reset, 500);
+                setTimeout(actionmovies, 500);
+        }
+        else {
+            $(event.target).css('background-color', '#e67410');
+            $(string).css('background-color', '#b1d94e');
+            setTimeout($resetAll, 500);
+            johnWickQuestions.splice(value, 1);
+    }
+    });
+    };
+
+    var johnWickQuestions = [
+    {question:
+        "Who directed John Wick?",
+    correctAnswer: "Chad Stahelski",
+    wrongAnswers: ["Harrison Ford", "George Lucas", "J.J. Abrams"]
+    },
+    {question:  "What is the name of John’s wife?",
+    correctAnswer: "Helen",
+    wrongAnswers: ["Jessica", "Margaret", "Lindsey"]
+    },
+    {question: "What kind of care does John drive?",
+    correctAnswer: "Ford Mustang Mach 1",
+    wrongAnswers: ["Chevy Charger", "Nissan Ultima", "Porsche 911"]
+    }
+    ];
+
+    const theDarkKnight = () => {
+        $.ajax({
+            url: 'http://www.omdbapi.com/?t=the+dark+knight&apikey=361efa89',
+        }).then (
+            (data) => {
+                $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
+                $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
+            });
+        $('.Q').text('Question');
+        const value = Math.floor(Math.random() * theDarkKnightQuestions.length);
+        $('#question').text(theDarkKnightQuestions[value].question);
+        $makeButtons();
+        const correctAnswerValue = Math.floor(Math.random() * 4);
+        const string = buttonsArray[correctAnswerValue];
+        $(string).text(theDarkKnightQuestions[value].correctAnswer);
+        buttonsArray.splice(correctAnswerValue, 1);
+        for (let num = 0; num <= 2; num++) {
+            $(buttonsArray[0]).text(theDarkKnightQuestions[value].wrongAnswers[num]);
+            buttonsArray.splice(0, 1);
+        }
+        $('.button').on('click', (event) => {
+            if (event.target.innerHTML == theDarkKnightQuestions[value].correctAnswer) {
+                $(string).css('background-color', '#b1d94e');
+                theDarkKnightQuestions.splice(value, 1);
+                numQuestionsRight += 1;
+                correctCount();
+                checkCount();
+                    setTimeout($reset, 500);
+                    setTimeout(actionmovies, 500);
+            }
+            else {
+                $(event.target).css('background-color', '#e67410');
+                $(string).css('background-color', '#b1d94e');
+                setTimeout($resetAll, 500);
+                theDarkKnightQuestions.splice(value, 1);
+        }
+        });
+    };
+
+    var theDarkKnightQuestions = [
+    {question:
+    "Who is the main villain in the Dark Knight?",
+    correctAnswer: "The Joker",
+    wrongAnswers: ["Harley Quinn", "Penguin", "Baine"]
+    },
+    {question:  "What is the character’s name played by Morgan Freeman?",
+    correctAnswer: "Lucious Fox",
+    wrongAnswers: ["Alfred", "The Joker", "Harvey Dent"]
+    },
+    {question: "What is Batman’s super power?",
+    correctAnswer: "He has no super powers",
+    wrongAnswers: ["Flying", "Super Strength", "Invisibility"]
+    }
+    ];
+
+    const theEqualizer = () => {
+    $.ajax({
+        url: 'http://www.omdbapi.com/?t=the+equalizer&apikey=361efa89',
+    }).then (
+        (data) => {
+            $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
+            $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
+        });
+    $('.Q').text('Question');
+    const value = Math.floor(Math.random() * theEqualizerQuestions.length);
+    $('#question').text(theEqualizerQuestions[value].question);
+    $makeButtons();
+    const correctAnswerValue = Math.floor(Math.random() * 4);
+    const string = buttonsArray[correctAnswerValue];
+    $(string).text(theEqualizerQuestions[value].correctAnswer);
+    buttonsArray.splice(correctAnswerValue, 1);
+    for (let num = 0; num <= 2; num++) {
+        $(buttonsArray[0]).text((theEqualizerQuestions[value].wrongAnswers[num]));
+        buttonsArray.splice(0, 1);
+    }
+    $('.button').on('click', (event) => {
+        if (event.target.innerHTML == theEqualizerQuestions[value].correctAnswer) {
+            $(string).css('background-color', '#b1d94e');
+            theEqualizerQuestions.splice(value, 1);
+            numQuestionsRight += 1;
+            correctCount();
+            checkCount();
+            setTimeout($reset, 500);
+            setTimeout(actionmovies, 500);
+        }
+        else {
+            $(event.target).css('background-color', '#e67410');
+            $(string).css('background-color', '#b1d94e');
+            setTimeout($resetAll, 500);
+            theEqualizerQuestions.splice(value, 1);
+        }
+    });
+    };
+
+    var theEqualizerQuestions = [
+    {question:
+        "Who wrote the book, The Equalizer, on which the film is based?",
+    correctAnswer: "Michael Sloan",
+    wrongAnswers: ["J.K. Rowling", "Sam Hunt", "John Richards"]
+    },
+    {question:  "What city does Robert McCall live in where he works at a local hardware store?",
+    correctAnswer: "Boston",
+    wrongAnswers: ["Brooklyn", "Chicago", "Austin"]
+    },
+    {question: "What year was the film released in theaters?",
+    correctAnswer: "2014",
+    wrongAnswers: ["2015", "2013", "2012"]
+    }
+    ];
+
+    const captainAmerica = () => {
+    $.ajax({
+        url: 'http://www.omdbapi.com/?t=captain+america&y=2016&apikey=361efa89',
+    }).then (
+        (data) => {
+            $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
+            $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
+        });
+    $('.Q').text('Question');
+    const value = Math.floor(Math.random() * captainAmericaQuestions.length);
+    $('#question').text(captainAmericaQuestions[value].question);
+    $makeButtons();
+    const correctAnswerValue = Math.floor(Math.random() * 4);
+    const string = buttonsArray[correctAnswerValue];
+    $(string).text(captainAmericaQuestions[value].correctAnswer);
+    buttonsArray.splice(correctAnswerValue, 1);
+    for (let num = 0; num <= 2; num++) {
+        $(buttonsArray[0]).text((captainAmericaQuestions[value].wrongAnswers[num]));
+        buttonsArray.splice(0, 1);
+    }
+    $('.button').on('click', (event) => {
+        if (event.target.innerHTML == captainAmericaQuestions[value].correctAnswer) {
+            $(string).css('background-color', '#b1d94e');
+            captainAmericaQuestions.splice(value, 1);
+            numQuestionsRight += 1;
+            correctCount();
+            checkCount();
+            setTimeout($reset, 500);
+            setTimeout(actionmovies, 500);
+        }
+        else {
+            $(event.target).css('background-color', '#e67410');
+            $(string).css('background-color', '#b1d94e');
+            setTimeout($resetAll, 500);
+            captainAmericaQuestions.splice(value, 1);
+        }
+        });
+    };
+
+    var captainAmericaQuestions = [
+    {question:
+        "In Captain America: Civil War, who are the two main opposing heroes?",
+    correctAnswer: "Captain America and Iron Man",
+    wrongAnswers: ["Captain America and Ant-Man", "Captain America and Hulk", "Captain America and Thor"]
+    },
+    {question:  "Which of the following characters sides with Iron Man?",
+    correctAnswer: "Ant-Man",
+    wrongAnswers: ["War Machine", "Hawk Eye", "Scarlet Witch"]
+    },
+    {question: "During the battle between Iron Man and Captain America’s team, which hero is severely injured at the end of the battle?",
+    correctAnswer: "War Machine",
+    wrongAnswers: ["Ant-Man", "Spider-Man", "Bucky Barnes"]
+    }
+    ];
+
+    const readyPlayerOne = () => {
+    $.ajax({
+        url: 'http://www.omdbapi.com/?t=ready+player+one&apikey=361efa89',
+    }).then (
+        (data) => {
+            $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
+            $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
+        });
+    $('.Q').text('Question');
+    const value = Math.floor(Math.random() * readyPlayerOneQuestions.length);
+    $('#question').text(readyPlayerOneQuestions[value].question);
+    $makeButtons();
+    const correctAnswerValue = Math.floor(Math.random() * 4);
+    const string = buttonsArray[correctAnswerValue];
+    $(string).text(readyPlayerOneQuestions[value].correctAnswer);
+    buttonsArray.splice(correctAnswerValue, 1);
+    for (let num = 0; num <= 2; num++) {
+        $(buttonsArray[0]).text((readyPlayerOneQuestions[value].wrongAnswers[num]));
+        buttonsArray.splice(0, 1);
+    }
+    $('.button').on('click', (event) => {
+        if (event.target.innerHTML == readyPlayerOneQuestions[value].correctAnswer) {
+            $(string).css('background-color', '#b1d94e');
+            readyPlayerOneQuestions.splice(value, 1);
+            numQuestionsRight += 1;
+            correctCount();
+            checkCount();
+            setTimeout($reset, 500);
+            setTimeout(actionmovies, 500);
+        }
+        else {
+            $(event.target).css('background-color', '#e67410');
+            $(string).css('background-color', '#b1d94e');
+            setTimeout($resetAll, 500);
+            readyPlayerOneQuestions.splice(value, 1);
+        }
+        });
+    };
+
+    var readyPlayerOneQuestions = [
+    {question:
+        "Who is the director of Ready Play One?",
+    correctAnswer: "Steven Spielberg",
+    wrongAnswers: ["J.J. Abrams", "James Gunn", "George Lucas"]
+    },
+    {question:  "In what year does Ready Player One take place?",
+    correctAnswer: "2045",
+    wrongAnswers: ["2055", "2100", "2442"]
+    },
+    {question: "What does IOI stand for in Ready Player One?",
+    correctAnswer: "Innovative Online Industries",
+    wrongAnswers: ["Integrity Over Intuition", "Items of Importance", "Individual Operating Industries"]
+    }
+    ];
+
+    const missionImpossible = () => {
+    $.ajax({
+        url: 'http://www.omdbapi.com/?t=mission+impossible&y=2011&apikey=361efa89',
+    }).then (
+        (data) => {
+            $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
+            $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
+        });
+    $('.Q').text('Question');
+    const value = Math.floor(Math.random() * missionImpossibleQuestions.length);
+    $('#question').text(missionImpossibleQuestions[value].question);
+    $makeButtons();
+    const correctAnswerValue = Math.floor(Math.random() * 4);
+    const string = buttonsArray[correctAnswerValue];
+    $(string).text(missionImpossibleQuestions[value].correctAnswer);
+    buttonsArray.splice(correctAnswerValue, 1);
+    for (let num = 0; num <= 2; num++) {
+        $(buttonsArray[0]).text((missionImpossibleQuestions[value].wrongAnswers[num]));
+        buttonsArray.splice(0, 1);
+    }
+    $('.button').on('click', (event) => {
+        if (event.target.innerHTML == missionImpossibleQuestions[value].correctAnswer) {
+            $(string).css('background-color', '#b1d94e');
+            missionImpossibleQuestions.splice(value, 1);
+            numQuestionsRight += 1;
+            correctCount();
+            checkCount();
+            setTimeout($reset, 500);
+            setTimeout(actionmovies, 500);
+        }
+        else {
+            $(event.target).css('background-color', '#e67410');
+            $(string).css('background-color', '#b1d94e');
+            setTimeout($resetAll, 500);
+            missionImpossibleQuestions.splice(value, 1);
+        }
+        });
+    };
+
+    var missionImpossibleQuestions = [
+    {question:
+        "Which film number in the Impossible film series is Ghost Protocol?",
+    correctAnswer: "Four",
+    wrongAnswers: ["One", "Three", "Two"]
+    },
+    {question:  "What structure is bombed in the film Ghost Protocol and subsequently blamed on Ethan and IMF?",
+    correctAnswer: "The Kremlin",
+    wrongAnswers: ["The White House", "The Great Wall of China", "Big Ben"]
+    },
+    {question: "Which city has a single missile fired at it by a Russian submarine?",
+    correctAnswer: "San Francisco",
+    wrongAnswers: ["Washington", "San Diego", "Miami"]
+    }
+    ];
+
+    const fury = () => {
+    $.ajax({
+        url: 'http://www.omdbapi.com/?t=fury&y=2014&apikey=361efa89',
+    }).then (
+        (data) => {
+            $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
+            $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
+        });
+    $('.Q').text('Question');
+    const value = Math.floor(Math.random() * furyQuestions.length);
+    $('#question').text(furyQuestions[value].question);
+    $makeButtons();
+    const correctAnswerValue = Math.floor(Math.random() * 4);
+    const string = buttonsArray[correctAnswerValue];
+    $(string).text(furyQuestions[value].correctAnswer);
+    buttonsArray.splice(correctAnswerValue, 1);
+    for (let num = 0; num <= 2; num++) {
+        $(buttonsArray[0]).text((furyQuestions[value].wrongAnswers[num]));
+        buttonsArray.splice(0, 1);
+    }
+    $('.button').on('click', (event) => {
+        if (event.target.innerHTML == furyQuestions[value].correctAnswer) {
+            $(string).css('background-color', '#b1d94e');
+            furyQuestions.splice(value, 1);
+            numQuestionsRight += 1;
+            correctCount();
+            checkCount();
+            setTimeout($reset, 500);
+            setTimeout(actionmovies, 500);
+        }
+        else {
+            $(event.target).css('background-color', '#e67410');
+            $(string).css('background-color', '#b1d94e');
+            setTimeout($resetAll, 500);
+            furyQuestions.splice(value, 1);
+        }
+        });
+    };
+
+    var furyQuestions = [
+    {question:
+        "What kind of tank is used by Staff Sergeant Collier?",
+    correctAnswer: "M4 Sherman",
+    wrongAnswers: ["Abrahams", "M24 Chaffee", "M46 Patton"]
+    },
+    {question:  "What is Staff Sergeant Collier’s nickname?",
+    correctAnswer: "Wardaddy",
+    wrongAnswers: ["Boss", "Sarge", "Tank"]
+    },
+    {question: "Who replaces “Red” after he is KIA?",
+    correctAnswer: "Norman",
+    wrongAnswers: ["John", "Kevin", "Leonard"]
+    }
+    ];
+
+    const planetOfTheApes = () => {
+    $.ajax({
+        url: 'http://www.omdbapi.com/?t=dawn+of+the+planet+of+the+apes&y=2014&apikey=361efa89',
+    }).then (
+        (data) => {
+            $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
+            $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
+        });
+    $('.Q').text('Question');
+    const value = Math.floor(Math.random() * planetOfTheApesQuestions.length);
+    $('#question').text(planetOfTheApesQuestions[value].question);
+    $makeButtons();
+    const correctAnswerValue = Math.floor(Math.random() * 4);
+    const string = buttonsArray[correctAnswerValue];
+    $(string).text(planetOfTheApesQuestions[value].correctAnswer);
+    buttonsArray.splice(correctAnswerValue, 1);
+    for (let num = 0; num <= 2; num++) {
+        $(buttonsArray[0]).text((planetOfTheApesQuestions[value].wrongAnswers[num]));
+        buttonsArray.splice(0, 1);
+    }
+    $('.button').on('click', (event) => {
+        if (event.target.innerHTML == planetOfTheApesQuestions[value].correctAnswer) {
+            $(string).css('background-color', '#b1d94e');
+            planetOfTheApesQuestions.splice(value, 1);
+            numQuestionsRight += 1;
+            correctCount();
+            checkCount();
+            setTimeout($reset, 500);
+            setTimeout(actionmovies, 500);
+        }
+        else {
+            $(event.target).css('background-color', '#e67410');
+            $(string).css('background-color', '#b1d94e');
+            setTimeout($resetAll, 500);
+            planetOfTheApesQuestions.splice(value, 1);
+        }
+        });
+    };
+
+    var planetOfTheApesQuestions = [
+    {question:
+        "What is the name of the flu that wipes out about 90% of the human population in the film?",
+    correctAnswer: "Simian Flu",
+    wrongAnswers: ["Swine Flu", "Ape Flu", "Monkey Flu"]
+    },
+    {question:  "Near what city is Caesar’s apes located?",
+    correctAnswer: "San Francisco",
+    wrongAnswers: ["Seattle", "New Mexico", "Boston"]
+    },
+    {question: "What is the name of the human male who is a friend of Caesar?",
+    correctAnswer: "Malcolm",
+    wrongAnswers: ["Michael", "Mark", "Marty"]
+    }
+    ];
+
+    const theAcountant = () => {
+    $.ajax({
+        url: 'http://www.omdbapi.com/?t=the+accountant&y=2016&apikey=361efa89',
+    }).then (
+        (data) => {
+            $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
+            $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
+        });
+    $('.Q').text('Question');
+    const value = Math.floor(Math.random() * theAcountantQuestions.length);
+    $('#question').text(theAcountantQuestions[value].question);
+    $makeButtons();
+    const correctAnswerValue = Math.floor(Math.random() * 4);
+    const string = buttonsArray[correctAnswerValue];
+    $(string).text(theAcountantQuestions[value].correctAnswer);
+    buttonsArray.splice(correctAnswerValue, 1);
+    for (let num = 0; num <= 2; num++) {
+        $(buttonsArray[0]).text((theAcountantQuestions[value].wrongAnswers[num]));
+        buttonsArray.splice(0, 1);
+    }
+    $('.button').on('click', (event) => {
+        if (event.target.innerHTML == theAcountantQuestions[value].correctAnswer) {
+            $(string).css('background-color', '#b1d94e');
+            theAcountantQuestions.splice(value, 1);
+            numQuestionsRight += 1;
+            correctCount();
+            checkCount();
+            setTimeout($reset, 500);
+            setTimeout(actionmovies, 500);
+        }
+        else {
+            $(event.target).css('background-color', '#e67410');
+            $(string).css('background-color', '#b1d94e');
+            setTimeout($resetAll, 500);
+            theAcountantQuestions.splice(value, 1);
+        }
+        });
+    };
+
+    var theAcountantQuestions = [
+    {question:
+        "What type of weapon does the Accountant use to protect the farmers?",
+    correctAnswer: "Sniper Rifle",
+    wrongAnswers: ["Machine Gun", "Knife", "Bare Hands"]
+    },
+    {question:  "What medical condition does Christian Wolff have in the film?",
+    correctAnswer: "Autism",
+    wrongAnswers: ["Tuberculosis", "HIV", "Cystic Fibrosis"]
+    },
+    {question: "Christian has an accounting office inside a strip mall located in what city??",
+    correctAnswer: "Plainfield, IL",
+    wrongAnswers: ["Speedway, IN", "Topeka, KS", "Austin, TX"]
+    }
+    ];
+
+    var movies2 = [
+    bourneUltimatum,
+    johnWick,
+    theDarkKnight,
+    theEqualizer,
+    captainAmerica,
+    readyPlayerOne,
+    missionImpossible,
+    fury,
+    planetOfTheApes,
+    theAcountant
+    ];
+
+    const actionmovies = () => {
+    for (let i = 0; i < movies2.length; i++) {
+        if ((bourneUltimatumQuestions.length <= 0) && (bourneUltimatumQuestions != 'yes')) {
+            movies2.splice(movies2.indexOf(bourneUltimatum), 1);
+            bourneUltimatumQuestions = 'yes';
+        } else if ((johnWickQuestions.length <= 0) && (johnWickQuestions != 'yes')) {
+            movies2.splice(movies2.indexOf(johnWick), 1);
+            johnWickQuestions = 'yes';
+        } else if ((theDarkKnightQuestions.length <= 0) && (theDarkKnightQuestions != 'yes')) {
+            movies2.splice(movies2.indexOf(theDarkKnight), 1);
+            theDarkKnightQuestions = 'yes';
+        } else if ((theEqualizerQuestions.length <= 0) && (theEqualizerQuestions != 'yes')) {
+            movies2.splice(movies2.indexOf(theEqualizer), 1);
+            theEqualizerQuestions = 'yes';
+        } else if ((captainAmericaQuestions.length <= 0) && (captainAmericaQuestions != 'yes')) {
+            movies2.splice(movies2.indexOf(captainAmerica), 1);
+            captainAmericaQuestions = 'yes';
+        } else if ((readyPlayerOneQuestions.length <= 0) && (readyPlayerOneQuestions != 'yes')) {
+            movies2.splice(movies2.indexOf(readyPlayerOne), 1);
+            readyPlayerOneQuestions = 'yes';
+        } else if ((missionImpossibleQuestions.length <= 0) && (missionImpossibleQuestions != 'yes')) {
+            movies2.splice(movies2.indexOf(missionImpossible), 1);
+            missionImpossibleQuestions = 'yes';
+        } else if ((furyQuestions.length <= 0) && (furyQuestions != 'yes')) {
+            movies2.splice(movies2.indexOf(fury), 1);
+            furyQuestions = 'yes';
+        } else if ((planetOfTheApesQuestions.length <= 0) && (planetOfTheApesQuestions != 'yes')) {
+            movies2.splice(movies2.indexOf(planetOfTheApes), 1);
+            planetOfTheApesQuestions = 'yes';
+        } else if ((theAcountantQuestions.length <= 0) && (theAcountantQuestions != 'yes')) {
+            movies2.splice(movies2.indexOf(theAcountant), 1);
+            theAcountantQuestions = 'yes';
+        }
+    }
+    return movies2[Math.floor(Math.random() * movies2.length)]();
+};
+
+    const wonder = () => {
+        $.ajax({
+            url: 'http://www.omdbapi.com/?t=wonder&y=2017&apikey=361efa89',
+        }).then (
+            (data) => {
+                $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
+                $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
+            });
+        $('.Q').text('Question');
+        const value = Math.floor(Math.random() * wonderQuestions.length);
+        $('#question').text(wonderQuestions[value].question);
+        $makeButtons();
+        const correctAnswerValue = Math.floor(Math.random() * 4);
+        const string = buttonsArray[correctAnswerValue];
+        $(string).text(wonderQuestions[value].correctAnswer);
+        buttonsArray.splice(correctAnswerValue, 1);
+        for (let num = 0; num <= 2; num++) {
+            $(buttonsArray[0]).text((wonderQuestions[value].wrongAnswers[num]));
+            buttonsArray.splice(0, 1);
+        }
+        $('.button').on('click', (event) => {
+            if (event.target.innerHTML == wonderQuestions[value].correctAnswer) {
+                $(string).css('background-color', '#b1d94e');
+                wonderQuestions.splice(value, 1);
+                numQuestionsRight += 1;
+                correctCount();
+                checkCount();
+                setTimeout($reset, 500);
+                setTimeout(familymovies, 500);
+
+                }
+            else {
+                $(event.target).css('background-color', '#e67410');
+                $(string).css('background-color', '#b1d94e');
+                setTimeout($resetAll, 500);
+                wonderQuestions.splice(value, 1);
+        }
+        });
+    };
+
+    var wonderQuestions = [
+    {question:
+        "After Auggie’s Boba Fett costume is ruined what does he dress up as for Halloween?",
+    correctAnswer: "Ghostface",
+    wrongAnswers: ["Obi-Wan Kenobi", "Darth Maul", "Aladdin"]
+    },
+    {question:  "In the ending line of the movie, Isabel tell Auggie, “You really are a _____, Auggie”.",
+    correctAnswer: "Wonder",
+    wrongAnswers: ["Joy", "Friend", "Hero"]
+    },
+    {question: "What does Auggie wear on his head to hide his face whenever he is upset or afraid?",
+    correctAnswer: "Astronaut Helmet",
+    wrongAnswers: ["Fireman Helmet", "Army Helmet", "Nothing"]
+    }
+    ];
+
+    const jungleBook = () => {
+    $.ajax({
+        url: 'http://www.omdbapi.com/?t=the+jungle+book&y=2016&apikey=361efa89',
+    }).then (
+        (data) => {
+            $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
+            $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
+        });
+    $('.Q').text('Question');
+    const value = Math.floor(Math.random() * jungleBookQuestions.length);
+    $('#question').text(jungleBookQuestions[value].question);
+    $makeButtons();
+    const correctAnswerValue = Math.floor(Math.random() * 4);
+    const string = buttonsArray[correctAnswerValue];
+    $(string).text(jungleBookQuestions[value].correctAnswer);
+    buttonsArray.splice(correctAnswerValue, 1);
+    for (let num = 0; num <= 2; num++) {
+        $(buttonsArray[0]).text((jungleBookQuestions[value].wrongAnswers[num]));
+        buttonsArray.splice(0, 1);
+    }
+    $('.button').on('click', (event) => {
+        if (event.target.innerHTML == aboutTimeQuestions[value].correctAnswer) {
+            $(string).css('background-color', '#b1d94e');
+            jungleBookQuestions.splice(value, 1);
+            numQuestionsRight += 1;
+            correctCount();
+            checkCount();
+                setTimeout($reset, 500);
+                setTimeout(familymovies, 500);
+        }
+        else {
+            $(event.target).css('background-color', '#e67410');
+            $(string).css('background-color', '#b1d94e');
+            setTimeout($resetAll, 500);
+            jungleBookQuestions.splice(value, 1);
+    }
+    });
+    };
+
+    var jungleBookQuestions = [
+    {question:
+        "In the Jungle Book what do the animals call the fire created by humans?",
+    correctAnswer: "Red Flower",
+    wrongAnswers: ["Hot Glow", "Red Wave", "Red Tornado"]
+    },
+    {question:  "What kind of bear is Baloo in the film?",
+    correctAnswer: "Sloth Bear",
+    wrongAnswers: ["Honey Bear", "Black Bear", "Jungle Bear"]
+    },
+    {question: "Who killed Mowgli’s father in The Jungle Book?",
+    correctAnswer: "Shere Khan",
+    wrongAnswers: ["Bagheera", "King Louie", "John Cena"]
+    }
+    ];
+
+    const insideOut = () => {
+        $.ajax({
+            url: 'http://www.omdbapi.com/?t=inside+out&y=2015&apikey=361efa89',
+        }).then (
+            (data) => {
+                $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
+                $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
+            });
+        $('.Q').text('Question');
+        const value = Math.floor(Math.random() * insideOutQuestions.length);
+        $('#question').text(insideOutQuestions[value].question);
+        $makeButtons();
+        const correctAnswerValue = Math.floor(Math.random() * 4);
+        const string = buttonsArray[correctAnswerValue];
+        $(string).text(insideOutQuestions[value].correctAnswer);
+        buttonsArray.splice(correctAnswerValue, 1);
+        for (let num = 0; num <= 2; num++) {
+            $(buttonsArray[0]).text(insideOutQuestions[value].wrongAnswers[num]);
+            buttonsArray.splice(0, 1);
+        }
+        $('.button').on('click', (event) => {
+            if (event.target.innerHTML == insideOutQuestions[value].correctAnswer) {
+                $(string).css('background-color', '#b1d94e');
+                insideOutQuestions.splice(value, 1);
+                numQuestionsRight += 1;
+                correctCount();
+                checkCount();
+                    setTimeout($reset, 500);
+                    setTimeout(familymovies, 500);
+            }
+            else {
+                $(event.target).css('background-color', '#e67410');
+                $(string).css('background-color', '#b1d94e');
+                setTimeout($resetAll, 500);
+                insideOutQuestions.splice(value, 1);
+        }
+        });
+    };
+
+    var insideOutQuestions = [
+    {question:
+    "Which of the following is not an emotion portrayed by a character in the movie Inside Out?",
+    correctAnswer: "Love",
+    wrongAnswers: ["Joy", "Sadness", "Anger"]
+    },
+    {question: "Which of the emotions is the leader of the group of emotional characters?",
+    correctAnswer: "Joy",
+    wrongAnswers: ["Disgust", "Sadness", "Anger"]
+    },
+    {question: "Why does the family move to San Francisco during the film, Inside Out?",
+    correctAnswer: "Riley’s dad starts a new job",
+    wrongAnswers: ["Riley changes schools", "Riley’s grandmother has become very sick", "They don’t move during the film"]
+    }
+    ];
+
+    const secretariat = () => {
+    $.ajax({
+        url: 'http://www.omdbapi.com/?t=secretariat&apikey=361efa89',
+    }).then (
+        (data) => {
+            $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
+            $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
+        });
+    $('.Q').text('Question');
+    const value = Math.floor(Math.random() * secretariatQuestions.length);
+    $('#question').text(secretariatQuestions[value].question);
+    $makeButtons();
+    const correctAnswerValue = Math.floor(Math.random() * 4);
+    const string = buttonsArray[correctAnswerValue];
+    $(string).text(secretariatQuestions[value].correctAnswer);
+    buttonsArray.splice(correctAnswerValue, 1);
+    for (let num = 0; num <= 2; num++) {
+        $(buttonsArray[0]).text((secretariatQuestions[value].wrongAnswers[num]));
+        buttonsArray.splice(0, 1);
+    }
+    $('.button').on('click', (event) => {
+        if (event.target.innerHTML == secretariatQuestions[value].correctAnswer) {
+            $(string).css('background-color', '#b1d94e');
+            secretariatQuestions.splice(value, 1);
+            numQuestionsRight += 1;
+            correctCount();
+            checkCount();
+            setTimeout($reset, 500);
+            setTimeout(familymovies, 500);
+        }
+        else {
+            $(event.target).css('background-color', '#e67410');
+            $(string).css('background-color', '#b1d94e');
+            setTimeout($resetAll, 500);
+            secretariatQuestions.splice(value, 1);
+        }
+    });
+    };
+
+    var secretariatQuestions = [
+    {question:
+        "In the film Secretariat what sport/hobby was the horse trainer, Lucien Laurin, doing before deciding to train Secretariat?",
+    correctAnswer: "Golf",
+    wrongAnswers: ["Tennis", "Shuffleboard", "Checkers"]
+    },
+    {question:  "Which race did Secretariat win by approximately 31 lengths?",
+    correctAnswer: "The Belmont Stakes",
+    wrongAnswers: ["The Kentucky Derby", "The Preakness Stakes", "The Triple Crown"]
+    },
+    {question: "Secretariat became one of few horses to win the triple crown. How many years had it been since a horse had last won the triple crown?",
+    correctAnswer: "25 years",
+    wrongAnswers: ["10 years", "50 years", "35 years"]
+    }
+    ];
+
+    const christopherRobin = () => {
+    $.ajax({
+        url: 'http://www.omdbapi.com/?t=christopher+robin&apikey=361efa89',
+    }).then (
+        (data) => {
+            $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
+            $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
+        });
+    $('.Q').text('Question');
+    const value = Math.floor(Math.random() * christopherRobinQuestions.length);
+    $('#question').text(christopherRobinQuestions[value].question);
+    $makeButtons();
+    const correctAnswerValue = Math.floor(Math.random() * 4);
+    const string = buttonsArray[correctAnswerValue];
+    $(string).text(christopherRobinQuestions[value].correctAnswer);
+    buttonsArray.splice(correctAnswerValue, 1);
+    for (let num = 0; num <= 2; num++) {
+        $(buttonsArray[0]).text((christopherRobinQuestions[value].wrongAnswers[num]));
+        buttonsArray.splice(0, 1);
+    }
+    $('.button').on('click', (event) => {
+        if (event.target.innerHTML == christopherRobinQuestions[value].correctAnswer) {
+            $(string).css('background-color', '#b1d94e');
+            christopherRobinQuestions.splice(value, 1);
+            numQuestionsRight += 1;
+            correctCount();
+            checkCount();
+            setTimeout($reset, 500);
+            setTimeout(familymovies, 500);
+        }
+        else {
+            $(event.target).css('background-color', '#e67410');
+            $(string).css('background-color', '#b1d94e');
+            setTimeout($resetAll, 500);
+            christopherRobinQuestions.splice(value, 1);
+        }
+        });
+    };
+
+    var christopherRobinQuestions = [
+    {question:
+        "Why did Christopher Robin have to leave the Hundred Acre Woods in the beginning of the film, Christopher Robin?",
+    correctAnswer: "To attend boarding school",
+    wrongAnswers: ["To visit his grandmother", "To gather honey for Pooh", "He never left"]
+    },
+    {question:  "What game does Winnie the Pooh play on the train with Christopher Robin?",
+    correctAnswer: "Say What You See",
+    wrongAnswers: ["I Spy", "Chess", "Guess Who"]
+    },
+    {question: "As an adult at his job, Christopher Robin has to find a way to sell more of what?",
+    correctAnswer: "Luggage",
+    wrongAnswers: ["Hats", "Insurance", "Cars"]
+    }
+    ];
+
+    const maleficent = () => {
+    $.ajax({
+        url: 'http://www.omdbapi.com/?t=maleficent&apikey=361efa89',
+    }).then (
+        (data) => {
+            $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
+            $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
+        });
+    $('.Q').text('Question');
+    const value = Math.floor(Math.random() * maleficientQuestions.length);
+    $('#question').text(maleficientQuestions[value].question);
+    $makeButtons();
+    const correctAnswerValue = Math.floor(Math.random() * 4);
+    const string = buttonsArray[correctAnswerValue];
+    $(string).text(maleficientQuestions[value].correctAnswer);
+    buttonsArray.splice(correctAnswerValue, 1);
+    for (let num = 0; num <= 2; num++) {
+        $(buttonsArray[0]).text((maleficientQuestions[value].wrongAnswers[num]));
+        buttonsArray.splice(0, 1);
+    }
+    $('.button').on('click', (event) => {
+        if (event.target.innerHTML == maleficientQuestions[value].correctAnswer) {
+            $(string).css('background-color', '#b1d94e');
+            maleficientQuestions.splice(value, 1);
+            numQuestionsRight += 1;
+            correctCount();
+            checkCount();
+            setTimeout($reset, 500);
+            setTimeout(familymovies, 500);
+        }
+        else {
+            $(event.target).css('background-color', '#e67410');
+            $(string).css('background-color', '#b1d94e');
+            setTimeout($resetAll, 500);
+            maleficientQuestions.splice(value, 1);
+        }
+        });
+    };
+
+    var maleficientQuestions = [
+    {question:
+        "Who’s gives true love’s kiss to Aurora in the film?",
+    correctAnswer: "Maleficent",
+    wrongAnswers: ["The Prince", "The Fairies", "Her Mother"]
+    },
+    {question:  "What is the name of the location that Maleficent lives?",
+    correctAnswer: "The Moors",
+    wrongAnswers: ["The Enchanted Forest", "The Shire", "New York"]
+    },
+    {question: "What substance causes Maleficent’s skin to burn?",
+    correctAnswer: "Iron",
+    wrongAnswers: ["Stone", "Silk", "Wood"]
+    }
+    ];
+
+    const howToTrainYourDragon = () => {
+    $.ajax({
+        url: 'http://www.omdbapi.com/?t=how+to+train+your+dragon&y=2019&apikey=361efa89',
+    }).then (
+        (data) => {
+            $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
+            $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
+        });
+    $('.Q').text('Question');
+    const value = Math.floor(Math.random() * howToTrainYourDragonQuestions.length);
+    $('#question').text(howToTrainYourDragonQuestions[value].question);
+    $makeButtons();
+    const correctAnswerValue = Math.floor(Math.random() * 4);
+    const string = buttonsArray[correctAnswerValue];
+    $(string).text(howToTrainYourDragonQuestions[value].correctAnswer);
+    buttonsArray.splice(correctAnswerValue, 1);
+    for (let num = 0; num <= 2; num++) {
+        $(buttonsArray[0]).text((howToTrainYourDragonQuestions[value].wrongAnswers[num]));
+        buttonsArray.splice(0, 1);
+    }
+    $('.button').on('click', (event) => {
+        if (event.target.innerHTML == howToTrainYourDragonQuestions[value].correctAnswer) {
+            $(string).css('background-color', '#b1d94e');
+            howToTrainYourDragonQuestions.splice(value, 1);
+            numQuestionsRight += 1;
+            correctCount();
+            checkCount();
+            setTimeout($reset, 500);
+            setTimeout(familymovies, 500);
+        }
+        else {
+            $(event.target).css('background-color', '#e67410');
+            $(string).css('background-color', '#b1d94e');
+            setTimeout($resetAll, 500);
+            howToTrainYourDragonQuestions.splice(value, 1);
+        }
+        });
+    };
+
+    var howToTrainYourDragonQuestions = [
+    {question:
+        "What is the main character’s name in How to Train Your Dragon: The Hidden World?",
+    correctAnswer: "Hiccup",
+    wrongAnswers: ["Trip", "Astrid", "Grimmel"]
+    },
+    {question:  "What is the name of the dragon that Toothless falls in love with?",
+    correctAnswer: "Light Fury",
+    wrongAnswers: ["White Fury", "White Dragon", "Night Fury"]
+    },
+    {question: "Where doe the Dragons go at the end of the film, How to Train Your Dragon: The Hidden World?",
+    correctAnswer: "The Hidden World",
+    wrongAnswers: ["Berk", "Valhalla", "Stormheim"]
+    }
+    ];
+
+    const incredibles = () => {
+    $.ajax({
+        url: 'http://www.omdbapi.com/?t=incredibles+2&apikey=361efa89',
+    }).then (
+        (data) => {
+            $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
+            $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
+        });
+    $('.Q').text('Question');
+    const value = Math.floor(Math.random() * incrediblesQuestions.length);
+    $('#question').text(incrediblesQuestions[value].question);
+    $makeButtons();
+    const correctAnswerValue = Math.floor(Math.random() * 4);
+    const string = buttonsArray[correctAnswerValue];
+    $(string).text(incrediblesQuestions[value].correctAnswer);
+    buttonsArray.splice(correctAnswerValue, 1);
+    for (let num = 0; num <= 2; num++) {
+        $(buttonsArray[0]).text((incrediblesQuestions[value].wrongAnswers[num]));
+        buttonsArray.splice(0, 1);
+    }
+    $('.button').on('click', (event) => {
+        if (event.target.innerHTML == incrediblesQuestions[value].correctAnswer) {
+            $(string).css('background-color', '#b1d94e');
+            incrediblesQuestions.splice(value, 1);
+            numQuestionsRight += 1;
+            correctCount();
+            checkCount();
+            setTimeout($reset, 500);
+            setTimeout(familymovies, 500);
+        }
+        else {
+            $(event.target).css('background-color', '#e67410');
+            $(string).css('background-color', '#b1d94e');
+            setTimeout($resetAll, 500);
+            incrediblesQuestions.splice(value, 1);
+        }
+        });
+    };
+
+    var incrediblesQuestions = [
+    {question:
+        "Who or what does Jack-Jack encounter when his many super powers are revealed in the movie Incredible 2?",
+    correctAnswer: "A Raccoon",
+    wrongAnswers: ["A Squirrel", "Frozone", "The Underminer"]
+    },
+    {question:  "What is the name of the boy that Violet is interested in?",
+    correctAnswer: "Tony",
+    wrongAnswers: ["Mark", "David", "Scott"]
+    },
+    {question: "Who is the ultimate villain in the Incredible 2?",
+    correctAnswer: "Evelyn",
+    wrongAnswers: ["The Underminer", "Winston", "The Raccoon"]
+    }
+    ];
+
+    const elf = () => {
+    $.ajax({
+        url: 'http://www.omdbapi.com/?t=elf&apikey=361efa89',
+    }).then (
+        (data) => {
+            $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
+            $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
+        });
+    $('.Q').text('Question');
+    const value = Math.floor(Math.random() * elfQuestions.length);
+    $('#question').text(elfQuestions[value].question);
+    $makeButtons();
+    const correctAnswerValue = Math.floor(Math.random() * 4);
+    const string = buttonsArray[correctAnswerValue];
+    $(string).text(elfQuestions[value].correctAnswer);
+    buttonsArray.splice(correctAnswerValue, 1);
+    for (let num = 0; num <= 2; num++) {
+        $(buttonsArray[0]).text((elfQuestions[value].wrongAnswers[num]));
+        buttonsArray.splice(0, 1);
+    }
+    $('.button').on('click', (event) => {
+        if (event.target.innerHTML == elfQuestions[value].correctAnswer) {
+            $(string).css('background-color', '#b1d94e');
+            elfQuestions.splice(value, 1);
+            numQuestionsRight += 1;
+            correctCount();
+            checkCount();
+            setTimeout($reset, 500);
+            setTimeout(familymovies, 500);
+        }
+        else {
+            $(event.target).css('background-color', '#e67410');
+            $(string).css('background-color', '#b1d94e');
+            setTimeout($resetAll, 500);
+            elfQuestions.splice(value, 1);
+        }
+        });
+    };
+
+    var elfQuestions = [
+    {question:
+        "What does buddy the elf like to add to his spaghetti in the film, Elf?",
+    correctAnswer: "Maple Syrup",
+    wrongAnswers: ["Ketchup", "Tomato Sauce", "Mustard"]
+    },
+    {question:  "What does Buddy’s real dad do in New York?",
+    correctAnswer: "Works at a publishing company",
+    wrongAnswers: ["He works in sales", "Works at the salvation army", "He’s a Santa Claus imposter"]
+    },
+    {question: "Who plays Buddy in the movie, Elf?",
+    correctAnswer: "Will Ferrell",
+    wrongAnswers: ["Steve Carrel", "Matt Damon", "Hayden Christensen"]
+    }
+    ];
+
+    var movies3 = [
+    wonder,
+    jungleBook,
+    insideOut,
+    secretariat,
+    christopherRobin,
+    maleficent,
+    howToTrainYourDragon,
+    incredibles,
+    elf
+    ];
+
+    const familymovies = () => {
+    for (let i = 0; i < movies3.length; i++) {
+        if ((wonderQuestions.length <= 0) && (wonderQuestions != 'yes')) {
+            movies3.splice(movies3.indexOf(wonder), 1);
+            wonderQuestions = 'yes';
+        } else if ((jungleBookQuestions.length <= 0) && (jungleBookQuestions != 'yes')) {
+            movies3.splice(movies3.indexOf(jungleBook), 1);
+            jungleBookQuestions = 'yes';
+        } else if ((insideOutQuestions.length <= 0) && (insideOutQuestions != 'yes')) {
+            movies3.splice(movies3.indexOf(insideOut), 1);
+            insideOutQuestions = 'yes';
+        } else if ((secretariatQuestions.length <= 0) && (secretariatQuestions != 'yes')) {
+            movies3.splice(movies3.indexOf(secretariat), 1);
+            secretariatQuestions = 'yes';
+        } else if ((christopherRobinQuestions.length <= 0) && (christopherRobinQuestions != 'yes')) {
+            movies3.splice(movies3.indexOf(christopherRobin), 1);
+            christopherRobinQuestions = 'yes';
+        } else if ((maleficientQuestions.length <= 0) && (maleficientQuestions != 'yes')) {
+            movies3.splice(movies3.indexOf(maleficent), 1);
+            maleficientQuestions = 'yes';
+        } else if ((howToTrainYourDragonQuestions.length <= 0) && (howToTrainYourDragonQuestions != 'yes')) {
+            movies3.splice(movies3.indexOf(howToTrainYourDragon), 1);
+            howToTrainYourDragonQuestions = 'yes';
+        } else if ((incrediblesQuestions.length <= 0) && (incrediblesQuestions != 'yes')) {
+            movies3.splice(movies3.indexOf(incredibles), 1);
+            incrediblesQuestions = 'yes';
+        } else if ((elfQuestions.length <= 0) && (elfQuestions != 'yes')) {
+            movies3.splice(movies3.indexOf(elf), 1);
+            elfQuestions = 'yes';
+        }
+    }
+    return movies3[Math.floor(Math.random() * movies3.length)]();
+    };
 
 
 
@@ -513,11 +1768,55 @@ $('#romance').on('click', (event) => {
     $('.game').css('background-color', 'white');
     $('.pickCategory').css('padding', '0px');
     $('.game').css('margin-top', '50px');
+    window.scrollTo( 0, screen.height/2 );
 });
 
 $('#action').on('click', (event) => {
-    alert('hi');
+    $reset();
+    actionmovies();
+    $('.categoryh1').hide();
+    $('#romance').hide();
+    $('#comedy').hide();
+    $('#family').hide();
+    $('.game').css('background-color', 'white');
+    $('.pickCategory').css('padding', '0px');
+    $('.game').css('margin-top', '50px');
+    window.scrollTo( 0, screen.height/2 );
 });
 
+$('#comedy').on('click', (event) => {
+    $reset();
+    // romanceMovies();
+    $('.categoryh1').hide();
+    $('#action').hide();
+    $('#romance').hide();
+    $('#family').hide();
+    $('.game').css('background-color', 'white');
+    $('.pickCategory').css('padding', '0px');
+    $('.game').css('margin-top', '50px');
+    window.scrollTo( 0, screen.height/2 );
+});
+
+$('#family').on('click', (event) => {
+    $reset();
+    familymovies();
+    $('.categoryh1').hide();
+    $('#action').hide();
+    $('#comedy').hide();
+    $('#romance').hide();
+    $('.game').css('background-color', 'white');
+    $('.pickCategory').css('padding', '0px');
+    $('.game').css('margin-top', '50px');
+    window.scrollTo( 0, screen.height/2 );
+});
+
+$('.title').on('click', (event) => {
+    $resetAll();
+});
+
+$('.letsgobtn').on('click', (event) => {
+    $('#welcomescreen').hide();
+    $('.body').css('display', 'block');
+});
 
 }); //end of onload

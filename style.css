@@ -1,3 +1,7 @@
+html, body {
+    scroll-behavior: smooth;
+}
+
 body {
     background-image: linear-gradient(to bottom, #e9b4ed, #8627b3);
     background-repeat: no-repeat;
@@ -7,7 +11,89 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+
 }
+
+#welcomescreen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* .header > img {
+    background-size: cover;
+    position: absolute;
+    /* width: 900px; */
+    /* background-repeat: repeat-x;
+
+} */
+
+/* .header {
+    background-image: url(confetti.png);
+    background-repeat: repeat;
+    width: 1920px;
+    bottom: 200px;
+    max-height: 300px;
+    z-index: 0;
+    background-size: 900px;
+    /* display: flex;
+    justify-content: center;
+    background-position: top;
+    background-size: cover; */
+/* } */
+
+
+
+
+.welcomeh3 {
+    font-family: 'Advent Pro', sans-serif;
+    padding-top: 215px;
+    font-size: 52px;
+    letter-spacing: 20px;
+    word-spacing: 3px;
+    text-align: center;
+    text-shadow: -2px -2px 2px #f1c4f5;
+}
+
+.welcomeh2 {
+    font-family: 'Atma', cursive;
+    font-weight: 700;
+    font-size: 250px;
+    text-align: center;
+    line-height: 275px;
+    text-shadow: -4px -4px 7px #f1c4f5;
+}
+
+.letsgobtn {
+    display: flex;
+    justify-content: center;
+    padding-top: 75px;
+    align-items: center;
+}
+
+.letsgobtn > button {
+    border: none;
+    background: none;
+    font-family: 'Atma', cursive;
+    font-weight: 300;
+    font-size: 56px;
+    color: #b1d94e;
+    display: flex;
+    align-items: center;
+}
+
+
+
+.letsgobtn > button:hover {
+    text-shadow: -2px -2px 4px black;
+    transform: scale(1.1);
+}
+
+.letsgobtn > button:focus {
+    outline: none;
+}
+
+
 
 .title > h3 {
     font-family: 'Advent Pro', sans-serif;
@@ -18,10 +104,10 @@ body {
 
 .title > h2 {
     font-family: 'Atma', cursive;
-    font-size: 48px;
+    font-size: 60px;
     padding: 0px;
     margin: 0px;
-    line-height: 50px;
+    line-height: 65px;
 }
 
 .title {
@@ -75,6 +161,7 @@ h1 {
     margin: 0px 10px;
     font-family: 'Advent Pro', sans-serif;
     font-size: 32px;
+    letter-spacing: 2px;
 }
 
 .answers {
@@ -159,4 +246,48 @@ h1 {
     flex-wrap: wrap;
     max-width: 350px;
     font-size: 20px;
+}
+
+.modal {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    overflow: auto;
+}
+
+.modal-textbox {
+    background-color: white;
+	height: 350px;
+	width: 550px;
+	border-radius: 2px;
+    margin: 150px auto;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.footer {
+    position: absolute;
+    bottom: 30px;
+    margin: auto 0;
+}
+
+.modal-footer {
+    padding: 2%;
+    line-height: 120%;
+    text-align: right;
+}
+
+.correctCount {
+    font-family: 'Advent Pro', sans-serif;
+    letter-spacing: 2px;
+    font-size: 18px;
+    word-spacing: 3px;
+}
+
+.body {
+    display: none;
 }
