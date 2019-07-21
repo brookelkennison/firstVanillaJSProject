@@ -46,14 +46,14 @@ $(() => { // start of onload
         }
         $('.button').on('click', (event) => {
             if (event.target.innerHTML == notebookQuestions[value].correctAnswer) {
-                $(string).css('background-color', '#17e800');
+                $(string).css('background-color', '#b1d94e');
                 notebookQuestions.splice(value, 1);
                 setTimeout($reset, 500);
                 setTimeout(romanceMovies, 500);
                 }
             else {
-                $(event.target).css('background-color', '#f22c00');
-                $(string).css('background-color', '#17e800');
+                $(event.target).css('background-color', '#e67410');
+                $(string).css('background-color', '#b1d94e');
                 setTimeout($reset, 500);
                 setTimeout(romanceMovies, 500);
                 notebookQuestions.splice(value, 1);
@@ -99,14 +99,14 @@ $(() => { // start of onload
     }
     $('.button').on('click', (event) => {
         if (event.target.innerHTML == aboutTimeQuestions[value].correctAnswer) {
-            $(string).css('background-color', '#17e800');
+            $(string).css('background-color', '#b1d94e');
             aboutTimeQuestions.splice(value, 1);
                 setTimeout($reset, 500);
                 setTimeout(romanceMovies, 500);
         }
         else {
-            $(event.target).css('background-color', '#f22c00');
-            $(string).css('background-color', '#17e800');
+            $(event.target).css('background-color', '#e67410');
+            $(string).css('background-color', '#b1d94e');
             setTimeout($reset, 500);
             setTimeout(romanceMovies, 500);
             aboutTimeQuestions.splice(value, 1);
@@ -152,14 +152,14 @@ $(() => { // start of onload
         }
         $('.button').on('click', (event) => {
             if (event.target.innerHTML == justGoWithItQuestions[value].correctAnswer) {
-                $(string).css('background-color', '#17e800');
+                $(string).css('background-color', '#b1d94e');
                 justGoWithItQuestions.splice(value, 1);
                     setTimeout($reset, 500);
                     setTimeout(romanceMovies, 500);
             }
             else {
-                $(event.target).css('background-color', '#f22c00');
-                $(string).css('background-color', '#17e800');
+                $(event.target).css('background-color', '#e67410');
+                $(string).css('background-color', '#b1d94e');
                 setTimeout($reset, 500);
                 setTimeout(romanceMovies, 500);
                 justGoWithItQuestions.splice(value, 1);
@@ -205,14 +205,14 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
     }
     $('.button').on('click', (event) => {
         if (event.target.innerHTML == lalaLandQuestions[value].correctAnswer) {
-            $(string).css('background-color', '#17e800');
+            $(string).css('background-color', '#b1d94e');
             lalaLandQuestions.splice(value, 1);
             setTimeout($reset, 500);
             setTimeout(romanceMovies, 500);
         }
         else {
-            $(event.target).css('background-color', '#f22c00');
-            $(string).css('background-color', '#17e800');
+            $(event.target).css('background-color', '#e67410');
+            $(string).css('background-color', '#b1d94e');
             setTimeout($reset, 500);
             setTimeout(romanceMovies, 500);
             lalaLandQuestions.splice(value, 1);
@@ -258,14 +258,14 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
     }
     $('.button').on('click', (event) => {
         if (event.target.innerHTML == noStringAttachedQuestions[value].correctAnswer) {
-            $(string).css('background-color', '#17e800');
+            $(string).css('background-color', '#b1d94e');
             noStringAttachedQuestions.splice(value, 1);
             setTimeout($reset, 500);
             setTimeout(romanceMovies, 500);
         }
         else {
-            $(event.target).css('background-color', '#f22c00');
-            $(string).css('background-color', '#17e800');
+            $(event.target).css('background-color', '#e67410');
+            $(string).css('background-color', '#b1d94e');
             setTimeout($reset, 500);
             setTimeout(romanceMovies, 500);
             noStringAttachedQuestions.splice(value, 1);
@@ -311,14 +311,14 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
     }
     $('.button').on('click', (event) => {
         if (event.target.innerHTML == loveActuallyQuestions[value].correctAnswer) {
-            $(string).css('background-color', '#17e800');
+            $(string).css('background-color', '#b1d94e');
             loveActuallyQuestions.splice(value, 1);
             setTimeout($reset, 500);
             setTimeout(romanceMovies, 500);
         }
         else {
-            $(event.target).css('background-color', '#f22c00');
-            $(string).css('background-color', '#17e800');
+            $(event.target).css('background-color', '#e67410');
+            $(string).css('background-color', '#b1d94e');
             setTimeout($reset, 500);
             setTimeout(romanceMovies, 500);
             loveActuallyQuestions.splice(value, 1);
@@ -364,14 +364,14 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
     }
     $('.button').on('click', (event) => {
         if (event.target.innerHTML == aStarIsBornQuestions[value].correctAnswer) {
-            $(string).css('background-color', '#17e800');
+            $(string).css('background-color', '#b1d94e');
             aStarIsBornQuestions.splice(value, 1);
             setTimeout($reset, 500);
             setTimeout(romanceMovies, 500);
         }
         else {
-            $(event.target).css('background-color', '#f22c00');
-            $(string).css('background-color', '#17e800');
+            $(event.target).css('background-color', '#e67410');
+            $(string).css('background-color', '#b1d94e');
             setTimeout($reset, 500);
             setTimeout(romanceMovies, 500);
             aStarIsBornQuestions.splice(value, 1);
@@ -417,14 +417,14 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
     }
     $('.button').on('click', (event) => {
         if (event.target.innerHTML == theSpectacularNowQuestions[value].correctAnswer) {
-            $(string).css('background-color', '#17e800');
+            $(string).css('background-color', '#b1d94e');
             theSpectacularNowQuestions.splice(value, 1);
             setTimeout($reset, 500);
             setTimeout(romanceMovies, 500);
         }
         else {
-            $(event.target).css('background-color', '#f22c00');
-            $(string).css('background-color', '#17e800');
+            $(event.target).css('background-color', '#e67410');
+            $(string).css('background-color', '#b1d94e');
             setTimeout($reset, 500);
             setTimeout(romanceMovies, 500);
             theSpectacularNowQuestions.splice(value, 1);
@@ -460,7 +460,6 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
 
 
     const romanceMovies = () => {
-        console.log(movies);
         for (let i = 0; i < movies.length; i++) {
             if ((notebookQuestions.length <= 0) && (notebookQuestions != 'yes')) {
                 movies.splice(movies.indexOf(theNoteBook), 1);
@@ -507,6 +506,13 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
 $('#romance').on('click', (event) => {
     $reset();
     romanceMovies();
+    $('.categoryh1').hide();
+    $('#action').hide();
+    $('#comedy').hide();
+    $('#family').hide();
+    $('.game').css('background-color', 'white');
+    $('.pickCategory').css('padding', '0px');
+    $('.game').css('margin-top', '50px');
 });
 
 $('#action').on('click', (event) => {

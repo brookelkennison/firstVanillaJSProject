@@ -1,9 +1,33 @@
 body {
-    background-image: linear-gradient(to bottom, rgb(255, 180, 227), rgb(165, 78, 199));
+    background-image: linear-gradient(to bottom, #e9b4ed, #8627b3);
     background-repeat: no-repeat;
     height: 970px;
     width: 100%;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title > h3 {
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 20px;
+    padding: 0px;
+    margin: 10px 0 0 0;
+}
+
+.title > h2 {
+    font-family: 'Atma', cursive;
+    font-size: 48px;
+    padding: 0px;
+    margin: 0px;
+    line-height: 50px;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 h1 {
@@ -12,12 +36,45 @@ h1 {
 }
 
 .pickCategory {
-    padding: 10px 0 60px 0;
+    padding-top: 150px;
+    font-family: 'Crushed', cursive;
+    letter-spacing: 24px;
+    font-size: 32px;
 }
 
 .categoryButtons {
     display: flex;
     justify-content: center;
+    padding-top: 75px;
+}
+
+.categoryButtons > button {
+    margin: 0px 30px;
+}
+
+.catbutton:hover {
+    position: relative;
+    top: -5px;
+    right: 4px;
+    box-shadow: none;
+    text-shadow: 2px 2px 3px #666666;
+    color: white;
+}
+
+.catbutton:focus {
+    outline: 0;
+}
+
+.catbutton {
+    background-color: #b1d94e;
+    box-shadow: -7px -7px 1px #666666;
+    border: none;
+    border-radius: 30px;
+    height: 60px;
+    width: 250px;
+    margin: 0px 10px;
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 32px;
 }
 
 .answers {
@@ -26,26 +83,80 @@ h1 {
 }
 
 .answers > button {
-    height: 50px;
+    min-height: 50px;
+    height: auto;
     width: 250px;
     margin: 10px;
     border-radius: 10px;
     text-transform: uppercase;
+    font-family: 'Arimo', sans-serif;
+    font-size: 16px;
+    padding: 2px;
+    border: 1px solid black;
+}
+
+.answers > button:hover {
+    box-shadow: 1px 0 10px #8627b3;
 }
 
 .game {
+    margin: 10px 150px;
+    height: auto;
+    width: 900px;
     display: flex;
     justify-content: space-around;
 }
 
+
 #left-container {
+    width: 50%;
+    height: auto;
+    float: left;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 20px;
 }
 
 #right-container {
+    width: 50%;
+    height: auto;
+    float: right;
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
+    padding: 20px;
+
+
+}
+
+#img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#image {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.Q {
+    font-family: 'Atma', cursive;
+    font-size: 36px;
+}
+
+#movietitle {
+    font-family: 'Arimo', sans-serif;
+    font-size: 24px;
+}
+
+#question {
+    font-family: 'Arimo', sans-serif;
+    flex-wrap: wrap;
+    max-width: 350px;
+    font-size: 20px;
 }
