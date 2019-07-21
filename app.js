@@ -1755,68 +1755,550 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
     return movies3[Math.floor(Math.random() * movies3.length)]();
     };
 
+    const wereTheMillers = () => {
+        $.ajax({
+            url: 'http://www.omdbapi.com/?t=we%27re+the+millers&apikey=361efa89',
+        }).then (
+            (data) => {
+                $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
+                $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
+            });
+        $('.Q').text('Question');
+        const value = Math.floor(Math.random() * wereTheMillersQuestions.length);
+        $('#question').text(wereTheMillersQuestions[value].question);
+        $makeButtons();
+        const correctAnswerValue = Math.floor(Math.random() * 4);
+        const string = buttonsArray[correctAnswerValue];
+        $(string).text(wereTheMillersQuestions[value].correctAnswer);
+        buttonsArray.splice(correctAnswerValue, 1);
+        for (let num = 0; num <= 2; num++) {
+            $(buttonsArray[0]).text((wereTheMillersQuestions[value].wrongAnswers[num]));
+            buttonsArray.splice(0, 1);
+        }
+        $('.button').on('click', (event) => {
+            if (event.target.innerHTML == wereTheMillersQuestions[value].correctAnswer) {
+                $(string).css('background-color', '#b1d94e');
+                wereTheMillersQuestions.splice(value, 1);
+                numQuestionsRight += 1;
+                correctCount();
+                checkCount();
+                setTimeout($reset, 500);
+                setTimeout(comedymovies, 500);
+
+                }
+            else {
+                $(event.target).css('background-color', '#e67410');
+                $(string).css('background-color', '#b1d94e');
+                setTimeout($resetAll, 500);
+                wereTheMillersQuestions.splice(value, 1);
+        }
+        });
+    };
+
+    var wereTheMillersQuestions = [
+    {question:
+        "Where do the Millers have to transport illict drugs?",
+    correctAnswer: "Mexico",
+    wrongAnswers: ["China", "Cuba", "Canada"]
+    },
+    {question:  "What vehicle does the “Miller Family” use to transport illicit drugs?",
+    correctAnswer: "RV",
+    wrongAnswers: ["Private Jet", "Yacht", "VW Beetle"]
+    },
+    {question: "What creature bites Kenny?",
+    correctAnswer: "Tarantula",
+    wrongAnswers: ["Pig", "Horse", "Armadillo"]
+    }
+    ];
+
+    const theHangover = () => {
+    $.ajax({
+        url: 'http://www.omdbapi.com/?t=the+hangover&apikey=361efa89',
+    }).then (
+        (data) => {
+            $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
+            $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
+        });
+    $('.Q').text('Question');
+    const value = Math.floor(Math.random() * theHangoverQuestions.length);
+    $('#question').text(theHangoverQuestions[value].question);
+    $makeButtons();
+    const correctAnswerValue = Math.floor(Math.random() * 4);
+    const string = buttonsArray[correctAnswerValue];
+    $(string).text(theHangoverQuestions[value].correctAnswer);
+    buttonsArray.splice(correctAnswerValue, 1);
+    for (let num = 0; num <= 2; num++) {
+        $(buttonsArray[0]).text((theHangoverQuestions[value].wrongAnswers[num]));
+        buttonsArray.splice(0, 1);
+    }
+    $('.button').on('click', (event) => {
+        if (event.target.innerHTML == aboutTimeQuestions[value].correctAnswer) {
+            $(string).css('background-color', '#b1d94e');
+            theHangoverQuestions.splice(value, 1);
+            numQuestionsRight += 1;
+            correctCount();
+            checkCount();
+                setTimeout($reset, 500);
+                setTimeout(comedymovies, 500);
+        }
+        else {
+            $(event.target).css('background-color', '#e67410');
+            $(string).css('background-color', '#b1d94e');
+            setTimeout($resetAll, 500);
+            theHangoverQuestions.splice(value, 1);
+    }
+    });
+    };
+
+    var theHangoverQuestions = [
+    {question:
+        "Where do Doug, Phil, Stu, and Alan travel to in the Hangover?",
+    correctAnswer: "Las Vegas",
+    wrongAnswers: ["Chicago", "Atlanta", "Miami"]
+    },
+    {question:  "Whose tiger is stolen in the Hangover?",
+    correctAnswer: "Mike Tyson",
+    wrongAnswers: ["Halle Berry", "Connor McGregor", "Floyd Mayweather"]
+    },
+    {question: "Where did Doug, Phil, and Stu find Doug after returning to the hotel before leaving for home?",
+    correctAnswer: "On the roof of the hotel",
+    wrongAnswers: ["Under the bed in the hotel room", "In the hotel casino", "At the breakfast bar in the hotel"]
+    }
+    ];
+
+    const stepBrothers = () => {
+        $.ajax({
+            url: 'http://www.omdbapi.com/?t=step+brothers&apikey=361efa89',
+        }).then (
+            (data) => {
+                $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
+                $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
+            });
+        $('.Q').text('Question');
+        const value = Math.floor(Math.random() * stepBrothersQuestions.length);
+        $('#question').text(stepBrothersQuestions[value].question);
+        $makeButtons();
+        const correctAnswerValue = Math.floor(Math.random() * 4);
+        const string = buttonsArray[correctAnswerValue];
+        $(string).text(stepBrothersQuestions[value].correctAnswer);
+        buttonsArray.splice(correctAnswerValue, 1);
+        for (let num = 0; num <= 2; num++) {
+            $(buttonsArray[0]).text(stepBrothersQuestions[value].wrongAnswers[num]);
+            buttonsArray.splice(0, 1);
+        }
+        $('.button').on('click', (event) => {
+            if (event.target.innerHTML == stepBrothersQuestions[value].correctAnswer) {
+                $(string).css('background-color', '#b1d94e');
+                stepBrothersQuestions.splice(value, 1);
+                numQuestionsRight += 1;
+                correctCount();
+                checkCount();
+                    setTimeout($reset, 500);
+                    setTimeout(comedymovies, 500);
+            }
+            else {
+                $(event.target).css('background-color', '#e67410');
+                $(string).css('background-color', '#b1d94e');
+                setTimeout($resetAll, 500);
+                stepBrothersQuestions.splice(value, 1);
+        }
+        });
+    };
+
+    var stepBrothersQuestions = [
+    {question:
+    "What matching masks do the brothers receive at the end of Step Brothers?",
+    correctAnswer: "Chewbacca masks",
+    wrongAnswers: ["Storm Trooper Masks", "Jason Masks", "Darth Vader Helmets"]
+    },
+    {question: "What hard rock song does Derek’s Family sing in the car together?",
+    correctAnswer: "Sweet Child O’ Mine",
+    wrongAnswers: ["Don’t Stop Believin’", "Free Bird", "Baby Shark"]
+    },
+    {question: "Finish this classic line from Step Brothers. Don’t touch my ____ set.",
+    correctAnswer: "Drum",
+    wrongAnswers: ["Book", "Tool", "Tea"]
+    }
+    ];
+
+    const dirtyGrandpa = () => {
+    $.ajax({
+        url: 'http://www.omdbapi.com/?t=dirty+grandpa&apikey=361efa89',
+    }).then (
+        (data) => {
+            $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
+            $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
+        });
+    $('.Q').text('Question');
+    const value = Math.floor(Math.random() * dirtyGrandpaQuestions.length);
+    $('#question').text(dirtyGrandpaQuestions[value].question);
+    $makeButtons();
+    const correctAnswerValue = Math.floor(Math.random() * 4);
+    const string = buttonsArray[correctAnswerValue];
+    $(string).text(dirtyGrandpaQuestions[value].correctAnswer);
+    buttonsArray.splice(correctAnswerValue, 1);
+    for (let num = 0; num <= 2; num++) {
+        $(buttonsArray[0]).text((dirtyGrandpaQuestions[value].wrongAnswers[num]));
+        buttonsArray.splice(0, 1);
+    }
+    $('.button').on('click', (event) => {
+        if (event.target.innerHTML == dirtyGrandpaQuestions[value].correctAnswer) {
+            $(string).css('background-color', '#b1d94e');
+            dirtyGrandpaQuestions.splice(value, 1);
+            numQuestionsRight += 1;
+            correctCount();
+            checkCount();
+            setTimeout($reset, 500);
+            setTimeout(comedymovies, 500);
+        }
+        else {
+            $(event.target).css('background-color', '#e67410');
+            $(string).css('background-color', '#b1d94e');
+            setTimeout($resetAll, 500);
+            dirtyGrandpaQuestions.splice(value, 1);
+        }
+    });
+    };
+
+    var dirtyGrandpaQuestions = [
+    {question:
+        "Whose funeral does Jason (Zac Effron) attend early in the movie?",
+    correctAnswer: "His Grandmother’s",
+    wrongAnswers: ["His Brother’s", "His Father’s", "His Best Friend’s"]
+    },
+    {question:  "Where does Jason go with his grandpa after the funeral?",
+    correctAnswer: "Florida",
+    wrongAnswers: ["California", "Texas", "New York"]
+    },
+    {question: "During their trip together, Jason’s grandpa convinces him not to marry his fiancée. What is her name in the film?",
+    correctAnswer: "Meredith",
+    wrongAnswers: ["Morgan", "Mary", "Megan"]
+    }
+    ];
+
+    const theCampaign = () => {
+    $.ajax({
+        url: 'http://www.omdbapi.com/?t=the+campaign&apikey=361efa89',
+    }).then (
+        (data) => {
+            $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
+            $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
+        });
+    $('.Q').text('Question');
+    const value = Math.floor(Math.random() * theCampaignQuestions.length);
+    $('#question').text(theCampaignQuestions[value].question);
+    $makeButtons();
+    const correctAnswerValue = Math.floor(Math.random() * 4);
+    const string = buttonsArray[correctAnswerValue];
+    $(string).text(theCampaignQuestions[value].correctAnswer);
+    buttonsArray.splice(correctAnswerValue, 1);
+    for (let num = 0; num <= 2; num++) {
+        $(buttonsArray[0]).text((theCampaignQuestions[value].wrongAnswers[num]));
+        buttonsArray.splice(0, 1);
+    }
+    $('.button').on('click', (event) => {
+        if (event.target.innerHTML == theCampaignQuestions[value].correctAnswer) {
+            $(string).css('background-color', '#b1d94e');
+            theCampaignQuestions.splice(value, 1);
+            numQuestionsRight += 1;
+            correctCount();
+            checkCount();
+            setTimeout($reset, 500);
+            setTimeout(comedymovies, 500);
+        }
+        else {
+            $(event.target).css('background-color', '#e67410');
+            $(string).css('background-color', '#b1d94e');
+            setTimeout($resetAll, 500);
+            theCampaignQuestions.splice(value, 1);
+        }
+        });
+    };
+
+    var theCampaignQuestions = [
+    {question:
+        "The Campaign is an American comedy featuring two candidates running for Congress. Who are the actors playing these candidates?",
+    correctAnswer: "Will Ferrell and Zach Galifianakis",
+    wrongAnswers: ["Will Ferrell and Jason Bateman", "Zach Galifianakis and Steve Carell", "Zach Galifianakis and Liam Hemsworth"]
+    },
+    {question:  "What job does Marty Huggins have before he runs for congressman?",
+    correctAnswer: "Tourism Director",
+    wrongAnswers: ["Bar Tender", "Fashion Designer", "Medical Doctor"]
+    },
+    {question: "What does Marty ask his opponent Cam Brady to do in order to expose him as a fake Christian?",
+    correctAnswer: "Say the Lord’s Prayer",
+    wrongAnswers: ["Go to Church", "Recite the 10 commandments", "Show him his bible"]
+    }
+    ];
+
+    const bridesmaids = () => {
+    $.ajax({
+        url: 'http://www.omdbapi.com/?t=bridesmaids&apikey=361efa89',
+    }).then (
+        (data) => {
+            $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
+            $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
+        });
+    $('.Q').text('Question');
+    const value = Math.floor(Math.random() * bridesmaidsQuestions.length);
+    $('#question').text(bridesmaidsQuestions[value].question);
+    $makeButtons();
+    const correctAnswerValue = Math.floor(Math.random() * 4);
+    const string = buttonsArray[correctAnswerValue];
+    $(string).text(bridesmaidsQuestions[value].correctAnswer);
+    buttonsArray.splice(correctAnswerValue, 1);
+    for (let num = 0; num <= 2; num++) {
+        $(buttonsArray[0]).text((bridesmaidsQuestions[value].wrongAnswers[num]));
+        buttonsArray.splice(0, 1);
+    }
+    $('.button').on('click', (event) => {
+        if (event.target.innerHTML == bridesmaidsQuestions[value].correctAnswer) {
+            $(string).css('background-color', '#b1d94e');
+            bridesmaidsQuestions.splice(value, 1);
+            numQuestionsRight += 1;
+            correctCount();
+            checkCount();
+            setTimeout($reset, 500);
+            setTimeout(comedymovies, 500);
+        }
+        else {
+            $(event.target).css('background-color', '#e67410');
+            $(string).css('background-color', '#b1d94e');
+            setTimeout($resetAll, 500);
+            bridesmaidsQuestions.splice(value, 1);
+        }
+        });
+    };
+
+    var bridesmaidsQuestions = [
+    {question:
+        "Which of the bridesmaids NOT get food poisoning during the dress fitting?",
+    correctAnswer: "Megan",
+    wrongAnswers: ["Rita", "Helen", "Annie"]
+    },
+    {question:  "What business did Annie own before the recession caused her to close?",
+    correctAnswer: "Baking Shop",
+    wrongAnswers: ["Jewelry Store", "Hot Dog Stand", "Hair Salon"]
+    },
+    {question: "What does Annie's Canadian romance do for a living?",
+    correctAnswer: "Police Officer",
+    wrongAnswers: ["Firefighter", "Hockey Player", "Singer"]
+    }
+    ];
+
+    const whiteChicks = () => {
+    $.ajax({
+        url: 'http://www.omdbapi.com/?t=white+chicks&apikey=361efa89',
+    }).then (
+        (data) => {
+            $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
+            $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
+        });
+    $('.Q').text('Question');
+    const value = Math.floor(Math.random() * whiteChicksQuestions.length);
+    $('#question').text(whiteChicksQuestions[value].question);
+    $makeButtons();
+    const correctAnswerValue = Math.floor(Math.random() * 4);
+    const string = buttonsArray[correctAnswerValue];
+    $(string).text(whiteChicksQuestions[value].correctAnswer);
+    buttonsArray.splice(correctAnswerValue, 1);
+    for (let num = 0; num <= 2; num++) {
+        $(buttonsArray[0]).text((whiteChicksQuestions[value].wrongAnswers[num]));
+        buttonsArray.splice(0, 1);
+    }
+    $('.button').on('click', (event) => {
+        if (event.target.innerHTML == whiteChicksQuestions[value].correctAnswer) {
+            $(string).css('background-color', '#b1d94e');
+            whiteChicksQuestions.splice(value, 1);
+            numQuestionsRight += 1;
+            correctCount();
+            checkCount();
+            setTimeout($reset, 500);
+            setTimeout(comedymovies, 500);
+        }
+        else {
+            $(event.target).css('background-color', '#e67410');
+            $(string).css('background-color', '#b1d94e');
+            setTimeout($resetAll, 500);
+            whiteChicksQuestions.splice(value, 1);
+        }
+        });
+    };
+
+    var whiteChicksQuestions = [
+    {question:
+        "Where does a majority of the movie take place?",
+    correctAnswer: "The Hamptons",
+    wrongAnswers: ["New York City", "Kansas City", "Los Angeles"]
+    },
+    {question:  "In the Film, White Chicks, Kevin and Marcus Copeland go undercover as two women but are really what?",
+    correctAnswer: "FBI agents",
+    wrongAnswers: ["Police officers", "Private Investigators", "CIA agents"]
+    },
+    {question: "What causes Marcus and Kevin Copeland to be assigned to protect the Wilson sisters?",
+    correctAnswer: "A failed drug bust",
+    wrongAnswers: ["Being late to work several times", "Accidently shooting their boss", "Stealing from their office"]
+    }
+    ];
+
+    const grownUps = () => {
+    $.ajax({
+        url: 'http://www.omdbapi.com/?t=grown+ups&apikey=361efa89',
+    }).then (
+        (data) => {
+            $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
+            $('#img').prepend($('<img>',{id:'image',src:data.Poster}));
+        });
+    $('.Q').text('Question');
+    const value = Math.floor(Math.random() * grownUpsQuestions.length);
+    $('#question').text(grownUpsQuestions[value].question);
+    $makeButtons();
+    const correctAnswerValue = Math.floor(Math.random() * 4);
+    const string = buttonsArray[correctAnswerValue];
+    $(string).text(grownUpsQuestions[value].correctAnswer);
+    buttonsArray.splice(correctAnswerValue, 1);
+    for (let num = 0; num <= 2; num++) {
+        $(buttonsArray[0]).text((grownUpsQuestions[value].wrongAnswers[num]));
+        buttonsArray.splice(0, 1);
+    }
+    $('.button').on('click', (event) => {
+        if (event.target.innerHTML == grownUpsQuestions[value].correctAnswer) {
+            $(string).css('background-color', '#b1d94e');
+            grownUpsQuestions.splice(value, 1);
+            numQuestionsRight += 1;
+            correctCount();
+            checkCount();
+            setTimeout($reset, 500);
+            setTimeout(comedymovies, 500);
+        }
+        else {
+            $(event.target).css('background-color', '#e67410');
+            $(string).css('background-color', '#b1d94e');
+            setTimeout($resetAll, 500);
+            grownUpsQuestions.splice(value, 1);
+        }
+        });
+    };
+
+    var grownUpsQuestions = [
+    {question:
+        "On what weekend do the five friends rent a lake house together again?",
+    correctAnswer: "July 4th",
+    wrongAnswers: ["Thanksgiving", "Memorial Weekend", "Labor Day Weekend"]
+    },
+    {question:  "The death of who brings the friends back together in their hometown?",
+    correctAnswer: "Coach Buzzer",
+    wrongAnswers: ["Eric’s Mom", "Rob’s Wife", "Kurt’s Dad"]
+    },
+    {question: "During a trip to the water park, one of the five friends ignores a warning that urinating in the water will cause the water to turn what color?",
+    correctAnswer: "Blue",
+    wrongAnswers: ["Red", "Orange", "Green"]
+    }
+    ];
+
+    var movies4  = [
+    wereTheMillers,
+    theHangover,
+    stepBrothers,
+    dirtyGrandpa,
+    theCampaign,
+    bridesmaids,
+    whiteChicks,
+    grownUps,
+    ];
+
+    const comedymovies = () => {
+    for (let i = 0; i < movies4.length; i++) {
+        if ((wereTheMillersQuestions.length <= 0) && (wereTheMillersQuestions != 'yes')) {
+            movies4.splice(movies4.indexOf(wereTheMillers), 1);
+            wereTheMillersQuestions = 'yes';
+        } else if ((theHangoverQuestions.length <= 0) && (theHangoverQuestions != 'yes')) {
+            movies4.splice(movies4.indexOf(theHangover), 1);
+            theHangoverQuestions = 'yes';
+        } else if ((stepBrothersQuestions.length <= 0) && (stepBrothersQuestions != 'yes')) {
+            movies4.splice(movies4.indexOf(stepBrothers), 1);
+            stepBrothersQuestions = 'yes';
+        } else if ((dirtyGrandpaQuestions.length <= 0) && (dirtyGrandpaQuestions != 'yes')) {
+            movies4.splice(movies4.indexOf(dirtyGrandpa), 1);
+            dirtyGrandpaQuestions = 'yes';
+        } else if ((theCampaignQuestions.length <= 0) && (theCampaignQuestions != 'yes')) {
+            movies4.splice(movies4.indexOf(theCampaign), 1);
+            theCampaignQuestions = 'yes';
+        } else if ((bridesmaidsQuestions.length <= 0) && (bridesmaidsQuestions != 'yes')) {
+            movies4.splice(movies4.indexOf(bridesmaids), 1);
+            bridesmaidsQuestions = 'yes';
+        } else if ((whiteChicksQuestions.length <= 0) && (whiteChicksQuestions != 'yes')) {
+            movies4.splice(movies4.indexOf(whiteChicks), 1);
+            whiteChicksQuestions = 'yes';
+        } else if ((grownUpsQuestions.length <= 0) && (grownUpsQuestions != 'yes')) {
+            movies4.splice(movies4.indexOf(grownUps), 1);
+            grownUpsQuestions = 'yes';
+        }
+    }
+    return movies4[Math.floor(Math.random() * movies4.length)]();
+    };
 
 
 
-$('#romance').on('click', (event) => {
-    $reset();
-    romanceMovies();
-    $('.categoryh1').hide();
-    $('#action').hide();
-    $('#comedy').hide();
-    $('#family').hide();
-    $('.game').css('background-color', 'white');
-    $('.pickCategory').css('padding', '0px');
-    $('.game').css('margin-top', '50px');
-    window.scrollTo( 0, screen.height/2 );
-});
+    $('#romance').on('click', (event) => {
+        $reset();
+        romanceMovies();
+        $('.categoryh1').hide();
+        $('#action').hide();
+        $('#comedy').hide();
+        $('#family').hide();
+        $('.game').css('background-color', 'white');
+        $('.pickCategory').css('padding', '0px');
+        $('.game').css('margin-top', '50px');
+        window.scrollTo( 0, screen.height/2 );
+    });
 
-$('#action').on('click', (event) => {
-    $reset();
-    actionmovies();
-    $('.categoryh1').hide();
-    $('#romance').hide();
-    $('#comedy').hide();
-    $('#family').hide();
-    $('.game').css('background-color', 'white');
-    $('.pickCategory').css('padding', '0px');
-    $('.game').css('margin-top', '50px');
-    window.scrollTo( 0, screen.height/2 );
-});
+    $('#action').on('click', (event) => {
+        $reset();
+        actionmovies();
+        $('.categoryh1').hide();
+        $('#romance').hide();
+        $('#comedy').hide();
+        $('#family').hide();
+        $('.game').css('background-color', 'white');
+        $('.pickCategory').css('padding', '0px');
+        $('.game').css('margin-top', '50px');
+        window.scrollTo( 0, screen.height/2 );
+    });
 
-$('#comedy').on('click', (event) => {
-    $reset();
-    // romanceMovies();
-    $('.categoryh1').hide();
-    $('#action').hide();
-    $('#romance').hide();
-    $('#family').hide();
-    $('.game').css('background-color', 'white');
-    $('.pickCategory').css('padding', '0px');
-    $('.game').css('margin-top', '50px');
-    window.scrollTo( 0, screen.height/2 );
-});
+    $('#comedy').on('click', (event) => {
+        $reset();
+        comedymovies();
+        $('.categoryh1').hide();
+        $('#action').hide();
+        $('#romance').hide();
+        $('#family').hide();
+        $('.game').css('background-color', 'white');
+        $('.pickCategory').css('padding', '0px');
+        $('.game').css('margin-top', '50px');
+        window.scrollTo( 0, screen.height/2 );
+    });
 
-$('#family').on('click', (event) => {
-    $reset();
-    familymovies();
-    $('.categoryh1').hide();
-    $('#action').hide();
-    $('#comedy').hide();
-    $('#romance').hide();
-    $('.game').css('background-color', 'white');
-    $('.pickCategory').css('padding', '0px');
-    $('.game').css('margin-top', '50px');
-    window.scrollTo( 0, screen.height/2 );
-});
+    $('#family').on('click', (event) => {
+        $reset();
+        familymovies();
+        $('.categoryh1').hide();
+        $('#action').hide();
+        $('#comedy').hide();
+        $('#romance').hide();
+        $('.game').css('background-color', 'white');
+        $('.pickCategory').css('padding', '0px');
+        $('.game').css('margin-top', '50px');
+        window.scrollTo( 0, screen.height/2 );
+    });
 
-$('.title').on('click', (event) => {
-    $resetAll();
-});
+    $('.title').on('click', (event) => {
+        $resetAll();
+    });
 
-$('.letsgobtn').on('click', (event) => {
-    $('#welcomescreen').hide();
-    $('.body').css('display', 'block');
-});
+    $('.letsgobtn').on('click', (event) => {
+        $('#welcomescreen').hide();
+        $('.body').css('display', 'block');
+    });
 
 }); //end of onload
