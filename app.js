@@ -203,8 +203,7 @@ $(() => { // start of onload
     };
 
     var notebookQuestions = [
-    {question:
-        "What is the name of the town Allie and Noah meet in and later go back to at the end of the movie?",
+    {question: "What is the name of the town Allie and Noah meet in and later go back to at the end of the movie?",
     correctAnswer: "Seabrook",
     wrongAnswers: ["Seaway", "Seaside", "Sealane"]
     },
@@ -262,12 +261,11 @@ $(() => { // start of onload
 };
 
     var aboutTimeQuestions = [
-    {question:
-        "Who plays the main character, Mary?",
+    {question: "Who plays the main character, Mary?",
     correctAnswer: "Rachel McAdams",
     wrongAnswers: ["Elizabeth Banks", "Amanda Seyfried", "Julia Roberts"]
     },
-    {question:  "Where is the movie based?",
+    {question: "Where is the movie based?",
     correctAnswer: "London",
     wrongAnswers: ["Edinburgh", "Cambridge", "New York"]
     },
@@ -636,41 +634,40 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
     theSpectacularNow];
 
     const romanceMovies = () => {
-        checkMovies();
-        if (movies.length == 0) {
-            noQuestionsLeft();
-        }
-        else {
-            for (let i = 0; i < movies.length; i++) {
-                if ((notebookQuestions.length <= 0) && (notebookQuestions != 'yes')) {
-                    movies.splice(movies.indexOf(theNoteBook), 1);
-                    notebookQuestions = 'yes';
-                } else if ((aboutTimeQuestions.length <= 0) && (aboutTimeQuestions != 'yes')) {
-                    movies.splice(movies.indexOf(aboutTime), 1);
-                    aboutTimeQuestions = 'yes';
-                } else if ((justGoWithItQuestions.length <= 0) && (justGoWithItQuestions != 'yes')) {
-                    movies.splice(movies.indexOf(justGoWithIt), 1);
-                    justGoWithItQuestions = 'yes';
-                } else if ((lalaLandQuestions.length <= 0) && (lalaLandQuestions != 'yes')) {
-                    movies.splice(movies.indexOf(lalaLand), 1);
-                    lalaLandQuestions = 'yes';
-                } else if ((noStringAttachedQuestions.length <= 0) && (noStringAttachedQuestions != 'yes')) {
-                    movies.splice(movies.indexOf(noStringAttached), 1);
-                    noStringAttachedQuestions = 'yes';
-                } else if ((loveActuallyQuestions.length <= 0) && (loveActuallyQuestions != 'yes')) {
-                    movies.splice(movies.indexOf(loveActually), 1);
-                    loveActuallyQuestions = 'yes';
-                } else if ((aStarIsBornQuestions.length <= 0) && (aStarIsBornQuestions != 'yes')) {
-                    movies.splice(movies.indexOf(aStarIsBorn), 1);
-                    aStarIsBornQuestions = 'yes';
-                } else if ((theSpectacularNowQuestions.length <= 0) && (theSpectacularNowQuestions != 'yes')) {
-                    movies.splice(movies.indexOf(theSpectacularNow), 1);
-                    theSpectacularNowQuestions = 'yes';
-                }
+        for (let i = 0; i < movies.length; i++) {
+            if ((notebookQuestions.length <= 0) && (notebookQuestions != 'yes')) {
+                movies.splice(movies.indexOf(theNoteBook), 1);
+                notebookQuestions = 'yes';
+            } else if ((aboutTimeQuestions.length <= 0) && (aboutTimeQuestions != 'yes')) {
+                movies.splice(movies.indexOf(aboutTime), 1);
+                aboutTimeQuestions = 'yes';
+            } else if ((justGoWithItQuestions.length <= 0) && (justGoWithItQuestions != 'yes')) {
+                movies.splice(movies.indexOf(justGoWithIt), 1);
+                justGoWithItQuestions = 'yes';
+            } else if ((lalaLandQuestions.length <= 0) && (lalaLandQuestions != 'yes')) {
+                movies.splice(movies.indexOf(lalaLand), 1);
+                lalaLandQuestions = 'yes';
+            } else if ((noStringAttachedQuestions.length <= 0) && (noStringAttachedQuestions != 'yes')) {
+                movies.splice(movies.indexOf(noStringAttached), 1);
+                noStringAttachedQuestions = 'yes';
+            } else if ((loveActuallyQuestions.length <= 0) && (loveActuallyQuestions != 'yes')) {
+                movies.splice(movies.indexOf(loveActually), 1);
+                loveActuallyQuestions = 'yes';
+            } else if ((aStarIsBornQuestions.length <= 0) && (aStarIsBornQuestions != 'yes')) {
+                movies.splice(movies.indexOf(aStarIsBorn), 1);
+                aStarIsBornQuestions = 'yes';
+            } else if ((theSpectacularNowQuestions.length <= 0) && (theSpectacularNowQuestions != 'yes')) {
+                movies.splice(movies.indexOf(theSpectacularNow), 1);
+                theSpectacularNowQuestions = 'yes';
             }
-    }
+        }
+        if (movies.length == 0) {
+            checkMovies();
+            noQuestionsLeft();
+        } else {
         return movies[Math.floor(Math.random() * movies.length)]();
-};
+        }
+    };
 
     const bourneUltimatum = () => {
         $.ajax({
@@ -1267,10 +1264,6 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
     ];
 
     const actionmovies = () => {
-        checkMovies();
-        if (movies2.length == 0) {
-            noQuestionsLeft();
-        } else {
         for (let i = 0; i < movies2.length; i++) {
             if ((bourneUltimatumQuestions.length <= 0) && (bourneUltimatumQuestions != 'yes')) {
                 movies2.splice(movies2.indexOf(bourneUltimatum), 1);
@@ -1304,8 +1297,12 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
                 theAcountantQuestions = 'yes';
             }
         }
-    }
-        return movies2[Math.floor(Math.random() * movies2.length)]();
+        if (movies2.length == 0) {
+            checkMovies();
+            noQuestionsLeft();
+        } else {
+            return movies2[Math.floor(Math.random() * movies2.length)]();
+        }
     };
 
     const wonder = () => {
@@ -1843,41 +1840,42 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
     ];
 
     const familymovies = () => {
-        checkMovies();
-        if (movies3.length == 0) {
-            noQuestionsLeft();
-        } else {for (let i = 0; i < movies3.length; i++) {
-                if ((wonderQuestions.length <= 0) && (wonderQuestions != 'yes')) {
-                    movies3.splice(movies3.indexOf(wonder), 1);
-                    wonderQuestions = 'yes';
-                } else if ((jungleBookQuestions.length <= 0) && (jungleBookQuestions != 'yes')) {
-                    movies3.splice(movies3.indexOf(jungleBook), 1);
-                    jungleBookQuestions = 'yes';
-                } else if ((insideOutQuestions.length <= 0) && (insideOutQuestions != 'yes')) {
-                    movies3.splice(movies3.indexOf(insideOut), 1);
-                    insideOutQuestions = 'yes';
-                } else if ((secretariatQuestions.length <= 0) && (secretariatQuestions != 'yes')) {
-                    movies3.splice(movies3.indexOf(secretariat), 1);
-                    secretariatQuestions = 'yes';
-                } else if ((christopherRobinQuestions.length <= 0) && (christopherRobinQuestions != 'yes')) {
-                    movies3.splice(movies3.indexOf(christopherRobin), 1);
-                    christopherRobinQuestions = 'yes';
-                } else if ((maleficientQuestions.length <= 0) && (maleficientQuestions != 'yes')) {
-                    movies3.splice(movies3.indexOf(maleficent), 1);
-                    maleficientQuestions = 'yes';
-                } else if ((howToTrainYourDragonQuestions.length <= 0) && (howToTrainYourDragonQuestions != 'yes')) {
-                    movies3.splice(movies3.indexOf(howToTrainYourDragon), 1);
-                    howToTrainYourDragonQuestions = 'yes';
-                } else if ((incrediblesQuestions.length <= 0) && (incrediblesQuestions != 'yes')) {
-                    movies3.splice(movies3.indexOf(incredibles), 1);
-                    incrediblesQuestions = 'yes';
-                } else if ((elfQuestions.length <= 0) && (elfQuestions != 'yes')) {
-                    movies3.splice(movies3.indexOf(elf), 1);
-                    elfQuestions = 'yes';
-                }
+        for (let i = 0; i < movies3.length; i++) {
+            if ((wonderQuestions.length <= 0) && (wonderQuestions != 'yes')) {
+                movies3.splice(movies3.indexOf(wonder), 1);
+                wonderQuestions = 'yes';
+            } else if ((jungleBookQuestions.length <= 0) && (jungleBookQuestions != 'yes')) {
+                movies3.splice(movies3.indexOf(jungleBook), 1);
+                jungleBookQuestions = 'yes';
+            } else if ((insideOutQuestions.length <= 0) && (insideOutQuestions != 'yes')) {
+                movies3.splice(movies3.indexOf(insideOut), 1);
+                insideOutQuestions = 'yes';
+            } else if ((secretariatQuestions.length <= 0) && (secretariatQuestions != 'yes')) {
+                movies3.splice(movies3.indexOf(secretariat), 1);
+                secretariatQuestions = 'yes';
+            } else if ((christopherRobinQuestions.length <= 0) && (christopherRobinQuestions != 'yes')) {
+                movies3.splice(movies3.indexOf(christopherRobin), 1);
+                christopherRobinQuestions = 'yes';
+            } else if ((maleficientQuestions.length <= 0) && (maleficientQuestions != 'yes')) {
+                movies3.splice(movies3.indexOf(maleficent), 1);
+                maleficientQuestions = 'yes';
+            } else if ((howToTrainYourDragonQuestions.length <= 0) && (howToTrainYourDragonQuestions != 'yes')) {
+                movies3.splice(movies3.indexOf(howToTrainYourDragon), 1);
+                howToTrainYourDragonQuestions = 'yes';
+            } else if ((incrediblesQuestions.length <= 0) && (incrediblesQuestions != 'yes')) {
+                movies3.splice(movies3.indexOf(incredibles), 1);
+                incrediblesQuestions = 'yes';
+            } else if ((elfQuestions.length <= 0) && (elfQuestions != 'yes')) {
+                movies3.splice(movies3.indexOf(elf), 1);
+                elfQuestions = 'yes';
             }
         }
-        return movies3[Math.floor(Math.random() * movies3.length)]();
+        if (movies3.length == 0) {
+            checkMovies();
+            noQuestionsLeft();
+        } else {
+            return movies3[Math.floor(Math.random() * movies3.length)]();
+        }
     };
 
     const wereTheMillers = () => {
@@ -2355,39 +2353,39 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
     ];
 
     const comedymovies = () => {
-        checkMovies();
-        if (movies4.length == 0) {
-            noQuestionsLeft();
-        } else {
-            for (let i = 0; i < movies4.length; i++) {
-                if ((wereTheMillersQuestions.length <= 0) && (wereTheMillersQuestions != 'yes')) {
-                    movies4.splice(movies4.indexOf(wereTheMillers), 1);
-                    wereTheMillersQuestions = 'yes';
-                } else if ((theHangoverQuestions.length <= 0) && (theHangoverQuestions != 'yes')) {
-                    movies4.splice(movies4.indexOf(theHangover), 1);
-                    theHangoverQuestions = 'yes';
-                } else if ((stepBrothersQuestions.length <= 0) && (stepBrothersQuestions != 'yes')) {
-                    movies4.splice(movies4.indexOf(stepBrothers), 1);
-                    stepBrothersQuestions = 'yes';
-                } else if ((dirtyGrandpaQuestions.length <= 0) && (dirtyGrandpaQuestions != 'yes')) {
-                    movies4.splice(movies4.indexOf(dirtyGrandpa), 1);
-                    dirtyGrandpaQuestions = 'yes';
-                } else if ((theCampaignQuestions.length <= 0) && (theCampaignQuestions != 'yes')) {
-                    movies4.splice(movies4.indexOf(theCampaign), 1);
-                    theCampaignQuestions = 'yes';
-                } else if ((bridesmaidsQuestions.length <= 0) && (bridesmaidsQuestions != 'yes')) {
-                    movies4.splice(movies4.indexOf(bridesmaids), 1);
-                    bridesmaidsQuestions = 'yes';
-                } else if ((whiteChicksQuestions.length <= 0) && (whiteChicksQuestions != 'yes')) {
-                    movies4.splice(movies4.indexOf(whiteChicks), 1);
-                    whiteChicksQuestions = 'yes';
-                } else if ((grownUpsQuestions.length <= 0) && (grownUpsQuestions != 'yes')) {
-                    movies4.splice(movies4.indexOf(grownUps), 1);
-                    grownUpsQuestions = 'yes';
-                }
+        for (let i = 0; i < movies4.length; i++) {
+            if ((wereTheMillersQuestions.length <= 0) && (wereTheMillersQuestions != 'yes')) {
+                movies4.splice(movies4.indexOf(wereTheMillers), 1);
+                wereTheMillersQuestions = 'yes';
+            } else if ((theHangoverQuestions.length <= 0) && (theHangoverQuestions != 'yes')) {
+                movies4.splice(movies4.indexOf(theHangover), 1);
+                theHangoverQuestions = 'yes';
+            } else if ((stepBrothersQuestions.length <= 0) && (stepBrothersQuestions != 'yes')) {
+                movies4.splice(movies4.indexOf(stepBrothers), 1);
+                stepBrothersQuestions = 'yes';
+            } else if ((dirtyGrandpaQuestions.length <= 0) && (dirtyGrandpaQuestions != 'yes')) {
+                movies4.splice(movies4.indexOf(dirtyGrandpa), 1);
+                dirtyGrandpaQuestions = 'yes';
+            } else if ((theCampaignQuestions.length <= 0) && (theCampaignQuestions != 'yes')) {
+                movies4.splice(movies4.indexOf(theCampaign), 1);
+                theCampaignQuestions = 'yes';
+            } else if ((bridesmaidsQuestions.length <= 0) && (bridesmaidsQuestions != 'yes')) {
+                movies4.splice(movies4.indexOf(bridesmaids), 1);
+                bridesmaidsQuestions = 'yes';
+            } else if ((whiteChicksQuestions.length <= 0) && (whiteChicksQuestions != 'yes')) {
+                movies4.splice(movies4.indexOf(whiteChicks), 1);
+                whiteChicksQuestions = 'yes';
+            } else if ((grownUpsQuestions.length <= 0) && (grownUpsQuestions != 'yes')) {
+                movies4.splice(movies4.indexOf(grownUps), 1);
+                grownUpsQuestions = 'yes';
             }
         }
-        return movies4[Math.floor(Math.random() * movies4.length)]();
+        if (movies4.length == 0) {
+            checkMovies();
+            noQuestionsLeft();
+        } else {
+            return movies4[Math.floor(Math.random() * movies4.length)]();
+        }
     };
 
     // const closeandrestart = () => {

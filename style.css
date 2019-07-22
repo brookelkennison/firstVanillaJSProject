@@ -156,7 +156,7 @@ h1 {
 }
 
 .answers > button:hover {
-    box-shadow: 1px 0 10px #8627b3;
+    transform: scale(1.1) ;
 }
 
 .answers > button:focus {
@@ -176,6 +176,11 @@ h1 {
     font-family: 'Crushed', cursive;
     font-size: 18px;
     letter-spacing: 2px;
+}
+
+.backnext > button:hover {
+    font-size: 22px;
+    color: #b1d94e;
 }
 
 .backnext {
