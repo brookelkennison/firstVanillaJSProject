@@ -3,14 +3,13 @@ window.scrollTo( 0, 0);
 
 $(() => { // start of onload
 
-
-
     const $reset = () => {
         $('.Q').empty('Question');
         $('#movietitle').empty();
         $('#img').empty();
         $('#question').empty();
         $('.answers').empty();
+        $('.backnext').empty();
     };
 
     const $resetAll = () => {
@@ -19,6 +18,7 @@ $(() => { // start of onload
         $('#img').empty();
         $('#question').empty();
         $('.answers').empty();
+        $('.backnext').empty();
         $('.categoryh1').show();
         $('#action').show();
         $('#comedy').show();
@@ -41,6 +41,15 @@ $(() => { // start of onload
     };
 
     $closeBtn.on('click', closeModal);
+
+    const pickdifferentCategory = () => {
+        $('.modal').css('display', 'none');
+        $resetAll();
+    };
+
+    const $pickdifferentCategory = $('.pickdifferentCategory');
+
+    $pickdifferentCategory.on('click', pickdifferentCategory);
 
     const modal10 = () => {
         $('#tenthAchievement').css('display', 'block');
@@ -82,6 +91,10 @@ $(() => { // start of onload
         $('#firstAchievement').css('display', 'block');
     };
 
+    const noQuestionsLeft = () => {
+            $('#noQuestionsLeft').css('display', 'block');
+    };
+
     const checkCount = () => {
         if (numQuestionsRight == 30) {
             modal10();
@@ -120,6 +133,33 @@ $(() => { // start of onload
         buttonsArray[3] = "#button4";
     };
 
+    const $makeNextButton = () => {
+        const $nextButton = ($('<button>NEXT</button>').attr('id', ('nextbutton')));
+        const $backButton = ($('<button>PICK DIFFERENT CATEGORY</button>').addClass('pickdifferentCategory'));
+        $('.backnext').append($backButton);
+        $('.backnext').append($nextButton);
+    };
+
+    const romanceNext = () => {
+        $reset();
+        romanceMovies();
+    };
+
+    const actionNext = () => {
+        $reset();
+        actionmovies();
+    };
+
+    const comedyNext = () => {
+        $reset();
+        comedymovies();
+    };
+
+    const familyNext = () => {
+        $reset();
+        familymovies();
+    };
+
     const theNoteBook = () => {
         $.ajax({
             url: 'http://www.omdbapi.com/?t=the+notebook&apikey=361efa89',
@@ -140,22 +180,24 @@ $(() => { // start of onload
             $(buttonsArray[0]).text((notebookQuestions[value].wrongAnswers[num]));
             buttonsArray.splice(0, 1);
         }
-        $('.button').on('click', (event) => {
+        $('.button').one('click', (event) => {
             if (event.target.innerHTML == notebookQuestions[value].correctAnswer) {
+                $makeNextButton();
                 $(string).css('background-color', '#b1d94e');
                 notebookQuestions.splice(value, 1);
                 numQuestionsRight += 1;
                 correctCount();
+                $('.pickdifferentCategory').on('click', $resetAll);
+                $('#nextbutton').on('click', romanceNext);
                 checkCount();
-                setTimeout($reset, 500);
-                setTimeout(romanceMovies, 500);
-
                 }
             else {
+                $makeNextButton();
                 $(event.target).css('background-color', '#e67410');
                 $(string).css('background-color', '#b1d94e');
-                setTimeout($resetAll, 500);
                 notebookQuestions.splice(value, 1);
+                $('.pickdifferentCategory').on('click', $resetAll);
+                $('#nextbutton').on('click', romanceNext);
         }
         });
     };
@@ -196,21 +238,25 @@ $(() => { // start of onload
         $(buttonsArray[0]).text((aboutTimeQuestions[value].wrongAnswers[num]));
         buttonsArray.splice(0, 1);
     }
-    $('.button').on('click', (event) => {
+    $('.button').one('click', (event) => {
         if (event.target.innerHTML == aboutTimeQuestions[value].correctAnswer) {
+            $makeNextButton();
             $(string).css('background-color', '#b1d94e');
             aboutTimeQuestions.splice(value, 1);
             numQuestionsRight += 1;
             correctCount();
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', romanceNext);
             checkCount();
-                setTimeout($reset, 500);
-                setTimeout(romanceMovies, 500);
+
         }
         else {
+            $makeNextButton();
             $(event.target).css('background-color', '#e67410');
             $(string).css('background-color', '#b1d94e');
-            setTimeout($resetAll, 500);
             aboutTimeQuestions.splice(value, 1);
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', romanceNext);
     }
     });
 };
@@ -251,21 +297,24 @@ $(() => { // start of onload
             $(buttonsArray[0]).text(justGoWithItQuestions[value].wrongAnswers[num]);
             buttonsArray.splice(0, 1);
         }
-        $('.button').on('click', (event) => {
+        $('.button').one('click', (event) => {
             if (event.target.innerHTML == justGoWithItQuestions[value].correctAnswer) {
+                $makeNextButton();
                 $(string).css('background-color', '#b1d94e');
                 justGoWithItQuestions.splice(value, 1);
                 numQuestionsRight += 1;
                 correctCount();
+                $('.pickdifferentCategory').on('click', $resetAll);
+                $('#nextbutton').on('click', romanceNext);
                 checkCount();
-                    setTimeout($reset, 500);
-                    setTimeout(romanceMovies, 500);
             }
             else {
+                $makeNextButton();
                 $(event.target).css('background-color', '#e67410');
                 $(string).css('background-color', '#b1d94e');
-                setTimeout($resetAll, 500);
                 justGoWithItQuestions.splice(value, 1);
+                $('.pickdifferentCategory').on('click', $resetAll);
+                $('#nextbutton').on('click', romanceNext);
         }
         });
     };
@@ -306,21 +355,24 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         $(buttonsArray[0]).text((lalaLandQuestions[value].wrongAnswers[num]));
         buttonsArray.splice(0, 1);
     }
-    $('.button').on('click', (event) => {
+    $('.button').one('click', (event) => {
         if (event.target.innerHTML == lalaLandQuestions[value].correctAnswer) {
+            $makeNextButton();
             $(string).css('background-color', '#b1d94e');
             lalaLandQuestions.splice(value, 1);
             numQuestionsRight += 1;
             correctCount();
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', romanceNext);
             checkCount();
-            setTimeout($reset, 500);
-            setTimeout(romanceMovies, 500);
         }
         else {
+            $makeNextButton();
             $(event.target).css('background-color', '#e67410');
             $(string).css('background-color', '#b1d94e');
-            setTimeout($resetAll, 500);
             lalaLandQuestions.splice(value, 1);
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', romanceNext);
         }
     });
     };
@@ -361,21 +413,24 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         $(buttonsArray[0]).text((noStringAttachedQuestions[value].wrongAnswers[num]));
         buttonsArray.splice(0, 1);
     }
-    $('.button').on('click', (event) => {
+    $('.button').one('click', (event) => {
         if (event.target.innerHTML == noStringAttachedQuestions[value].correctAnswer) {
+            $makeNextButton();
             $(string).css('background-color', '#b1d94e');
             noStringAttachedQuestions.splice(value, 1);
             numQuestionsRight += 1;
             correctCount();
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', romanceNext);
             checkCount();
-            setTimeout($reset, 500);
-            setTimeout(romanceMovies, 500);
         }
         else {
+            $makeNextButton();
             $(event.target).css('background-color', '#e67410');
             $(string).css('background-color', '#b1d94e');
-            setTimeout($resetAll, 500);
             noStringAttachedQuestions.splice(value, 1);
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', romanceNext);
         }
         });
     };
@@ -416,21 +471,24 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         $(buttonsArray[0]).text((loveActuallyQuestions[value].wrongAnswers[num]));
         buttonsArray.splice(0, 1);
     }
-    $('.button').on('click', (event) => {
+    $('.button').one('click', (event) => {
         if (event.target.innerHTML == loveActuallyQuestions[value].correctAnswer) {
+            $makeNextButton();
             $(string).css('background-color', '#b1d94e');
             loveActuallyQuestions.splice(value, 1);
             numQuestionsRight += 1;
             correctCount();
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', romanceNext);
             checkCount();
-            setTimeout($reset, 500);
-            setTimeout(romanceMovies, 500);
         }
         else {
+            $makeNextButton();
             $(event.target).css('background-color', '#e67410');
             $(string).css('background-color', '#b1d94e');
-            setTimeout($resetAll, 500);
             loveActuallyQuestions.splice(value, 1);
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', romanceNext);
         }
         });
     };
@@ -471,21 +529,24 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         $(buttonsArray[0]).text((aStarIsBornQuestions[value].wrongAnswers[num]));
         buttonsArray.splice(0, 1);
     }
-    $('.button').on('click', (event) => {
+    $('.button').one('click', (event) => {
         if (event.target.innerHTML == aStarIsBornQuestions[value].correctAnswer) {
+            $makeNextButton();
             $(string).css('background-color', '#b1d94e');
             aStarIsBornQuestions.splice(value, 1);
             numQuestionsRight += 1;
             correctCount();
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', romanceNext);
             checkCount();
-            setTimeout($reset, 500);
-            setTimeout(romanceMovies, 500);
         }
         else {
+            $makeNextButton();
             $(event.target).css('background-color', '#e67410');
             $(string).css('background-color', '#b1d94e');
-            setTimeout($resetAll, 500);
             aStarIsBornQuestions.splice(value, 1);
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', romanceNext);
         }
         });
     };
@@ -526,21 +587,24 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         $(buttonsArray[0]).text((theSpectacularNowQuestions[value].wrongAnswers[num]));
         buttonsArray.splice(0, 1);
     }
-    $('.button').on('click', (event) => {
+    $('.button').one('click', (event) => {
         if (event.target.innerHTML == theSpectacularNowQuestions[value].correctAnswer) {
+            $makeNextButton();
             $(string).css('background-color', '#b1d94e');
             theSpectacularNowQuestions.splice(value, 1);
             numQuestionsRight += 1;
             correctCount();
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', romanceNext);
             checkCount();
-            setTimeout($reset, 500);
-            setTimeout(romanceMovies, 500);
         }
         else {
+            $makeNextButton();
             $(event.target).css('background-color', '#e67410');
             $(string).css('background-color', '#b1d94e');
-            setTimeout($resetAll, 500);
             theSpectacularNowQuestions.splice(value, 1);
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', romanceNext);
         }
         });
     };
@@ -571,45 +635,41 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
     aStarIsBorn,
     theSpectacularNow];
 
-
     const romanceMovies = () => {
-        for (let i = 0; i < movies.length; i++) {
-            if ((notebookQuestions.length <= 0) && (notebookQuestions != 'yes')) {
-                movies.splice(movies.indexOf(theNoteBook), 1);
-                notebookQuestions = 'yes';
-            } else if ((aboutTimeQuestions.length <= 0) && (aboutTimeQuestions != 'yes')) {
-                movies.splice(movies.indexOf(aboutTime), 1);
-                aboutTimeQuestions = 'yes';
-            } else if ((justGoWithItQuestions.length <= 0) && (justGoWithItQuestions != 'yes')) {
-                movies.splice(movies.indexOf(justGoWithIt), 1);
-                justGoWithItQuestions = 'yes';
-            } else if ((lalaLandQuestions.length <= 0) && (lalaLandQuestions != 'yes')) {
-                movies.splice(movies.indexOf(lalaLand), 1);
-                lalaLandQuestions = 'yes';
-            } else if ((noStringAttachedQuestions.length <= 0) && (noStringAttachedQuestions != 'yes')) {
-                movies.splice(movies.indexOf(noStringAttached), 1);
-                noStringAttachedQuestions = 'yes';
-            } else if ((loveActuallyQuestions.length <= 0) && (loveActuallyQuestions != 'yes')) {
-                movies.splice(movies.indexOf(loveActually), 1);
-                loveActuallyQuestions = 'yes';
-            } else if ((aStarIsBornQuestions.length <= 0) && (aStarIsBornQuestions != 'yes')) {
-                movies.splice(movies.indexOf(aStarIsBorn), 1);
-                aStarIsBornQuestions = 'yes';
-            } else if ((theSpectacularNowQuestions.length <= 0) && (theSpectacularNowQuestions != 'yes')) {
-                movies.splice(movies.indexOf(theSpectacularNow), 1);
-                theSpectacularNowQuestions = 'yes';
-            }
+        checkMovies();
+        if (movies.length == 0) {
+            noQuestionsLeft();
         }
-        console.log('hi');
+        else {
+            for (let i = 0; i < movies.length; i++) {
+                if ((notebookQuestions.length <= 0) && (notebookQuestions != 'yes')) {
+                    movies.splice(movies.indexOf(theNoteBook), 1);
+                    notebookQuestions = 'yes';
+                } else if ((aboutTimeQuestions.length <= 0) && (aboutTimeQuestions != 'yes')) {
+                    movies.splice(movies.indexOf(aboutTime), 1);
+                    aboutTimeQuestions = 'yes';
+                } else if ((justGoWithItQuestions.length <= 0) && (justGoWithItQuestions != 'yes')) {
+                    movies.splice(movies.indexOf(justGoWithIt), 1);
+                    justGoWithItQuestions = 'yes';
+                } else if ((lalaLandQuestions.length <= 0) && (lalaLandQuestions != 'yes')) {
+                    movies.splice(movies.indexOf(lalaLand), 1);
+                    lalaLandQuestions = 'yes';
+                } else if ((noStringAttachedQuestions.length <= 0) && (noStringAttachedQuestions != 'yes')) {
+                    movies.splice(movies.indexOf(noStringAttached), 1);
+                    noStringAttachedQuestions = 'yes';
+                } else if ((loveActuallyQuestions.length <= 0) && (loveActuallyQuestions != 'yes')) {
+                    movies.splice(movies.indexOf(loveActually), 1);
+                    loveActuallyQuestions = 'yes';
+                } else if ((aStarIsBornQuestions.length <= 0) && (aStarIsBornQuestions != 'yes')) {
+                    movies.splice(movies.indexOf(aStarIsBorn), 1);
+                    aStarIsBornQuestions = 'yes';
+                } else if ((theSpectacularNowQuestions.length <= 0) && (theSpectacularNowQuestions != 'yes')) {
+                    movies.splice(movies.indexOf(theSpectacularNow), 1);
+                    theSpectacularNowQuestions = 'yes';
+                }
+            }
+    }
         return movies[Math.floor(Math.random() * movies.length)]();
-        //     if (movies[i] != 0) {
-        //         console.log('random');
-        //         return movies[Math.floor(Math.random() * movies.length)]();
-        //     } else if (movies[i] == 0) {
-        //         console.log('loop');
-        //         return romanceMovies();
-        //     }
-        // }
 };
 
     const bourneUltimatum = () => {
@@ -632,22 +692,25 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
             $(buttonsArray[0]).text((bourneUltimatumQuestions[value].wrongAnswers[num]));
             buttonsArray.splice(0, 1);
         }
-        $('.button').on('click', (event) => {
+        $('.button').one('click', (event) => {
             if (event.target.innerHTML == bourneUltimatumQuestions[value].correctAnswer) {
+                $makeNextButton();
                 $(string).css('background-color', '#b1d94e');
                 bourneUltimatumQuestions.splice(value, 1);
                 numQuestionsRight += 1;
                 correctCount();
+                $('.pickdifferentCategory').on('click', $resetAll);
+                $('#nextbutton').on('click', actionNext);
                 checkCount();
-                setTimeout($reset, 500);
-                setTimeout(actionmovies, 500);
 
                 }
             else {
+                $makeNextButton();
                 $(event.target).css('background-color', '#e67410');
                 $(string).css('background-color', '#b1d94e');
-                setTimeout($resetAll, 500);
                 bourneUltimatumQuestions.splice(value, 1);
+                $('.pickdifferentCategory').on('click', $resetAll);
+                $('#nextbutton').on('click', actionNext);
         }
         });
     };
@@ -688,21 +751,24 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         $(buttonsArray[0]).text((johnWickQuestions[value].wrongAnswers[num]));
         buttonsArray.splice(0, 1);
     }
-    $('.button').on('click', (event) => {
+    $('.button').one('click', (event) => {
         if (event.target.innerHTML == aboutTimeQuestions[value].correctAnswer) {
+            $makeNextButton();
             $(string).css('background-color', '#b1d94e');
             johnWickQuestions.splice(value, 1);
             numQuestionsRight += 1;
             correctCount();
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', actionNext);
             checkCount();
-                setTimeout($reset, 500);
-                setTimeout(actionmovies, 500);
         }
         else {
+            $makeNextButton();
             $(event.target).css('background-color', '#e67410');
             $(string).css('background-color', '#b1d94e');
-            setTimeout($resetAll, 500);
             johnWickQuestions.splice(value, 1);
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', actionNext);
     }
     });
     };
@@ -743,21 +809,24 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
             $(buttonsArray[0]).text(theDarkKnightQuestions[value].wrongAnswers[num]);
             buttonsArray.splice(0, 1);
         }
-        $('.button').on('click', (event) => {
+        $('.button').one('click', (event) => {
             if (event.target.innerHTML == theDarkKnightQuestions[value].correctAnswer) {
+                $makeNextButton();
                 $(string).css('background-color', '#b1d94e');
                 theDarkKnightQuestions.splice(value, 1);
                 numQuestionsRight += 1;
                 correctCount();
+                $('.pickdifferentCategory').on('click', $resetAll);
+                $('#nextbutton').on('click', actionNext);
                 checkCount();
-                    setTimeout($reset, 500);
-                    setTimeout(actionmovies, 500);
             }
             else {
+                $makeNextButton();
                 $(event.target).css('background-color', '#e67410');
                 $(string).css('background-color', '#b1d94e');
-                setTimeout($resetAll, 500);
                 theDarkKnightQuestions.splice(value, 1);
+                $('.pickdifferentCategory').on('click', $resetAll);
+                $('#nextbutton').on('click', actionNext);
         }
         });
     };
@@ -798,21 +867,24 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         $(buttonsArray[0]).text((theEqualizerQuestions[value].wrongAnswers[num]));
         buttonsArray.splice(0, 1);
     }
-    $('.button').on('click', (event) => {
+    $('.button').one('click', (event) => {
         if (event.target.innerHTML == theEqualizerQuestions[value].correctAnswer) {
+            $makeNextButton();
             $(string).css('background-color', '#b1d94e');
             theEqualizerQuestions.splice(value, 1);
             numQuestionsRight += 1;
             correctCount();
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', actionNext);
             checkCount();
-            setTimeout($reset, 500);
-            setTimeout(actionmovies, 500);
         }
         else {
+            $makeNextButton();
             $(event.target).css('background-color', '#e67410');
             $(string).css('background-color', '#b1d94e');
-            setTimeout($resetAll, 500);
             theEqualizerQuestions.splice(value, 1);
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', actionNext);
         }
     });
     };
@@ -853,21 +925,24 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         $(buttonsArray[0]).text((captainAmericaQuestions[value].wrongAnswers[num]));
         buttonsArray.splice(0, 1);
     }
-    $('.button').on('click', (event) => {
+    $('.button').one('click', (event) => {
         if (event.target.innerHTML == captainAmericaQuestions[value].correctAnswer) {
+            $makeNextButton();
             $(string).css('background-color', '#b1d94e');
             captainAmericaQuestions.splice(value, 1);
             numQuestionsRight += 1;
             correctCount();
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', actionNext);
             checkCount();
-            setTimeout($reset, 500);
-            setTimeout(actionmovies, 500);
         }
         else {
+            $makeNextButton();
             $(event.target).css('background-color', '#e67410');
             $(string).css('background-color', '#b1d94e');
-            setTimeout($resetAll, 500);
             captainAmericaQuestions.splice(value, 1);
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', actionNext);
         }
         });
     };
@@ -908,21 +983,24 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         $(buttonsArray[0]).text((readyPlayerOneQuestions[value].wrongAnswers[num]));
         buttonsArray.splice(0, 1);
     }
-    $('.button').on('click', (event) => {
+    $('.button').one('click', (event) => {
         if (event.target.innerHTML == readyPlayerOneQuestions[value].correctAnswer) {
+            $makeNextButton();
             $(string).css('background-color', '#b1d94e');
             readyPlayerOneQuestions.splice(value, 1);
             numQuestionsRight += 1;
             correctCount();
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', actionNext);
             checkCount();
-            setTimeout($reset, 500);
-            setTimeout(actionmovies, 500);
         }
         else {
+            $makeNextButton();
             $(event.target).css('background-color', '#e67410');
             $(string).css('background-color', '#b1d94e');
-            setTimeout($resetAll, 500);
             readyPlayerOneQuestions.splice(value, 1);
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', actionNext);
         }
         });
     };
@@ -963,21 +1041,24 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         $(buttonsArray[0]).text((missionImpossibleQuestions[value].wrongAnswers[num]));
         buttonsArray.splice(0, 1);
     }
-    $('.button').on('click', (event) => {
+    $('.button').one('click', (event) => {
         if (event.target.innerHTML == missionImpossibleQuestions[value].correctAnswer) {
+            $makeNextButton();
             $(string).css('background-color', '#b1d94e');
             missionImpossibleQuestions.splice(value, 1);
             numQuestionsRight += 1;
             correctCount();
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', actionNext);
             checkCount();
-            setTimeout($reset, 500);
-            setTimeout(actionmovies, 500);
         }
         else {
+            $makeNextButton();
             $(event.target).css('background-color', '#e67410');
             $(string).css('background-color', '#b1d94e');
-            setTimeout($resetAll, 500);
             missionImpossibleQuestions.splice(value, 1);
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', actionNext);
         }
         });
     };
@@ -1018,21 +1099,24 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         $(buttonsArray[0]).text((furyQuestions[value].wrongAnswers[num]));
         buttonsArray.splice(0, 1);
     }
-    $('.button').on('click', (event) => {
+    $('.button').one('click', (event) => {
         if (event.target.innerHTML == furyQuestions[value].correctAnswer) {
+            $makeNextButton();
             $(string).css('background-color', '#b1d94e');
             furyQuestions.splice(value, 1);
             numQuestionsRight += 1;
             correctCount();
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', actionNext);
             checkCount();
-            setTimeout($reset, 500);
-            setTimeout(actionmovies, 500);
         }
         else {
+            $makeNextButton();
             $(event.target).css('background-color', '#e67410');
             $(string).css('background-color', '#b1d94e');
-            setTimeout($resetAll, 500);
             furyQuestions.splice(value, 1);
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', actionNext);
         }
         });
     };
@@ -1073,21 +1157,24 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         $(buttonsArray[0]).text((planetOfTheApesQuestions[value].wrongAnswers[num]));
         buttonsArray.splice(0, 1);
     }
-    $('.button').on('click', (event) => {
+    $('.button').one('click', (event) => {
         if (event.target.innerHTML == planetOfTheApesQuestions[value].correctAnswer) {
+            $makeNextButton();
             $(string).css('background-color', '#b1d94e');
             planetOfTheApesQuestions.splice(value, 1);
             numQuestionsRight += 1;
             correctCount();
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', actionNext);
             checkCount();
-            setTimeout($reset, 500);
-            setTimeout(actionmovies, 500);
         }
         else {
+            $makeNextButton();
             $(event.target).css('background-color', '#e67410');
             $(string).css('background-color', '#b1d94e');
-            setTimeout($resetAll, 500);
             planetOfTheApesQuestions.splice(value, 1);
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', actionNext);
         }
         });
     };
@@ -1128,21 +1215,24 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         $(buttonsArray[0]).text((theAcountantQuestions[value].wrongAnswers[num]));
         buttonsArray.splice(0, 1);
     }
-    $('.button').on('click', (event) => {
+    $('.button').one('click', (event) => {
         if (event.target.innerHTML == theAcountantQuestions[value].correctAnswer) {
+            $makeNextButton();
             $(string).css('background-color', '#b1d94e');
             theAcountantQuestions.splice(value, 1);
             numQuestionsRight += 1;
             correctCount();
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', actionNext);
             checkCount();
-            setTimeout($reset, 500);
-            setTimeout(actionmovies, 500);
         }
         else {
+            $makeNextButton();
             $(event.target).css('background-color', '#e67410');
             $(string).css('background-color', '#b1d94e');
-            setTimeout($resetAll, 500);
             theAcountantQuestions.splice(value, 1);
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', actionNext);
         }
         });
     };
@@ -1177,41 +1267,46 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
     ];
 
     const actionmovies = () => {
-    for (let i = 0; i < movies2.length; i++) {
-        if ((bourneUltimatumQuestions.length <= 0) && (bourneUltimatumQuestions != 'yes')) {
-            movies2.splice(movies2.indexOf(bourneUltimatum), 1);
-            bourneUltimatumQuestions = 'yes';
-        } else if ((johnWickQuestions.length <= 0) && (johnWickQuestions != 'yes')) {
-            movies2.splice(movies2.indexOf(johnWick), 1);
-            johnWickQuestions = 'yes';
-        } else if ((theDarkKnightQuestions.length <= 0) && (theDarkKnightQuestions != 'yes')) {
-            movies2.splice(movies2.indexOf(theDarkKnight), 1);
-            theDarkKnightQuestions = 'yes';
-        } else if ((theEqualizerQuestions.length <= 0) && (theEqualizerQuestions != 'yes')) {
-            movies2.splice(movies2.indexOf(theEqualizer), 1);
-            theEqualizerQuestions = 'yes';
-        } else if ((captainAmericaQuestions.length <= 0) && (captainAmericaQuestions != 'yes')) {
-            movies2.splice(movies2.indexOf(captainAmerica), 1);
-            captainAmericaQuestions = 'yes';
-        } else if ((readyPlayerOneQuestions.length <= 0) && (readyPlayerOneQuestions != 'yes')) {
-            movies2.splice(movies2.indexOf(readyPlayerOne), 1);
-            readyPlayerOneQuestions = 'yes';
-        } else if ((missionImpossibleQuestions.length <= 0) && (missionImpossibleQuestions != 'yes')) {
-            movies2.splice(movies2.indexOf(missionImpossible), 1);
-            missionImpossibleQuestions = 'yes';
-        } else if ((furyQuestions.length <= 0) && (furyQuestions != 'yes')) {
-            movies2.splice(movies2.indexOf(fury), 1);
-            furyQuestions = 'yes';
-        } else if ((planetOfTheApesQuestions.length <= 0) && (planetOfTheApesQuestions != 'yes')) {
-            movies2.splice(movies2.indexOf(planetOfTheApes), 1);
-            planetOfTheApesQuestions = 'yes';
-        } else if ((theAcountantQuestions.length <= 0) && (theAcountantQuestions != 'yes')) {
-            movies2.splice(movies2.indexOf(theAcountant), 1);
-            theAcountantQuestions = 'yes';
+        checkMovies();
+        if (movies2.length == 0) {
+            noQuestionsLeft();
+        } else {
+        for (let i = 0; i < movies2.length; i++) {
+            if ((bourneUltimatumQuestions.length <= 0) && (bourneUltimatumQuestions != 'yes')) {
+                movies2.splice(movies2.indexOf(bourneUltimatum), 1);
+                bourneUltimatumQuestions = 'yes';
+            } else if ((johnWickQuestions.length <= 0) && (johnWickQuestions != 'yes')) {
+                movies2.splice(movies2.indexOf(johnWick), 1);
+                johnWickQuestions = 'yes';
+            } else if ((theDarkKnightQuestions.length <= 0) && (theDarkKnightQuestions != 'yes')) {
+                movies2.splice(movies2.indexOf(theDarkKnight), 1);
+                theDarkKnightQuestions = 'yes';
+            } else if ((theEqualizerQuestions.length <= 0) && (theEqualizerQuestions != 'yes')) {
+                movies2.splice(movies2.indexOf(theEqualizer), 1);
+                theEqualizerQuestions = 'yes';
+            } else if ((captainAmericaQuestions.length <= 0) && (captainAmericaQuestions != 'yes')) {
+                movies2.splice(movies2.indexOf(captainAmerica), 1);
+                captainAmericaQuestions = 'yes';
+            } else if ((readyPlayerOneQuestions.length <= 0) && (readyPlayerOneQuestions != 'yes')) {
+                movies2.splice(movies2.indexOf(readyPlayerOne), 1);
+                readyPlayerOneQuestions = 'yes';
+            } else if ((missionImpossibleQuestions.length <= 0) && (missionImpossibleQuestions != 'yes')) {
+                movies2.splice(movies2.indexOf(missionImpossible), 1);
+                missionImpossibleQuestions = 'yes';
+            } else if ((furyQuestions.length <= 0) && (furyQuestions != 'yes')) {
+                movies2.splice(movies2.indexOf(fury), 1);
+                furyQuestions = 'yes';
+            } else if ((planetOfTheApesQuestions.length <= 0) && (planetOfTheApesQuestions != 'yes')) {
+                movies2.splice(movies2.indexOf(planetOfTheApes), 1);
+                planetOfTheApesQuestions = 'yes';
+            } else if ((theAcountantQuestions.length <= 0) && (theAcountantQuestions != 'yes')) {
+                movies2.splice(movies2.indexOf(theAcountant), 1);
+                theAcountantQuestions = 'yes';
+            }
         }
     }
-    return movies2[Math.floor(Math.random() * movies2.length)]();
-};
+        return movies2[Math.floor(Math.random() * movies2.length)]();
+    };
 
     const wonder = () => {
         $.ajax({
@@ -1233,22 +1328,24 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
             $(buttonsArray[0]).text((wonderQuestions[value].wrongAnswers[num]));
             buttonsArray.splice(0, 1);
         }
-        $('.button').on('click', (event) => {
+        $('.button').one('click', (event) => {
             if (event.target.innerHTML == wonderQuestions[value].correctAnswer) {
+                $makeNextButton();
                 $(string).css('background-color', '#b1d94e');
                 wonderQuestions.splice(value, 1);
                 numQuestionsRight += 1;
                 correctCount();
+                $('.pickdifferentCategory').on('click', $resetAll);
+                $('#nextbutton').on('click', familyNext);
                 checkCount();
-                setTimeout($reset, 500);
-                setTimeout(familymovies, 500);
-
                 }
             else {
+                $makeNextButton();
                 $(event.target).css('background-color', '#e67410');
                 $(string).css('background-color', '#b1d94e');
-                setTimeout($resetAll, 500);
                 wonderQuestions.splice(value, 1);
+                $('.pickdifferentCategory').on('click', $resetAll);
+                $('#nextbutton').on('click', familyNext);
         }
         });
     };
@@ -1289,21 +1386,24 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         $(buttonsArray[0]).text((jungleBookQuestions[value].wrongAnswers[num]));
         buttonsArray.splice(0, 1);
     }
-    $('.button').on('click', (event) => {
+    $('.button').one('click', (event) => {
         if (event.target.innerHTML == aboutTimeQuestions[value].correctAnswer) {
+            $makeNextButton();
             $(string).css('background-color', '#b1d94e');
             jungleBookQuestions.splice(value, 1);
             numQuestionsRight += 1;
             correctCount();
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', familyNext);
             checkCount();
-                setTimeout($reset, 500);
-                setTimeout(familymovies, 500);
         }
         else {
+            $makeNextButton();
             $(event.target).css('background-color', '#e67410');
             $(string).css('background-color', '#b1d94e');
-            setTimeout($resetAll, 500);
             jungleBookQuestions.splice(value, 1);
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', familyNext);
     }
     });
     };
@@ -1344,21 +1444,24 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
             $(buttonsArray[0]).text(insideOutQuestions[value].wrongAnswers[num]);
             buttonsArray.splice(0, 1);
         }
-        $('.button').on('click', (event) => {
+        $('.button').one('click', (event) => {
             if (event.target.innerHTML == insideOutQuestions[value].correctAnswer) {
+                $makeNextButton();
                 $(string).css('background-color', '#b1d94e');
                 insideOutQuestions.splice(value, 1);
                 numQuestionsRight += 1;
                 correctCount();
+                $('.pickdifferentCategory').on('click', $resetAll);
+                $('#nextbutton').on('click', familyNext);
                 checkCount();
-                    setTimeout($reset, 500);
-                    setTimeout(familymovies, 500);
             }
             else {
+                $makeNextButton();
                 $(event.target).css('background-color', '#e67410');
                 $(string).css('background-color', '#b1d94e');
-                setTimeout($resetAll, 500);
                 insideOutQuestions.splice(value, 1);
+                $('.pickdifferentCategory').on('click', $resetAll);
+                $('#nextbutton').on('click', familyNext);
         }
         });
     };
@@ -1399,21 +1502,24 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         $(buttonsArray[0]).text((secretariatQuestions[value].wrongAnswers[num]));
         buttonsArray.splice(0, 1);
     }
-    $('.button').on('click', (event) => {
+    $('.button').one('click', (event) => {
         if (event.target.innerHTML == secretariatQuestions[value].correctAnswer) {
+            $makeNextButton();
             $(string).css('background-color', '#b1d94e');
             secretariatQuestions.splice(value, 1);
             numQuestionsRight += 1;
             correctCount();
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', familyNext);
             checkCount();
-            setTimeout($reset, 500);
-            setTimeout(familymovies, 500);
         }
         else {
+            $makeNextButton();
             $(event.target).css('background-color', '#e67410');
             $(string).css('background-color', '#b1d94e');
-            setTimeout($resetAll, 500);
             secretariatQuestions.splice(value, 1);
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', familyNext);
         }
     });
     };
@@ -1454,21 +1560,24 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         $(buttonsArray[0]).text((christopherRobinQuestions[value].wrongAnswers[num]));
         buttonsArray.splice(0, 1);
     }
-    $('.button').on('click', (event) => {
+    $('.button').one('click', (event) => {
         if (event.target.innerHTML == christopherRobinQuestions[value].correctAnswer) {
+            $makeNextButton();
             $(string).css('background-color', '#b1d94e');
             christopherRobinQuestions.splice(value, 1);
             numQuestionsRight += 1;
             correctCount();
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', familyNext);
             checkCount();
-            setTimeout($reset, 500);
-            setTimeout(familymovies, 500);
         }
         else {
+            $makeNextButton();
             $(event.target).css('background-color', '#e67410');
             $(string).css('background-color', '#b1d94e');
-            setTimeout($resetAll, 500);
             christopherRobinQuestions.splice(value, 1);
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', familyNext);
         }
         });
     };
@@ -1509,21 +1618,24 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         $(buttonsArray[0]).text((maleficientQuestions[value].wrongAnswers[num]));
         buttonsArray.splice(0, 1);
     }
-    $('.button').on('click', (event) => {
+    $('.button').one('click', (event) => {
         if (event.target.innerHTML == maleficientQuestions[value].correctAnswer) {
+            $makeNextButton();
             $(string).css('background-color', '#b1d94e');
             maleficientQuestions.splice(value, 1);
             numQuestionsRight += 1;
             correctCount();
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', familyNext);
             checkCount();
-            setTimeout($reset, 500);
-            setTimeout(familymovies, 500);
         }
         else {
+            $makeNextButton();
             $(event.target).css('background-color', '#e67410');
             $(string).css('background-color', '#b1d94e');
-            setTimeout($resetAll, 500);
             maleficientQuestions.splice(value, 1);
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', familyNext);
         }
         });
     };
@@ -1564,21 +1676,24 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         $(buttonsArray[0]).text((howToTrainYourDragonQuestions[value].wrongAnswers[num]));
         buttonsArray.splice(0, 1);
     }
-    $('.button').on('click', (event) => {
+    $('.button').one('click', (event) => {
         if (event.target.innerHTML == howToTrainYourDragonQuestions[value].correctAnswer) {
+            $makeNextButton();
             $(string).css('background-color', '#b1d94e');
             howToTrainYourDragonQuestions.splice(value, 1);
             numQuestionsRight += 1;
             correctCount();
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', familyNext);
             checkCount();
-            setTimeout($reset, 500);
-            setTimeout(familymovies, 500);
         }
         else {
+            $makeNextButton();
             $(event.target).css('background-color', '#e67410');
             $(string).css('background-color', '#b1d94e');
-            setTimeout($resetAll, 500);
             howToTrainYourDragonQuestions.splice(value, 1);
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', familyNext);
         }
         });
     };
@@ -1619,21 +1734,24 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         $(buttonsArray[0]).text((incrediblesQuestions[value].wrongAnswers[num]));
         buttonsArray.splice(0, 1);
     }
-    $('.button').on('click', (event) => {
+    $('.button').one('click', (event) => {
         if (event.target.innerHTML == incrediblesQuestions[value].correctAnswer) {
+            $makeNextButton();
             $(string).css('background-color', '#b1d94e');
             incrediblesQuestions.splice(value, 1);
             numQuestionsRight += 1;
             correctCount();
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', familyNext);
             checkCount();
-            setTimeout($reset, 500);
-            setTimeout(familymovies, 500);
         }
         else {
+            $makeNextButton();
             $(event.target).css('background-color', '#e67410');
             $(string).css('background-color', '#b1d94e');
-            setTimeout($resetAll, 500);
             incrediblesQuestions.splice(value, 1);
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', familyNext);
         }
         });
     };
@@ -1674,21 +1792,24 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         $(buttonsArray[0]).text((elfQuestions[value].wrongAnswers[num]));
         buttonsArray.splice(0, 1);
     }
-    $('.button').on('click', (event) => {
+    $('.button').one('click', (event) => {
         if (event.target.innerHTML == elfQuestions[value].correctAnswer) {
+            $makeNextButton();
             $(string).css('background-color', '#b1d94e');
             elfQuestions.splice(value, 1);
             numQuestionsRight += 1;
             correctCount();
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', familyNext);
             checkCount();
-            setTimeout($reset, 500);
-            setTimeout(familymovies, 500);
         }
         else {
+            $makeNextButton();
             $(event.target).css('background-color', '#e67410');
             $(string).css('background-color', '#b1d94e');
-            setTimeout($resetAll, 500);
             elfQuestions.splice(value, 1);
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', familyNext);
         }
         });
     };
@@ -1722,37 +1843,41 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
     ];
 
     const familymovies = () => {
-    for (let i = 0; i < movies3.length; i++) {
-        if ((wonderQuestions.length <= 0) && (wonderQuestions != 'yes')) {
-            movies3.splice(movies3.indexOf(wonder), 1);
-            wonderQuestions = 'yes';
-        } else if ((jungleBookQuestions.length <= 0) && (jungleBookQuestions != 'yes')) {
-            movies3.splice(movies3.indexOf(jungleBook), 1);
-            jungleBookQuestions = 'yes';
-        } else if ((insideOutQuestions.length <= 0) && (insideOutQuestions != 'yes')) {
-            movies3.splice(movies3.indexOf(insideOut), 1);
-            insideOutQuestions = 'yes';
-        } else if ((secretariatQuestions.length <= 0) && (secretariatQuestions != 'yes')) {
-            movies3.splice(movies3.indexOf(secretariat), 1);
-            secretariatQuestions = 'yes';
-        } else if ((christopherRobinQuestions.length <= 0) && (christopherRobinQuestions != 'yes')) {
-            movies3.splice(movies3.indexOf(christopherRobin), 1);
-            christopherRobinQuestions = 'yes';
-        } else if ((maleficientQuestions.length <= 0) && (maleficientQuestions != 'yes')) {
-            movies3.splice(movies3.indexOf(maleficent), 1);
-            maleficientQuestions = 'yes';
-        } else if ((howToTrainYourDragonQuestions.length <= 0) && (howToTrainYourDragonQuestions != 'yes')) {
-            movies3.splice(movies3.indexOf(howToTrainYourDragon), 1);
-            howToTrainYourDragonQuestions = 'yes';
-        } else if ((incrediblesQuestions.length <= 0) && (incrediblesQuestions != 'yes')) {
-            movies3.splice(movies3.indexOf(incredibles), 1);
-            incrediblesQuestions = 'yes';
-        } else if ((elfQuestions.length <= 0) && (elfQuestions != 'yes')) {
-            movies3.splice(movies3.indexOf(elf), 1);
-            elfQuestions = 'yes';
+        checkMovies();
+        if (movies3.length == 0) {
+            noQuestionsLeft();
+        } else {for (let i = 0; i < movies3.length; i++) {
+                if ((wonderQuestions.length <= 0) && (wonderQuestions != 'yes')) {
+                    movies3.splice(movies3.indexOf(wonder), 1);
+                    wonderQuestions = 'yes';
+                } else if ((jungleBookQuestions.length <= 0) && (jungleBookQuestions != 'yes')) {
+                    movies3.splice(movies3.indexOf(jungleBook), 1);
+                    jungleBookQuestions = 'yes';
+                } else if ((insideOutQuestions.length <= 0) && (insideOutQuestions != 'yes')) {
+                    movies3.splice(movies3.indexOf(insideOut), 1);
+                    insideOutQuestions = 'yes';
+                } else if ((secretariatQuestions.length <= 0) && (secretariatQuestions != 'yes')) {
+                    movies3.splice(movies3.indexOf(secretariat), 1);
+                    secretariatQuestions = 'yes';
+                } else if ((christopherRobinQuestions.length <= 0) && (christopherRobinQuestions != 'yes')) {
+                    movies3.splice(movies3.indexOf(christopherRobin), 1);
+                    christopherRobinQuestions = 'yes';
+                } else if ((maleficientQuestions.length <= 0) && (maleficientQuestions != 'yes')) {
+                    movies3.splice(movies3.indexOf(maleficent), 1);
+                    maleficientQuestions = 'yes';
+                } else if ((howToTrainYourDragonQuestions.length <= 0) && (howToTrainYourDragonQuestions != 'yes')) {
+                    movies3.splice(movies3.indexOf(howToTrainYourDragon), 1);
+                    howToTrainYourDragonQuestions = 'yes';
+                } else if ((incrediblesQuestions.length <= 0) && (incrediblesQuestions != 'yes')) {
+                    movies3.splice(movies3.indexOf(incredibles), 1);
+                    incrediblesQuestions = 'yes';
+                } else if ((elfQuestions.length <= 0) && (elfQuestions != 'yes')) {
+                    movies3.splice(movies3.indexOf(elf), 1);
+                    elfQuestions = 'yes';
+                }
+            }
         }
-    }
-    return movies3[Math.floor(Math.random() * movies3.length)]();
+        return movies3[Math.floor(Math.random() * movies3.length)]();
     };
 
     const wereTheMillers = () => {
@@ -1775,22 +1900,24 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
             $(buttonsArray[0]).text((wereTheMillersQuestions[value].wrongAnswers[num]));
             buttonsArray.splice(0, 1);
         }
-        $('.button').on('click', (event) => {
+        $('.button').one('click', (event) => {
             if (event.target.innerHTML == wereTheMillersQuestions[value].correctAnswer) {
+                $makeNextButton();
                 $(string).css('background-color', '#b1d94e');
                 wereTheMillersQuestions.splice(value, 1);
                 numQuestionsRight += 1;
                 correctCount();
+                $('.pickdifferentCategory').on('click', $resetAll);
+                $('#nextbutton').on('click', comedyNext);
                 checkCount();
-                setTimeout($reset, 500);
-                setTimeout(comedymovies, 500);
-
                 }
             else {
+                $makeNextButton();
                 $(event.target).css('background-color', '#e67410');
                 $(string).css('background-color', '#b1d94e');
-                setTimeout($resetAll, 500);
                 wereTheMillersQuestions.splice(value, 1);
+                $('.pickdifferentCategory').on('click', $resetAll);
+                $('#nextbutton').on('click', comedyNext);
         }
         });
     };
@@ -1831,21 +1958,24 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         $(buttonsArray[0]).text((theHangoverQuestions[value].wrongAnswers[num]));
         buttonsArray.splice(0, 1);
     }
-    $('.button').on('click', (event) => {
+    $('.button').one('click', (event) => {
         if (event.target.innerHTML == aboutTimeQuestions[value].correctAnswer) {
+            $makeNextButton();
             $(string).css('background-color', '#b1d94e');
             theHangoverQuestions.splice(value, 1);
             numQuestionsRight += 1;
             correctCount();
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', comedyNext);
             checkCount();
-                setTimeout($reset, 500);
-                setTimeout(comedymovies, 500);
         }
         else {
+            $makeNextButton();
             $(event.target).css('background-color', '#e67410');
             $(string).css('background-color', '#b1d94e');
-            setTimeout($resetAll, 500);
             theHangoverQuestions.splice(value, 1);
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', comedyNext);
     }
     });
     };
@@ -1886,21 +2016,24 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
             $(buttonsArray[0]).text(stepBrothersQuestions[value].wrongAnswers[num]);
             buttonsArray.splice(0, 1);
         }
-        $('.button').on('click', (event) => {
+        $('.button').one('click', (event) => {
             if (event.target.innerHTML == stepBrothersQuestions[value].correctAnswer) {
+                $makeNextButton();
                 $(string).css('background-color', '#b1d94e');
                 stepBrothersQuestions.splice(value, 1);
                 numQuestionsRight += 1;
                 correctCount();
+                $('.pickdifferentCategory').on('click', $resetAll);
+                $('#nextbutton').on('click', comedyNext);
                 checkCount();
-                    setTimeout($reset, 500);
-                    setTimeout(comedymovies, 500);
             }
             else {
+                $makeNextButton();
                 $(event.target).css('background-color', '#e67410');
                 $(string).css('background-color', '#b1d94e');
-                setTimeout($resetAll, 500);
                 stepBrothersQuestions.splice(value, 1);
+                $('.pickdifferentCategory').on('click', $resetAll);
+                $('#nextbutton').on('click', comedyNext);
         }
         });
     };
@@ -1941,21 +2074,24 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         $(buttonsArray[0]).text((dirtyGrandpaQuestions[value].wrongAnswers[num]));
         buttonsArray.splice(0, 1);
     }
-    $('.button').on('click', (event) => {
+    $('.button').one('click', (event) => {
         if (event.target.innerHTML == dirtyGrandpaQuestions[value].correctAnswer) {
+            $makeNextButton();
             $(string).css('background-color', '#b1d94e');
             dirtyGrandpaQuestions.splice(value, 1);
             numQuestionsRight += 1;
             correctCount();
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', comedyNext);
             checkCount();
-            setTimeout($reset, 500);
-            setTimeout(comedymovies, 500);
         }
         else {
+            $makeNextButton();
             $(event.target).css('background-color', '#e67410');
             $(string).css('background-color', '#b1d94e');
-            setTimeout($resetAll, 500);
             dirtyGrandpaQuestions.splice(value, 1);
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', comedyNext);
         }
     });
     };
@@ -1996,21 +2132,24 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         $(buttonsArray[0]).text((theCampaignQuestions[value].wrongAnswers[num]));
         buttonsArray.splice(0, 1);
     }
-    $('.button').on('click', (event) => {
+    $('.button').one('click', (event) => {
         if (event.target.innerHTML == theCampaignQuestions[value].correctAnswer) {
+            $makeNextButton();
             $(string).css('background-color', '#b1d94e');
             theCampaignQuestions.splice(value, 1);
             numQuestionsRight += 1;
             correctCount();
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', comedyNext);
             checkCount();
-            setTimeout($reset, 500);
-            setTimeout(comedymovies, 500);
         }
         else {
+            $makeNextButton();
             $(event.target).css('background-color', '#e67410');
             $(string).css('background-color', '#b1d94e');
-            setTimeout($resetAll, 500);
             theCampaignQuestions.splice(value, 1);
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', comedyNext);
         }
         });
     };
@@ -2051,21 +2190,24 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         $(buttonsArray[0]).text((bridesmaidsQuestions[value].wrongAnswers[num]));
         buttonsArray.splice(0, 1);
     }
-    $('.button').on('click', (event) => {
+    $('.button').one('click', (event) => {
         if (event.target.innerHTML == bridesmaidsQuestions[value].correctAnswer) {
+            $makeNextButton();
             $(string).css('background-color', '#b1d94e');
             bridesmaidsQuestions.splice(value, 1);
             numQuestionsRight += 1;
             correctCount();
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', comedyNext);
             checkCount();
-            setTimeout($reset, 500);
-            setTimeout(comedymovies, 500);
         }
         else {
+            $makeNextButton();
             $(event.target).css('background-color', '#e67410');
             $(string).css('background-color', '#b1d94e');
-            setTimeout($resetAll, 500);
             bridesmaidsQuestions.splice(value, 1);
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', comedyNext);
         }
         });
     };
@@ -2106,21 +2248,24 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         $(buttonsArray[0]).text((whiteChicksQuestions[value].wrongAnswers[num]));
         buttonsArray.splice(0, 1);
     }
-    $('.button').on('click', (event) => {
+    $('.button').one('click', (event) => {
         if (event.target.innerHTML == whiteChicksQuestions[value].correctAnswer) {
+            $makeNextButton();
             $(string).css('background-color', '#b1d94e');
             whiteChicksQuestions.splice(value, 1);
             numQuestionsRight += 1;
             correctCount();
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', comedyNext);
             checkCount();
-            setTimeout($reset, 500);
-            setTimeout(comedymovies, 500);
         }
         else {
+            $makeNextButton();
             $(event.target).css('background-color', '#e67410');
             $(string).css('background-color', '#b1d94e');
-            setTimeout($resetAll, 500);
             whiteChicksQuestions.splice(value, 1);
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', comedyNext);
         }
         });
     };
@@ -2161,21 +2306,23 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         $(buttonsArray[0]).text((grownUpsQuestions[value].wrongAnswers[num]));
         buttonsArray.splice(0, 1);
     }
-    $('.button').on('click', (event) => {
+    $('.button').one('click', (event) => {
         if (event.target.innerHTML == grownUpsQuestions[value].correctAnswer) {
+            $makeNextButton();
             $(string).css('background-color', '#b1d94e');
             grownUpsQuestions.splice(value, 1);
             numQuestionsRight += 1;
             correctCount();
+            $('.pickdifferentCategory').on('click', $resetAll);
+            $('#nextbutton').on('click', comedyNext);
             checkCount();
-            setTimeout($reset, 500);
-            setTimeout(comedymovies, 500);
         }
         else {
+            $makeNextButton();
             $(event.target).css('background-color', '#e67410');
             $(string).css('background-color', '#b1d94e');
-            setTimeout($resetAll, 500);
             grownUpsQuestions.splice(value, 1);
+
         }
         });
     };
@@ -2196,7 +2343,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
     }
     ];
 
-    var movies4  = [
+    var movies4 = [
     wereTheMillers,
     theHangover,
     stepBrothers,
@@ -2208,36 +2355,55 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
     ];
 
     const comedymovies = () => {
-    for (let i = 0; i < movies4.length; i++) {
-        if ((wereTheMillersQuestions.length <= 0) && (wereTheMillersQuestions != 'yes')) {
-            movies4.splice(movies4.indexOf(wereTheMillers), 1);
-            wereTheMillersQuestions = 'yes';
-        } else if ((theHangoverQuestions.length <= 0) && (theHangoverQuestions != 'yes')) {
-            movies4.splice(movies4.indexOf(theHangover), 1);
-            theHangoverQuestions = 'yes';
-        } else if ((stepBrothersQuestions.length <= 0) && (stepBrothersQuestions != 'yes')) {
-            movies4.splice(movies4.indexOf(stepBrothers), 1);
-            stepBrothersQuestions = 'yes';
-        } else if ((dirtyGrandpaQuestions.length <= 0) && (dirtyGrandpaQuestions != 'yes')) {
-            movies4.splice(movies4.indexOf(dirtyGrandpa), 1);
-            dirtyGrandpaQuestions = 'yes';
-        } else if ((theCampaignQuestions.length <= 0) && (theCampaignQuestions != 'yes')) {
-            movies4.splice(movies4.indexOf(theCampaign), 1);
-            theCampaignQuestions = 'yes';
-        } else if ((bridesmaidsQuestions.length <= 0) && (bridesmaidsQuestions != 'yes')) {
-            movies4.splice(movies4.indexOf(bridesmaids), 1);
-            bridesmaidsQuestions = 'yes';
-        } else if ((whiteChicksQuestions.length <= 0) && (whiteChicksQuestions != 'yes')) {
-            movies4.splice(movies4.indexOf(whiteChicks), 1);
-            whiteChicksQuestions = 'yes';
-        } else if ((grownUpsQuestions.length <= 0) && (grownUpsQuestions != 'yes')) {
-            movies4.splice(movies4.indexOf(grownUps), 1);
-            grownUpsQuestions = 'yes';
+        checkMovies();
+        if (movies4.length == 0) {
+            noQuestionsLeft();
+        } else {
+            for (let i = 0; i < movies4.length; i++) {
+                if ((wereTheMillersQuestions.length <= 0) && (wereTheMillersQuestions != 'yes')) {
+                    movies4.splice(movies4.indexOf(wereTheMillers), 1);
+                    wereTheMillersQuestions = 'yes';
+                } else if ((theHangoverQuestions.length <= 0) && (theHangoverQuestions != 'yes')) {
+                    movies4.splice(movies4.indexOf(theHangover), 1);
+                    theHangoverQuestions = 'yes';
+                } else if ((stepBrothersQuestions.length <= 0) && (stepBrothersQuestions != 'yes')) {
+                    movies4.splice(movies4.indexOf(stepBrothers), 1);
+                    stepBrothersQuestions = 'yes';
+                } else if ((dirtyGrandpaQuestions.length <= 0) && (dirtyGrandpaQuestions != 'yes')) {
+                    movies4.splice(movies4.indexOf(dirtyGrandpa), 1);
+                    dirtyGrandpaQuestions = 'yes';
+                } else if ((theCampaignQuestions.length <= 0) && (theCampaignQuestions != 'yes')) {
+                    movies4.splice(movies4.indexOf(theCampaign), 1);
+                    theCampaignQuestions = 'yes';
+                } else if ((bridesmaidsQuestions.length <= 0) && (bridesmaidsQuestions != 'yes')) {
+                    movies4.splice(movies4.indexOf(bridesmaids), 1);
+                    bridesmaidsQuestions = 'yes';
+                } else if ((whiteChicksQuestions.length <= 0) && (whiteChicksQuestions != 'yes')) {
+                    movies4.splice(movies4.indexOf(whiteChicks), 1);
+                    whiteChicksQuestions = 'yes';
+                } else if ((grownUpsQuestions.length <= 0) && (grownUpsQuestions != 'yes')) {
+                    movies4.splice(movies4.indexOf(grownUps), 1);
+                    grownUpsQuestions = 'yes';
+                }
+            }
         }
-    }
-    return movies4[Math.floor(Math.random() * movies4.length)]();
+        return movies4[Math.floor(Math.random() * movies4.length)]();
     };
 
+    // const closeandrestart = () => {
+    //     $('.modal').css('display', 'none');
+    // };
+
+    const $closeandrestart = $('.closeandrestart');
+
+    $closeandrestart.on('click', location.reload);
+    //might need to change reload to assign(url)
+
+    const checkMovies = () => {
+        if ((movies.length == 0) && (movies2.length == 0) && (movies3.length == 0) && (movies4.length == 0)) {
+            $('#youLost').css('display', 'block');
+        }
+    };
 
 
     $('#romance').on('click', (event) => {

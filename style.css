@@ -20,31 +20,6 @@ body {
     align-items: center;
 }
 
-/* .header > img {
-    background-size: cover;
-    position: absolute;
-    /* width: 900px; */
-    /* background-repeat: repeat-x;
-
-} */
-
-/* .header {
-    background-image: url(confetti.png);
-    background-repeat: repeat;
-    width: 1920px;
-    bottom: 200px;
-    max-height: 300px;
-    z-index: 0;
-    background-size: 900px;
-    /* display: flex;
-    justify-content: center;
-    background-position: top;
-    background-size: cover; */
-/* } */
-
-
-
-
 .welcomeh3 {
     font-family: 'Advent Pro', sans-serif;
     padding-top: 215px;
@@ -92,8 +67,6 @@ body {
 .letsgobtn > button:focus {
     outline: none;
 }
-
-
 
 .title > h3 {
     font-family: 'Advent Pro', sans-serif;
@@ -184,6 +157,31 @@ h1 {
 
 .answers > button:hover {
     box-shadow: 1px 0 10px #8627b3;
+}
+
+.answers > button:focus {
+    outline: none;
+}
+
+.backnext > button:focus {
+    outline: none;
+}
+
+.backnext > button {
+    padding: 20px 20px;
+    background-color: none;
+    border: none;
+    height: auto;
+    width: auto;
+    font-family: 'Crushed', cursive;
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+
+.backnext {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
 }
 
 .game {
@@ -279,6 +277,16 @@ h1 {
     padding: 2%;
     line-height: 120%;
     text-align: right;
+}
+
+.close {
+    background-color: #b1d94e;
+    border-radius: 10px;
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 18px;
+    padding: 5px;
+    text-decoration: none;
+    text-transform: uppercase;
 }
 
 .correctCount {
