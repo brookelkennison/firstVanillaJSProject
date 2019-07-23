@@ -2395,6 +2395,8 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
     const $closeandrestart = $('.closeandrestart');
 
     $closeandrestart.on('click', location.reload);
+
+
     //might need to change reload to assign(url)
 
     const checkMovies = () => {
@@ -2463,6 +2465,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
     $('.letsgobtn').on('click', (event) => {
         $('#welcomescreen').hide();
         $('.body').css('display', 'block');
+        $('#start').css('display', 'block');
     });
 
 }); //end of onload

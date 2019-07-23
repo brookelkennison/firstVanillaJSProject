@@ -333,5 +333,8 @@ h6 {
     display: none;
 }
 
-
+.start {
+    font-family: 'Arimo', sans-serif;
+    font-size: 28px;
+    word-spacing: 5px;
 }
