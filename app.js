@@ -162,7 +162,7 @@ $(() => { // start of onload
 
     const theNoteBook = () => {
         $.ajax({
-            url: 'http://www.omdbapi.com/?t=the+notebook&apikey=361efa89',
+            url: 'https://www.omdbapi.com/?t=the+notebook&apikey=361efa89',
         }).then (
             (data) => {
                 $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
@@ -219,7 +219,7 @@ $(() => { // start of onload
 
     const aboutTime = () => {
     $.ajax({
-        url: 'http://www.omdbapi.com/?t=about+time&apikey=361efa89',
+        url: 'https://www.omdbapi.com/?t=about+time&apikey=361efa89',
     }).then (
         (data) => {
             $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
@@ -277,7 +277,7 @@ $(() => { // start of onload
 
     const justGoWithIt = () => {
         $.ajax({
-            url: 'http://www.omdbapi.com/?t=just+go+with+it&apikey=361efa89',
+            url: 'https://www.omdbapi.com/?t=just+go+with+it&apikey=361efa89',
         }).then (
             (data) => {
                 $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
@@ -335,7 +335,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
 
     const lalaLand = () => {
     $.ajax({
-        url: 'http://www.omdbapi.com/?t=la+la+land&apikey=361efa89',
+        url: 'https://www.omdbapi.com/?t=la+la+land&apikey=361efa89',
     }).then (
         (data) => {
             $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
@@ -393,7 +393,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
 
     const noStringAttached = () => {
     $.ajax({
-        url: 'http://www.omdbapi.com/?t=no+strings+attached&apikey=361efa89',
+        url: 'https://www.omdbapi.com/?t=no+strings+attached&apikey=361efa89',
     }).then (
         (data) => {
             $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
@@ -451,7 +451,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
 
     const loveActually = () => {
     $.ajax({
-        url: 'http://www.omdbapi.com/?t=love+actually&apikey=361efa89',
+        url: 'https://www.omdbapi.com/?t=love+actually&apikey=361efa89',
     }).then (
         (data) => {
             $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
@@ -509,7 +509,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
 
     const aStarIsBorn = () => {
     $.ajax({
-        url: 'http://www.omdbapi.com/?t=a+star+is+born&apikey=361efa89',
+        url: 'https://www.omdbapi.com/?t=a+star+is+born&apikey=361efa89',
     }).then (
         (data) => {
             $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
@@ -567,7 +567,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
 
     const theSpectacularNow = () => {
     $.ajax({
-        url: 'http://www.omdbapi.com/?t=the+spectacular+now&apikey=361efa89',
+        url: 'https://www.omdbapi.com/?t=the+spectacular+now&apikey=361efa89',
     }).then (
         (data) => {
             $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
@@ -671,7 +671,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
 
     const bourneUltimatum = () => {
         $.ajax({
-            url: 'http://www.omdbapi.com/?t=bourne+ultimatum&apikey=361efa89',
+            url: 'https://www.omdbapi.com/?t=bourne+ultimatum&apikey=361efa89',
         }).then (
             (data) => {
                 $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
@@ -730,7 +730,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
 
     const johnWick = () => {
     $.ajax({
-        url: 'http://www.omdbapi.com/?t=john+wick&apikey=361efa89',
+        url: 'https://www.omdbapi.com/?t=john+wick&apikey=361efa89',
     }).then (
         (data) => {
             $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
@@ -788,7 +788,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
 
     const theDarkKnight = () => {
         $.ajax({
-            url: 'http://www.omdbapi.com/?t=the+dark+knight&apikey=361efa89',
+            url: 'https://www.omdbapi.com/?t=the+dark+knight&apikey=361efa89',
         }).then (
             (data) => {
                 $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
@@ -846,7 +846,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
 
     const theEqualizer = () => {
     $.ajax({
-        url: 'http://www.omdbapi.com/?t=the+equalizer&apikey=361efa89',
+        url: 'https://www.omdbapi.com/?t=the+equalizer&apikey=361efa89',
     }).then (
         (data) => {
             $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
@@ -904,7 +904,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
 
     const captainAmerica = () => {
     $.ajax({
-        url: 'http://www.omdbapi.com/?t=captain+america&y=2016&apikey=361efa89',
+        url: 'https://www.omdbapi.com/?t=captain+america&y=2016&apikey=361efa89',
     }).then (
         (data) => {
             $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
@@ -962,7 +962,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
 
     const readyPlayerOne = () => {
     $.ajax({
-        url: 'http://www.omdbapi.com/?t=ready+player+one&apikey=361efa89',
+        url: 'https://www.omdbapi.com/?t=ready+player+one&apikey=361efa89',
     }).then (
         (data) => {
             $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
@@ -1020,7 +1020,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
 
     const missionImpossible = () => {
     $.ajax({
-        url: 'http://www.omdbapi.com/?t=mission+impossible&y=2011&apikey=361efa89',
+        url: 'https://www.omdbapi.com/?t=mission+impossible&y=2011&apikey=361efa89',
     }).then (
         (data) => {
             $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
@@ -1078,7 +1078,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
 
     const fury = () => {
     $.ajax({
-        url: 'http://www.omdbapi.com/?t=fury&y=2014&apikey=361efa89',
+        url: 'https://www.omdbapi.com/?t=fury&y=2014&apikey=361efa89',
     }).then (
         (data) => {
             $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
@@ -1136,7 +1136,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
 
     const planetOfTheApes = () => {
     $.ajax({
-        url: 'http://www.omdbapi.com/?t=dawn+of+the+planet+of+the+apes&y=2014&apikey=361efa89',
+        url: 'https://www.omdbapi.com/?t=dawn+of+the+planet+of+the+apes&y=2014&apikey=361efa89',
     }).then (
         (data) => {
             $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
@@ -1194,7 +1194,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
 
     const theAcountant = () => {
     $.ajax({
-        url: 'http://www.omdbapi.com/?t=the+accountant&y=2016&apikey=361efa89',
+        url: 'https://www.omdbapi.com/?t=the+accountant&y=2016&apikey=361efa89',
     }).then (
         (data) => {
             $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
@@ -1307,7 +1307,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
 
     const wonder = () => {
         $.ajax({
-            url: 'http://www.omdbapi.com/?t=wonder&y=2017&apikey=361efa89',
+            url: 'https://www.omdbapi.com/?t=wonder&y=2017&apikey=361efa89',
         }).then (
             (data) => {
                 $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
@@ -1365,7 +1365,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
 
     const jungleBook = () => {
     $.ajax({
-        url: 'http://www.omdbapi.com/?t=the+jungle+book&y=2016&apikey=361efa89',
+        url: 'https://www.omdbapi.com/?t=the+jungle+book&y=2016&apikey=361efa89',
     }).then (
         (data) => {
             $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
@@ -1423,7 +1423,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
 
     const insideOut = () => {
         $.ajax({
-            url: 'http://www.omdbapi.com/?t=inside+out&y=2015&apikey=361efa89',
+            url: 'https://www.omdbapi.com/?t=inside+out&y=2015&apikey=361efa89',
         }).then (
             (data) => {
                 $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
@@ -1481,7 +1481,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
 
     const secretariat = () => {
     $.ajax({
-        url: 'http://www.omdbapi.com/?t=secretariat&apikey=361efa89',
+        url: 'https://www.omdbapi.com/?t=secretariat&apikey=361efa89',
     }).then (
         (data) => {
             $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
@@ -1539,7 +1539,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
 
     const christopherRobin = () => {
     $.ajax({
-        url: 'http://www.omdbapi.com/?t=christopher+robin&apikey=361efa89',
+        url: 'https://www.omdbapi.com/?t=christopher+robin&apikey=361efa89',
     }).then (
         (data) => {
             $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
@@ -1597,7 +1597,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
 
     const maleficent = () => {
     $.ajax({
-        url: 'http://www.omdbapi.com/?t=maleficent&apikey=361efa89',
+        url: 'https://www.omdbapi.com/?t=maleficent&apikey=361efa89',
     }).then (
         (data) => {
             $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
@@ -1655,7 +1655,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
 
     const howToTrainYourDragon = () => {
     $.ajax({
-        url: 'http://www.omdbapi.com/?t=how+to+train+your+dragon&y=2019&apikey=361efa89',
+        url: 'https://www.omdbapi.com/?t=how+to+train+your+dragon&y=2019&apikey=361efa89',
     }).then (
         (data) => {
             $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
@@ -1713,7 +1713,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
 
     const incredibles = () => {
     $.ajax({
-        url: 'http://www.omdbapi.com/?t=incredibles+2&apikey=361efa89',
+        url: 'https://www.omdbapi.com/?t=incredibles+2&apikey=361efa89',
     }).then (
         (data) => {
             $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
@@ -1771,7 +1771,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
 
     const elf = () => {
     $.ajax({
-        url: 'http://www.omdbapi.com/?t=elf&apikey=361efa89',
+        url: 'https://www.omdbapi.com/?t=elf&apikey=361efa89',
     }).then (
         (data) => {
             $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
@@ -1880,7 +1880,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
 
     const wereTheMillers = () => {
         $.ajax({
-            url: 'http://www.omdbapi.com/?t=we%27re+the+millers&apikey=361efa89',
+            url: 'https://www.omdbapi.com/?t=we%27re+the+millers&apikey=361efa89',
         }).then (
             (data) => {
                 $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
@@ -1938,7 +1938,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
 
     const theHangover = () => {
     $.ajax({
-        url: 'http://www.omdbapi.com/?t=the+hangover&apikey=361efa89',
+        url: 'https://www.omdbapi.com/?t=the+hangover&apikey=361efa89',
     }).then (
         (data) => {
             $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
@@ -1996,7 +1996,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
 
     const stepBrothers = () => {
         $.ajax({
-            url: 'http://www.omdbapi.com/?t=step+brothers&apikey=361efa89',
+            url: 'https://www.omdbapi.com/?t=step+brothers&apikey=361efa89',
         }).then (
             (data) => {
                 $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
@@ -2054,7 +2054,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
 
     const dirtyGrandpa = () => {
     $.ajax({
-        url: 'http://www.omdbapi.com/?t=dirty+grandpa&apikey=361efa89',
+        url: 'https://www.omdbapi.com/?t=dirty+grandpa&apikey=361efa89',
     }).then (
         (data) => {
             $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
@@ -2112,7 +2112,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
 
     const theCampaign = () => {
     $.ajax({
-        url: 'http://www.omdbapi.com/?t=the+campaign&apikey=361efa89',
+        url: 'https://www.omdbapi.com/?t=the+campaign&apikey=361efa89',
     }).then (
         (data) => {
             $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
@@ -2170,7 +2170,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
 
     const bridesmaids = () => {
     $.ajax({
-        url: 'http://www.omdbapi.com/?t=bridesmaids&apikey=361efa89',
+        url: 'https://www.omdbapi.com/?t=bridesmaids&apikey=361efa89',
     }).then (
         (data) => {
             $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
@@ -2228,7 +2228,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
 
     const whiteChicks = () => {
     $.ajax({
-        url: 'http://www.omdbapi.com/?t=white+chicks&apikey=361efa89',
+        url: 'https://www.omdbapi.com/?t=white+chicks&apikey=361efa89',
     }).then (
         (data) => {
             $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
@@ -2286,7 +2286,7 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
 
     const grownUps = () => {
     $.ajax({
-        url: 'http://www.omdbapi.com/?t=grown+ups&apikey=361efa89',
+        url: 'https://www.omdbapi.com/?t=grown+ups&apikey=361efa89',
     }).then (
         (data) => {
             $('#movietitle').text(data.Title + ' ' + '('+ data.Year +')');
@@ -2388,16 +2388,9 @@ wrongAnswers: ["Gucci", "Chanel", "Bloomingdales"]
         }
     };
 
-    // const closeandrestart = () => {
-    //     $('.modal').css('display', 'none');
-    // };
-
     const $closeandrestart = $('.closeandrestart');
 
     $closeandrestart.on('click', location.reload);
-
-
-    //might need to change reload to assign(url)
 
     const checkMovies = () => {
         if ((movies.length == 0) && (movies2.length == 0) && (movies3.length == 0) && (movies4.length == 0)) {
